@@ -1,10 +1,13 @@
 import "./App.css";
-function App() {
+import axios from "axios";
+import { useEffect } from "react";
+import Routing from "./common/routing";
 
+function App() {
   return (
-    <div>
-      <h1>Workout Bros</h1>
-    </div>
+    <>
+      <Routing />
+    </>
   );
 }
 
