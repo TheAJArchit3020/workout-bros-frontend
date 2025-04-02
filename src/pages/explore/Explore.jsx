@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
 import useLocation from "../../hooks/useLocation";
-import usePWAInstall from "../../hooks/usePWAInstall";
 import "./Explore.css";
 
 const Explore = () => {
