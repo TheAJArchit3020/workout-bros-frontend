@@ -1,8 +1,9 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router";
 const Login = () => {
+  const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
 
   const handleGoogleSignIn = useGoogleLogin({
@@ -29,12 +30,12 @@ const Login = () => {
     );
 
     console.log("google Response", response);
+    navigate("/explore");
   };
 
   return (
     <div>
       <h1>Workout Bros</h1>
-      <span>Login with Google</span>
       <button onClick={handleGoogleSignIn}>Sign in with google</button>
     </div>
   );

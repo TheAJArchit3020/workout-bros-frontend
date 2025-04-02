@@ -1,0 +1,151 @@
+.explore-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.explore-container h2 {
+  margin: 0;
+  color: #333;
+}
+
+
+
+.install-icon {
+  font-size: 1.2rem;
+}
+
+.location-status {
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.location-status.error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ffcdd2;
+}
+
+.location-status.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.location-status button {
+  margin-top: 10px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.location-status button:hover {
+  background-color: #1976d2;
+}
+
+.location-details {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.location-details h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.cities-list {
+  margin-top: 30px;
+}
+
+.cities-list h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.city-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.city-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.city-card p {
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+.city-card small {
+  color: #666;
+  font-size: 0.8em;
+}
+
+.explore-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.explore-profile-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.explore-profile-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.explore-profile-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.explore-profile-card-content span:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.explore-profile-card-content span:last-child {
+  color: #666;
+  font-size: 14px;
+}
