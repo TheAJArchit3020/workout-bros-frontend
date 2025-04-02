@@ -1,10 +1,8 @@
 /* small mobile css */
 .footer-container {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     width: 100%;
-
-
 }
 
 .footer-content {
