@@ -1,6 +1,6 @@
 .p_c_profileContainer {
   height: 25%;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,14 +8,17 @@
 }
 
 .p_c_profileImageContainer {
-  border: 1px solid #000;
+  background-image: url('/images/profile.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 70%;
   width: 30%;
 }
 
 .p_c_inputContainer {
   height: 40%;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,7 +28,7 @@
 .p_c_input {
   width: 95%;
   border: 1px solid #fff;
-  background: linear-gradient(to right, #d8d6e0, #f8ffc7);
+  background-color: #D9D7E1;
   border-radius: 15px;
   padding-left: 2.5%;
   padding-right: 2.5%;

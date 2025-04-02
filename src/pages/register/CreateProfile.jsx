@@ -1,11 +1,21 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import "./CreateProfile.css";
 import CreateProfileInfo from "../../components/profile/profileInfo/profileInfo";
 import CreateProfileIntrest from "../../components/profile/profileIntrests/profileIntrest";
 import { useNavigate } from "react-router";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 const CreateProfile = () => {
   const [profileSection, setProfileSection] = useState(1);
   const navigate = useNavigate();
+  const [fullName,setFullName] = useState("");
+  const [description,setDescription] = useState("");
+
+  const isValid = fullName.length > 0 && description.length > 0;
+  const handleInput = (name,description) =>{
+    setFullName(name);
+    setDescription(description);
+    console.log(name," ",description);
+  }
   const handleNextButton = () => {
     if (profileSection < 2) {
       setProfileSection((prev) => prev + 1);
@@ -30,18 +40,23 @@ const CreateProfile = () => {
           <button
             className="p_c_backButton"
             onClick={handleBackButton}
-          ></button>
+          >
+            <ArrowLeftIcon  className="arrowIcon"/>
+          </button>
           <span className="text">Set up your profile</span>
         </div>
         <span className="text">{profileSection}/2</span>
       </div>
 
-      {profileSection === 1 ? <CreateProfileInfo /> : <CreateProfileIntrest />}
+      {profileSection === 1 ? <CreateProfileInfo handleInput={handleInput} /> : <CreateProfileIntrest />}
 
       <div className="p_c_buttonContainer">
-        <button className="p_c_nextButton" onClick={handleNextButton}>
+        <button
+         className="p_c_nextButton" 
+         style={{ backgroundImage: isValid ? "url('/images/buttonActive.svg')" : "url('/images/buttonDeActive.svg')" }}
+         disabled={!isValid}
+        onClick={handleNextButton}>
           <span>{profileSection === 1 ? "Next" : "Done"}</span>
-          <div className="p_c_nextArrow"></div>
         </button>
       </div>
     </div>

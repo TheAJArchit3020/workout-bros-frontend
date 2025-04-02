@@ -1,6 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import "./profileInfo.css";
-const CreateProfileInfo = () => {
+const CreateProfileInfo = ({handleInput}) => {
+  const [fullName,setFullName] = useState("");
+  const [description,setDescription] = useState("");
+
   return (
     <>
       <div className="p_c_profileContainer">
@@ -13,13 +16,23 @@ const CreateProfileInfo = () => {
           type="text"
           placeholder="Full Name"
           className="p_c_input"
-          style={{ height: "20%" }}
+          style={{ height: "20%",borderRadius:'20px'}}
+          value={fullName}
+          onChange={(e) => {
+            setFullName(e.target.value) 
+            handleInput(e.target.value,description)
+          }}
         />
 
         <textarea
           placeholder="Tell about yourself"
           className="p_c_input"
           style={{ height: "55%", padding: "3%" }}
+          value={description}
+          onChange={(e) => {
+            setDescription(e.target.value) 
+            handleInput(fullName,e.target.value)
+          }}
         />
       </div>
     </>
