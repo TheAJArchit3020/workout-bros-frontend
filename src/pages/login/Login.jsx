@@ -31,13 +31,15 @@ const Login = () => {
     );
 
     console.log("google Response", response);
-    navigate("/Profile");
+    navigate("/CreateProfile");
   };
 
   return (
     <div className="login-container">
       <div className="overlay"/>
       <div className="content-container">
+        <div className="logo-container">
+        </div>
         <h1>
           Meet people nearby who share your interests! Connect, chat, and do
           activities together. Join now.!
