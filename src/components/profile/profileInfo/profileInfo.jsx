@@ -1,6 +1,6 @@
 import React from "react";
 import "./profileInfo.css";
-const ProfileInfo = () => {
+const CreateProfileInfo = () => {
   return (
     <>
       <div className="p_c_profileContainer">
@@ -26,4 +26,4 @@ const ProfileInfo = () => {
   );
 };
 
-export default ProfileInfo;
+export default CreateProfileInfo;

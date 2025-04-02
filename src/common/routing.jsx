@@ -10,6 +10,7 @@ const Routing = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/CreateProfileInfo" element={<CreateProfileInfo />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/explore" element={<Explore />} />
       </Routes>

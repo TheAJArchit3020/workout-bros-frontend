@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProfileIntrest = () => {
+const CreateProfileIntrest = () => {
   return (
     <div>
       <span style={{color:'#000'}}>Find your tribe! Pick your interests</span>
@@ -8,4 +8,4 @@ const ProfileIntrest = () => {
   );
 };
 
-export default ProfileIntrest;
+export default CreateProfileIntrest;

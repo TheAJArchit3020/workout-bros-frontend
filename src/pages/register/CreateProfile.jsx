@@ -1,9 +1,9 @@
 import React, { use, useState } from "react";
 import "./CreateProfile.css";
-import ProfileInfo from "../../components/profile/profileInfo/profileInfo";
-import ProfileIntrest from "../../components/profile/profileIntrests/profileIntrest";
+import CreateProfileInfo from "../../components/profile/profileInfo/profileInfo";
+import CreateProfileIntrest from "../../components/profile/profileIntrests/profileIntrest";
 import { useNavigate } from "react-router";
-const Profile = () => {
+const CreateProfile = () => {
   const [profileSection, setProfileSection] = useState(1);
   const navigate = useNavigate();
   const handleNextButton = () => {
@@ -36,7 +36,7 @@ const Profile = () => {
         <span className="text">{profileSection}/2</span>
       </div>
 
-      {profileSection === 1 ? <ProfileInfo /> : <ProfileIntrest />}
+      {profileSection === 1 ? <CreateProfileInfo /> : <CreateProfileIntrest />}
 
       <div className="p_c_buttonContainer">
         <button className="p_c_nextButton" onClick={handleNextButton}>
@@ -48,4 +48,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default CreateProfile;
