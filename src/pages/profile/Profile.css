@@ -22,15 +22,22 @@
     gap: 1rem;
 }
 
+.interests-section{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .review-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-span.review-comment {
+span.review-comment,
+.interests-list {
     font-style: oblique;
-    font-size: small;
+    font-size: smaller;
 }
 
 span.profile-name {
@@ -42,4 +49,107 @@ span.profile-name {
 img.profile-picture {
     width: 50px;
     height: 50px;
+}
+
+span.reviewer-name,
+span.interests-title,
+span.reviews-title {
+    font-size: small;
+    font-weight: bold;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.review-modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.review-modal h2 {
+    margin: 0 0 1.5rem 0;
+    color: #333;
+    text-align: center;
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s ease;
+}
+
+.star.filled {
+    color: #ffc107;
+}
+
+.review-comment-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.submit-review-button,
+.cancel-review-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.submit-review-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.submit-review-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.submit-review-button:not(:disabled):hover {
+    background-color: #0056b3;
+}
+
+.cancel-review-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+.cancel-review-button:hover {
+    background-color: #5a6268;
 }
