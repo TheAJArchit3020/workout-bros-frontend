@@ -4,70 +4,6 @@
     padding: 5%;
     background: linear-gradient(to right, #D8D6E0, #F8FFC7);
 }
-.p_c_header {
-    height: 15%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.p_c_header_left{
-  height: 100%;
-  width: 60%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.text{
-    color: #000;
-    font-weight: bold;
-}
-
-.p_c_backButton{
-    background-color: #DFFD52;
-    border-radius: 50%;
-    width: 10%;
-    height: 40%;
-}
-
-.p_c_profileContainer {
-    height: 25%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.p_c_profileImageContainer{
-    border: 1px solid #000;
-    height: 70%;
-    width: 30%;
-}
-
-.p_c_inputContainer {
-    height: 40%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 5%;
-}
-
-.p_c_input{
-    width: 95%;
-    border: 1px solid #fff;
-    background:linear-gradient(to right, #D8D6E0, #F8FFC7);
-    border-radius: 15px;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    color: #000;
-    text-align: left;
-    vertical-align: top;
-
-}
 
 .p_c_buttonContainer {
     height: 30%;
@@ -75,22 +11,21 @@
     display: flex;
     justify-content: end;
     align-items: center;
-}
-
-.p_c_nextButton{
-    
-    background-color: #DFFD52;
+  }
+  
+  .p_c_nextButton {
+    background-color: #dffd52;
     width: 30%;
     height: 15%;
     display: flex;
-    justify-content:start;
+    justify-content: start;
     align-items: center;
     color: #000;
     border: none;
     gap: 5px;
-}
-
-.p_c_nextArrow{
+  }
+  
+  .p_c_nextArrow {
     background-color: #000;
     width: 50%;
     border-radius: 50%;
@@ -98,4 +33,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
+  
