@@ -2,6 +2,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import "./Login.css";
 const Login = () => {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
