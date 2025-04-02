@@ -2,6 +2,9 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
+  background: linear-gradient(to top, #D8D6E0 67%, #F8FFC7 100%);
+  min-height: calc(100vh - 100px);
+
 }
 
 .header-section {

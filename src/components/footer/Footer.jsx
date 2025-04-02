@@ -1,24 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import { Link } from "react-router";
 
 const Footer = () => {
+  const [isSelected, setIsSelected] = useState("explore");
 
-    
   return (
     <div className="footer-container">
       <div className="footer-content">
-        <Link to="/explore" className="footer-section">
-          <img src="./vite.svg" alt="" />
-          <span>Explore</span>
+        <Link
+          onClick={() => setIsSelected("explore")}
+          to="/explore"
+          className={`${
+            isSelected === "explore" ? "selected-tab" : "footer-section"
+          }`}
+        >
+          <img src="./images/exploreicon.svg" alt="explore-icon" />
         </Link>
-        <Link to="/connected" className="footer-section">
-          <img src="./vite.svg" alt="" />
-          <span>Connected</span>
+        <Link
+          onClick={() => setIsSelected("connected")}
+          to="/connected"
+          className={`${
+            isSelected === "connected" ? "selected-tab" : "footer-section"
+          }`}
+        >
+          <img src="./images/connectionicon.svg" alt="connection-icon" />
         </Link>
-        <Link to="/profile" className="footer-section">
-          <img src="./vite.svg" alt="" />
-          <span>Profile</span>
+        <Link
+          onClick={() => setIsSelected("profile")}
+          to="/profile"
+          className={`${
+            isSelected === "profile" ? "selected-tab" : "footer-section"
+          }`}
+        >
+          <img src="./images/usericon.svg" alt="user-icon" />
         </Link>
       </div>
     </div>
