@@ -9,6 +9,7 @@
   "orientation": "portrait",
   "scope": "/",
   "prefer_related_applications": false,
+  "permissions": ["geolocation"],
   "icons": [
     {
       "src": "/icon.svg",

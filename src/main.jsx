@@ -23,20 +23,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later
   deferredPrompt = e;
-  // Show the prompt after 3 seconds
-  setTimeout(() => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-      });
-    }
-  }, 3000);
+  // Make it available globally
+  window.deferredPrompt = deferredPrompt;
 });
 
 createRoot(document.getElementById('root')).render(
