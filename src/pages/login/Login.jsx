@@ -31,7 +31,7 @@ const Login = () => {
     );
 
     console.log("google Response", response);
-    navigate("/CreateProfile");
+    navigate("/createProfile");
   };
 
   return (
