@@ -1,6 +1,6 @@
 .explore-container {
   padding: 20px;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   min-height: calc(100vh - 100px);
   background: linear-gradient(5.646deg, #D8D6E0 37%, #F8FFC7 100%);

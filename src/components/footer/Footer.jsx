@@ -18,10 +18,10 @@ const Footer = () => {
           <img src="./images/exploreicon.svg" alt="explore-icon" />
         </Link>
         <Link
-          onClick={() => setIsSelected("connected")}
-          to="/connected"
+          onClick={() => setIsSelected("connection")}
+          to="/connection"
           className={`${
-            isSelected === "connected" ? "selected-tab" : "footer-section"
+            isSelected === "connection" ? "selected-tab" : "footer-section"
           }`}
         >
           <img src="./images/connectionicon.svg" alt="connection-icon" />

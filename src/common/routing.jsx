@@ -6,6 +6,7 @@ import CreateProfile from "../pages/register/CreateProfile";
 import Explore from "../pages/explore/Explore";
 import Profile from "../pages/profile/Profile";
 import Filter from "../pages/filter/Filter";
+import Connection from "../pages/connection/Connection";
 import Chatting from "../pages/chatting/chatting";
 const Routing = () => {
   return (
@@ -17,6 +18,7 @@ const Routing = () => {
         <Route path="/explore" element={<Explore />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/filter" element={<Filter />} />
+        <Route path="/connection" element={<Connection />} />
         <Route path="/Chatting" element={<Chatting />} />
       </Routes>
     </BrowserRouter>
