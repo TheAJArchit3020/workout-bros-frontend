@@ -1,0 +1,141 @@
+.connection-container {
+    background: linear-gradient(5.646deg, #D8D6E0 37%, #F8FFC7 100%);
+    height: 100vh;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow: auto;
+}
+
+.connection-segmentbutton-container {
+    display: flex;
+    gap: 10px;
+    background-color: #2A2A2A;
+    padding: 6px;
+    border-radius: 10rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.connection-segmentbutton {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.connection-segmentbutton-text {
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    display: inline-block;
+    padding: 6px 6px;
+    width: 90%;
+}
+
+.connection-segmentbutton-text-selected {
+    color: #DFFD52;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: #454545;
+    padding: 6px 6px;
+    border-radius: 10rem;
+    display: inline-block;
+    width: 90%;
+}
+
+.connection-request-container,
+.connection-notification-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.connection-request-header-text,
+.connection-notification-header-text {
+    color: #2A2A2A;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.connection-request-item,
+.connection-notification-item,
+.connection-chat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.connection-request-item-image,
+.connection-notification-item-image,
+.connection-chat-item-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.connection-request-item-info-text,
+.connection-notification-item-info-text,
+.connection-chat-item-info-text {
+    color: #2A2A2A;
+    font-size: 11px;
+}
+
+.connection-request-item-button-text {
+    color: #DFFD52;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #2A2A2A;
+    padding: 5px 20px;
+    border-radius: 10rem;
+    display: inline-block;
+}
+
+.connection-notification-item-button {
+    background-color: #DFFD52;
+    padding: 5px;
+    border-radius: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.connection-notification-item-button-text {
+    color: #DFFD52;
+}
+
+.connection-request-item-info,
+.connection-notification-item-info,
+.connection-chat-item-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.connection-chat-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.connection-chat-item-info-text-time{
+    color: #2A2A2A;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.connection-chat-item-button-text{
+    background-color: #2A2A2A;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 5px 7px;
+    border-radius: 10rem;
+    display: inline-block;
+}
+
+
