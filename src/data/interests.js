@@ -1,7 +1,7 @@
 export const interests = [
   { id: 1, name: 'Badminton', iconFile: 'shuttlecock.svg', activeIconFile: 'shuttlecockfill.svg' },
 
-  { id: 2, name: 'Running', iconFile: 'user-fast-running-2.svg', activeIconFile: 'userfastrunning2fill.svg' },
+  { id: 2, name: 'Running', iconFile: 'user-fast-running-2.svg', activeIconFile: 'userfastrunningfill2.svg' },
 
   { id: 3, name: 'Yoga', iconFile: 'meditation.svg', activeIconFile: 'meditationfill.svg' },
 
@@ -9,7 +9,7 @@ export const interests = [
 
   { id: 5, name: 'Golf', iconFile: 'user-fast-running.svg', activeIconFile: 'userfastrunningfill.svg' },
 
-  { id: 6, name: 'Fishing', iconFile: 'fish-hook.svg', activeIconFile: 'fishinghookfill.svg' },
+  { id: 6, name: 'Fishing', iconFile: 'fish-hook.svg', activeIconFile: 'fishhookfill.svg' },
 
   { id: 7, name: 'Beach Volleyball', iconFile: 'volleyball.svg', activeIconFile: 'volleyballfill.svg' },
 

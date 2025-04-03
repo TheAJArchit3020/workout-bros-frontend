@@ -40,22 +40,34 @@
     gap: 1rem;
 }
 
-button.interest-button {
+div.interest-button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     border-radius: 16px;
     background-color: transparent;
-    border: 1px solid #FFF;
+    border: 1px solid #000;
     padding: 0.6em;
+    transition: all 0.2s ease;
+}
+
+div.interest-button.selected {
+    background-color: #000;
+    border-color: #000;
 }
 
 .interest-icon {
     width: 1rem;
+    color: #000;
 }
 
 .interest-name {
     font-size: 0.8rem;
+    color: #000;
+}
+
+div.interest-button.selected .interest-name {
+    color: #DAFF3E;
 }
 
 .interests-grid {
@@ -128,4 +140,5 @@ button.interest-button {
     font-weight: 600;
     padding-left: 1rem;
 }
+
 /* desktop */

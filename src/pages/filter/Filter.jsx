@@ -53,22 +53,23 @@ const Filter = () => {
           <div className="filter-section2">
             <span className="filter-section-title-text">Interests</span>
             <div className="interests-grid">
-              {interests.map((interest) => (
-                <button
-                  key={interest.id}
-                  className={`interest-button ${
-                    selectedInterests.includes(interest.id) ? "selected" : ""
-                  }`}
-                  onClick={() => toggleInterest(interest.id)}
-                >
-                  <img
-                    src={`/images/${interest.iconFile}`}
-                    alt={interest.name}
-                    className="interest-icon"
-                  />
-                  <span className="interest-name">{interest.name}</span>
-                </button>
-              ))}
+              {interests.map((interest) => {
+                const isSelected = selectedInterests.includes(interest.id);
+                return (
+                  <div
+                    key={interest.id}
+                    className={`interest-button ${isSelected ? "selected" : ""}`}
+                    onClick={() => toggleInterest(interest.id)}
+                  >
+                    <img
+                      src={`/images/${isSelected ? interest.activeIconFile : interest.iconFile}`}
+                      alt={interest.name}
+                      className="interest-icon"
+                    />
+                    <span className="interest-name">{interest.name}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
