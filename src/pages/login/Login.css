@@ -34,23 +34,28 @@
 .logo-container{
   background-color: #fff;
   width: 30vw;
-  height: 15vh;
+  height: 14vh;
   margin-bottom: 10%;
   border-radius: 50%;
 }
 h1{
   color: #fff;
-  font-size: small;
   text-align: center;
-  margin-bottom: 8%;
+  margin-bottom: 10%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
 }
 
 .btn {
-  width: 70%;
+  width: 90%;
+  height: 12%;
   background-color: #dffd52;
   color: #000;
-  border-radius: 20px;
+  border-radius: 22px;
   align-self: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .btn:hover {

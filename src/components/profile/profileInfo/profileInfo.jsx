@@ -27,7 +27,7 @@ const CreateProfileInfo = ({handleInput}) => {
         <textarea
           placeholder="Tell about yourself"
           className="p_c_input"
-          style={{ height: "55%", padding: "3%" }}
+          style={{ height: "50%", paddingTop: "5%" }}
           value={description}
           onChange={(e) => {
             setDescription(e.target.value) 

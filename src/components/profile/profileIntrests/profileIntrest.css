@@ -1,0 +1,49 @@
+.interests-container{
+    display: flex;
+    flex-direction: column;
+    padding-right: 5%;
+    padding-left: 5%;
+    margin-top: 10%;
+}
+.i-headerTitle{
+  color: #000;
+  margin-bottom: 15%;
+  font-size:1rem;
+}
+div.interest-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 16px;
+    background-color: transparent;
+    border: 1px solid #000;
+    padding: 0.6em;
+    transition: all 0.2s ease;
+}
+
+div.interest-button.selected {
+    background-color: #000;
+    border-color: #000;
+}
+
+.interest-icon {
+    width: 1rem;
+    color: #000;
+}
+
+.interest-name {
+    font-size: 0.8rem;
+    color: #000;
+}
+
+div.interest-button.selected .interest-name {
+    color: #DAFF3E;
+}
+
+.interests-grid {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
