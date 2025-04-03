@@ -1,0 +1,46 @@
+/* mobile css */
+
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.navbar-brand-name {
+    flex: 1;
+}
+
+.navbar-brand-name-text {
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 2rem;
+}
+
+.navbar-filter-container {
+    background-color: #DFFD52;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+/* Tab specific selected states */
+.tab-home.selected {
+    background-color: #FF6B6B;  /* Coral red */
+}
+
+.tab-workout.selected {
+    background-color: #4ECDC4;  /* Turquoise */
+}
+
+.tab-profile.selected {
+    background-color: #45B7D1;  /* Sky blue */
+}
+
+.tab-settings.selected {
+    background-color: #96CEB4;  /* Sage green */
+}
