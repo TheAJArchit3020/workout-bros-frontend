@@ -2,21 +2,30 @@
 
 .navbar-wrapper {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     text-align: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .navbar-brand-name {
-    flex: 1;
+    background: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10rem;
+    width: 11rem;
 }
 
+
+
 .navbar-brand-name-text {
-    font-size: 24px;
+    font-size: 1rem;
     font-weight: 600;
-    margin-left: 2rem;
 }
 
 .navbar-filter-container {
@@ -28,19 +37,18 @@
     padding: 8px;
 }
 
-/* Tab specific selected states */
 .tab-home.selected {
-    background-color: #FF6B6B;  /* Coral red */
+    background-color: #FF6B6B;
 }
 
 .tab-workout.selected {
-    background-color: #4ECDC4;  /* Turquoise */
+    background-color: #4ECDC4;
 }
 
 .tab-profile.selected {
-    background-color: #45B7D1;  /* Sky blue */
+    background-color: #45B7D1;
 }
 
 .tab-settings.selected {
-    background-color: #96CEB4;  /* Sage green */
+    background-color: #96CEB4;
 }

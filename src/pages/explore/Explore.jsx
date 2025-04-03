@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
 import useLocation from "../../hooks/useLocation";
 import "./Explore.css";
-
+import Navbar from "../../components/navbar/Navbar";
 const Explore = () => {
   const { location, error, loading, requestLocation, locationDetails, cities } =
     useLocation();
@@ -13,6 +13,7 @@ const Explore = () => {
   return (
     <Layout>
       <div className="explore-container">
+        <Navbar />
         {/* <div className="header-section">
           <button
             className="filter-button"

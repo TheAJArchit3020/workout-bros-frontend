@@ -2,8 +2,9 @@
 
 .filter-container {
     width: 100%;
-    background: linear-gradient(-7.037deg, #D8D6E0 40%, #F8FFC7 100%);
+    background: linear-gradient(to top, #D8D6E0 67%, #F8FFC7 100%);
     height: 100vh;
+    position: relative;
 }
 
 .filter-header {
@@ -84,7 +85,7 @@ div.interest-button.selected .interest-name {
 }
 
 .apply-button-container {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
