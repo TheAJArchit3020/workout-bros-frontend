@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Filter.css";
 import { interests } from "../../data/interests";
-
+import { useNavigate } from "react-router";
 const Filter = () => {
+  const navigate = useNavigate();
   const [distance, setDistance] = useState(50);
   const [selectedInterests, setSelectedInterests] = useState([]);
 
@@ -19,24 +20,30 @@ const Filter = () => {
     console.log("Applied filters:", { distance, selectedInterests });
   };
 
+  const handleBack = () => {
+    navigate("/explore");
+  };
+
   return (
     <div className="filter-container">
+      {/* <img src="/images/referenceImages/filter360x740.png" alt="filter-page" className="filter-page-image" /> */}
       <div className="filter-wrapper">
         {/* header section */}
         <div className="filter-header">
-          <div className="filter-back-button">
+          <div className="filter-back-button" onClick={handleBack}>
             <img src="./images/backbuttonicon.svg" alt="back-button" />
           </div>
           <div className="filter-title">
-            <span className="filter-title-text">Filter</span>
+            <span className="filter-title-text">Filters</span>
           </div>
         </div>
+
         <div className="filter-section">
           {/* filter section1 */}
           <div className="filter-section1">
             <span className="filter-section-title-text">Distance</span>
             <span className="filter-section-title-text2">
-              Find people within {distance} km/miles
+              Find people within {distance} km
             </span>
             <input
               type="range"
@@ -58,15 +65,19 @@ const Filter = () => {
                 return (
                   <div
                     key={interest.id}
-                    className={`interest-button ${isSelected ? "selected" : ""}`}
+                    className={`interest-button ${
+                      isSelected ? "selected" : ""
+                    }`}
                     onClick={() => toggleInterest(interest.id)}
                   >
+                    <span className="interest-name">{interest.name}</span>
                     <img
-                      src={`/images/${isSelected ? interest.activeIconFile : interest.iconFile}`}
+                      src={`/images/${
+                        isSelected ? interest.activeIconFile : interest.iconFile
+                      }`}
                       alt={interest.name}
                       className="interest-icon"
                     />
-                    <span className="interest-name">{interest.name}</span>
                   </div>
                 );
               })}
@@ -76,21 +87,7 @@ const Filter = () => {
           {/* Apply button */}
           <div className="apply-button-container">
             <div className="apply-button" onClick={handleApply}>
-              <span className="apply-button-text">Apply</span>
-              <div className="apply-button-icon">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
-                    fill="#DAFF3E"
-                  />
-                </svg>
-              </div>
+              <img src="/images/filterpage/applybutton.svg" alt="apply-button" className="apply-button-image" />
             </div>
           </div>
         </div>

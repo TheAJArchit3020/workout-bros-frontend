@@ -64,26 +64,10 @@ const Explore = () => {
   ];
 
   return (
-    <Layout>
       <div className="explore-container">
+        <img src="./images/referenceImages/explorehomepage.png" alt="explore" className="explore-page-image" />
         <Navbar />
-        {/* <div className="header-section">
-          <button
-            className="filter-button"
-            onClick={() => setShowFilters(!showFilters)}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              marginBottom: "20px",
-            }}
-          >
-            {showFilters ? "Hide Filters" : "Show Filters"}
-          </button>
-        </div> */}
+      
 
         {loading && (
           <div className="location-status">
@@ -165,7 +149,6 @@ const Explore = () => {
           ))}
         </div>
       </div>
-    </Layout>
   );
 };
 
