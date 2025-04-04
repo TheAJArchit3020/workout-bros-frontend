@@ -19,9 +19,11 @@ const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
           return (
             <div
               key={interest.id}
-              className={`interest-button ${isSelected ? "selected" : ""}`}
+              className={`interest_button ${isSelected ? "selected_intrestButton" : ""}`}
               onClick={() => toggleInterest(interest.id)}
             >
+              <span className={isSelected ? "selected_intrestText" : "unSelected_intrestText"}>{interest.name}</span>
+
               <img
                 src={`/images/${
                   isSelected ? interest.activeIconFile : interest.iconFile
@@ -29,7 +31,6 @@ const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
                 alt={interest.name}
                 className="interest-icon"
               />
-              <span className="interest-name">{interest.name}</span>
             </div>
           );
         })}
