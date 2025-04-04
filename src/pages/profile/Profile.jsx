@@ -92,24 +92,7 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* <div className="reviews-section">
-          <span className="reviews-title">Reviews</span>
-          {profile.reviews.map((review) => (
-            <div key={review.id} className="review-card">
-              <div className="review-header">
-                <span className="reviewer-name">{review.reviewerName}</span>
-                <span className="review-rating">
-                  {"★".repeat(review.rating)}
-                </span>
-              </div>
-              <span className="review-comment">{review.comment}</span>
-            </div>
-          ))}
-        </div>
-
-        <button className="review-button" onClick={handleAddReview}>
-          Review
-        </button> */}
+     
 
         {showReviewModal && (
           <div className="modal-overlay">
