@@ -10,6 +10,59 @@ const Explore = () => {
   const [distance, setDistance] = useState(10); // Default 10km
   const [showFilters, setShowFilters] = useState(false);
 
+  const brosArray = [
+    {
+      name: "John Doe",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Jane Doe",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Bob Smith",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Alice Johnson",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Mike Brown",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Sarah Lee",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "David Kim",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Emily Chen",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Kevin White",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+    {
+      name: "Lisa Nguyen",
+      interest: "NY",
+      image: "./images/profile.png",
+    },
+  ];
+
   return (
       <div className="explore-container">
         <img src="./images/referenceImages/explorehomepage.png" alt="explore" className="explore-page-image" />
@@ -76,333 +129,28 @@ const Explore = () => {
 
         <div className="explore-profile-card-section">
           <span className="explore-profile-card-title">Explore Bro's</span>
-          <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
+          {brosArray.map((bro) => (
+            <div className="explore-profile-card" key={bro.name}>
+              <div className="explore-profile-card-image">
+                <img src={bro.image} alt="profile" />
+                <div className="explore-profile-card-content">
+                  <span className="explore-profile-card-name">
+                    {bro.name}
+                  </span>
+                  <span className="explore-profile-card-interest">
+                    {bro.interest}
+                  </span>
+                </div>
+              </div>
+              <div className="explore-profile-card-button">
+                <span>Connect</span>
               </div>
             </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>
-          <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>
-
-          <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>  <div className="explore-profile-card">
-            <div className="explore-profile-card-image">
-              <img src="./images/profile.png" alt="profile" />
-              <div className="explore-profile-card-content">
-                <span className="explore-profile-card-name">John Doe</span>
-                <span className="explore-profile-card-interest">NY</span>
-              </div>
-            </div>
-            <div className="explore-profile-card-button">
-              <span>Connect</span>
-            </div>
-          </div>
-          
+          ))}
         </div>
       </div>
   );
 };
 
 export default Explore;
+

@@ -2,6 +2,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import "./Login.css";
 const Login = () => {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
@@ -30,13 +31,23 @@ const Login = () => {
     );
 
     console.log("google Response", response);
-    navigate("/explore");
+    navigate("/createProfile");
   };
 
   return (
-    <div>
-      <h1>Workout Bros</h1>
-      <button onClick={handleGoogleSignIn}>Sign in with google</button>
+    <div className="login-container">
+      <div className="overlay"/>
+      <div className="content-container">
+        <div className="logo-container">
+        </div>
+        <h1>
+          Meet people nearby who share your interests! Connect, chat, and do
+          activities together. Join now.!
+        </h1>
+        <button onClick={handleGoogleSignIn} className="btn">
+          Continue with Google
+        </button>
+      </div>
     </div>
   );
 };

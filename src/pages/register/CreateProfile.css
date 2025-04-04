@@ -1,0 +1,76 @@
+.profile_container{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to bottom, #D8D6E0, #F8FFC7);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; 
+}
+
+.p_c_header {
+  height: 8%;
+  width: 90%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p_c_header_left {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.p_c_backButton {
+  background-color: #dffd52;
+  width: 40px;
+  height: 40px; 
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrowIcon{
+  color: #000;
+  width: 80px;
+  height: 80px; 
+}
+
+.text {
+  color: #000;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+}
+
+.p_c_buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+  
+  .p_c_nextButton {
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30%;
+    height: 15%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    color: #000;
+    gap: 5px;
+  }

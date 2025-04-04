@@ -1,0 +1,55 @@
+/* Message Box */
+.message-box {
+    max-width: 65%;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  /* User Sent Message */
+  .user-message {
+    background-color: black;
+    color: white;
+    align-self: flex-end;
+    font-family: "Montserrat";
+  }
+  
+  /* Tail for User Message */
+  .user-message::after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    bottom: -2px;
+    width: 8px;
+    height: 14px;
+    background-color: black;
+    border-bottom-left-radius: 10px;
+    transform: rotate(-45deg);
+  }
+  
+  
+  /* Received Message */
+  .receiver-message {
+    background-color: #dfff2f;
+    color: black;
+    align-self: flex-start;
+    font-family: "Montserrat";
+  }
+  
+  /* Tail for Received Message */
+  .receiver-message::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    bottom: -2px;
+    width: 8px;
+    height: 14px;
+    background-color: #dfff2f;
+    border-bottom-right-radius: 10px;
+    transform: rotate(45deg);
+  }
