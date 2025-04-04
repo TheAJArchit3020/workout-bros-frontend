@@ -43,6 +43,6 @@ div.interest-button.selected .interest-name {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
 }
