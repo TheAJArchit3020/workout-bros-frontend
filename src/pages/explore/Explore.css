@@ -1,13 +1,12 @@
 .explore-container {
   background: linear-gradient(5.646deg, #D8D6E0 86%, #f8ffc762 100%);
   min-height: calc(100vh - 100px);
-  overflow: hidden;
+  overflow-x: hidden;
   padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  max-width: 425px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -135,9 +134,9 @@
   gap: 1rem;
   width: 100%;
   padding: 0 1rem;
-  max-width: 425px;
   margin: 0 auto;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .explore-profile-card {
@@ -155,6 +154,7 @@
   border: 1px solid #ffffff;
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .explore-profile-card:hover {
@@ -173,16 +173,23 @@
   flex-direction: column;
   gap: 5px;
   min-width: 0;
+  overflow-x: hidden;
 }
 
 .explore-profile-card-content span:first-child {
   font-weight: 600;
   font-size: 16px;
+  width: min-content;
+
+
 }
 
 .explore-profile-card-content span:last-child {
   color: #666;
   font-size: 10px;
+  width: min-content;
+
+
 }
 
 .explore-profile-card-button {
@@ -203,6 +210,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .explore-profile-card-interest {
@@ -216,6 +224,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .explore-profile-card-image {
@@ -242,18 +251,16 @@
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .explore-container {
     width: 100%;
-    max-width: 100%;
+    padding: 1rem;
   }
 
   .explore-profile-card-section {
     width: 100%;
-    max-width: 100%;
-    padding: 0 calc(1rem + (2 - 1) * ((100vw - 320px) / (425 - 320)));
+    padding: 0;
   }
 
   .explore-profile-card {
     width: 100%;
-    max-width: 100%;
     padding: calc(15px + (20 - 15) * ((100vw - 320px) / (425 - 320)));
   }
 

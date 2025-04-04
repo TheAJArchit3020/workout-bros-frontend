@@ -6,6 +6,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-wrapper">
+        <div className="navbar-left"></div>
         <div className="navbar-brand-name">
           <span className="navbar-brand-name-text">SwolHomies</span>
         </div>

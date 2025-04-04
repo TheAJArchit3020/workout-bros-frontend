@@ -8,6 +8,10 @@
     padding-top: 2rem;
 }
 
+.navbar-left {
+    flex: 1;
+}
+
 .navbar-wrapper {
     display: flex;
     align-items: center;

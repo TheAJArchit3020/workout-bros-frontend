@@ -15,7 +15,17 @@
 .filter-container {
     width: 100%;
     background: linear-gradient(to top, #D8D6E0 67%, #F8FFC7 100%);
-    height: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
@@ -58,6 +68,8 @@
     flex-direction: column;
     gap: 1rem;
     padding: 10px 20px;
+    flex: 1;
+    position: relative;
 }
 
 .filter-section1,
@@ -107,14 +119,15 @@ div.interest-button.selected .interest-name {
     justify-content: center;
 }
 
-
-
 .apply-button-container {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
     align-self: flex-end;
 }
 
 .apply-button {
-
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -187,6 +200,79 @@ div.interest-button.selected .interest-name {
     height: 6.5rem;
 }
 
+/* Mobile Responsive Styles */
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .filter-container {
+        height: 100vh;
+    }
 
+    .filter-header {
+        padding: 1rem;
+        padding-top: 3rem;
+    }
+
+    .filter-back-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .filter-title {
+        font-size: 1.1rem;
+    }
+
+    .filter-section {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .filter-section-title-text {
+        font-size: 0.95rem;
+    }
+
+    .filter-section-title-text2 {
+        font-size: 0.9rem;
+    }
+
+    .interests-grid {
+        gap: 0.5rem;
+    }
+
+    div.interest-button {
+        padding: 0.5em;
+        border-radius: 12px;
+    }
+
+    .interest-name {
+        font-size: 0.75rem;
+    }
+
+    .interest-icon {
+        width: 0.9rem;
+    }
+
+    .filter-section-input {
+        height: 8px;
+    }
+
+    .filter-section-input::-webkit-slider-thumb {
+        width: 18px;
+        height: 18px;
+    }
+
+    .filter-section-input::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+    }
+
+    .apply-button-container {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .apply-button-image {
+        width: 7rem;
+        height: 5.5rem;
+    }
+}
 
 /* desktop */

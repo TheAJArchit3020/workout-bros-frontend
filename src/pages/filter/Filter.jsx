@@ -26,7 +26,7 @@ const Filter = () => {
 
   return (
     <div className="filter-container">
-      {/* <img src="/images/referenceImages/filter360x740.png" alt="filter-page" className="filter-page-image" /> */}
+      <img src="/images/referenceImages/filter360x740.png" alt="filter-page" className="filter-page-image" />
       <div className="filter-wrapper">
         {/* header section */}
         <div className="filter-header">
