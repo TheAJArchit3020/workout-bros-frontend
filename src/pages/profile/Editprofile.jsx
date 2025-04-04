@@ -17,9 +17,9 @@ const Editprofile = () => {
   const handleSave = () => {
     setShowModal(true);
     // Hide modal after 2 seconds
-    // setTimeout(() => {
-    //   setShowModal(false);
-    // }, 2000);
+    setTimeout(() => {
+      setShowModal(false);
+    }, 2000);
   };
 
   return (
