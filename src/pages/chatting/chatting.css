@@ -2,7 +2,7 @@
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
     background: linear-gradient(to bottom, #e6e6e6, #f4f4f4);
     width: 20vw;
   }
@@ -25,6 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: none;
   }
   
   .username {
@@ -42,31 +43,44 @@
     flex-direction: column;
     overflow-y: auto;
     scrollbar-width: none;
-    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+    scrollbar-color: transparent;
   }
   
   /* Chat Input */
   .chat-input {
+    position: absolute;
+    bottom: 0;
+    width: 94%;
     display: flex;
     align-items: center;
     padding: 12px;
     background: white;
   }
   
-  .chat-input input {
-    flex-grow: 1;
-    padding: 10px;
-    font-size: 10px;
+  .c-i-Container{
     border: none;
     outline: none;
     border-radius: 20px;
     background-color: #D1D1D1;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    padding: 5px 10px;
+    justify-content: space-between;
+  }
+
+  .c-i-Container input {
+    border: none;
+    outline: none;
+    font-size: 12px;
     color: #000000;
+    flex-grow: 1;
     font-family: 'Montserrat';
+    background-color: transparent;
   }
   
   .send-button {
-    padding: 10px;
+    padding: 5px;
     border-radius: 50%;
     background-color: #000000;
     border: none;
@@ -80,8 +94,8 @@
   /* Icons */
   .icon {
     width: 18px;
-    height: 18px;
-    color: white;
+    height: 17px;
+    color: #DFFD52;
   }
 
   .arrow{
