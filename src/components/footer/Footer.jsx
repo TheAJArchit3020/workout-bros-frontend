@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./Footer.css";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const Footer = () => {
-  const [isSelected, setIsSelected] = useState("explore");
+  const location = useLocation();
+  const [isSelected, setIsSelected] = useState(location.pathname.split('/')[1] || "explore");
+
+  const handleTabClick = (tab) => {
+    setIsSelected(tab);
+  };
 
   return (
     <div className="footer-container">
       <div className="footer-content">
         <Link
-          onClick={() => setIsSelected("explore")}
+          onClick={() => handleTabClick("explore")}
           to="/explore"
           className={`${
             isSelected === "explore" ? "selected-tab" : "footer-section"
@@ -18,7 +23,7 @@ const Footer = () => {
           <img src="./images/exploreicon.svg" alt="explore-icon" />
         </Link>
         <Link
-          onClick={() => setIsSelected("connection")}
+          onClick={() => handleTabClick("connection")}
           to="/connection"
           className={`${
             isSelected === "connection" ? "selected-tab" : "footer-section"
@@ -27,7 +32,7 @@ const Footer = () => {
           <img src="./images/connectionicon.svg" alt="connection-icon" />
         </Link>
         <Link
-          onClick={() => setIsSelected("profile")}
+          onClick={() => handleTabClick("profile")}
           to="/profile"
           className={`${
             isSelected === "profile" ? "selected-tab" : "footer-section"
