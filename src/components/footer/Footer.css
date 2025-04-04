@@ -1,8 +1,13 @@
 /* small mobile css */
 .footer-container {
-    position: sticky;
-    bottom: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    background-color: transparent;
 }
 
 .footer-content {
