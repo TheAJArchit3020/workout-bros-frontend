@@ -16,7 +16,6 @@ const Routing = () => {
         <Route path="/createProfile" element={<CreateProfile />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/publicprofile" element={<Publicprofile />} />
         <Route path="/editprofile" element={<Editprofile />} />
         <Route path="/filter" element={<Filter />} />
