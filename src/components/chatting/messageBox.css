@@ -1,6 +1,7 @@
 /* Message Box */
 .message-box {
     max-width: 65%;
+    min-width: 10%;
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 18px;
@@ -8,6 +9,8 @@
     word-wrap: break-word;
     position: relative;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
   }
   
   /* User Sent Message */
@@ -16,6 +19,7 @@
     color: white;
     align-self: flex-end;
     font-family: "Montserrat";
+    
   }
   
   /* Tail for User Message */

@@ -48,9 +48,6 @@
   
   /* Chat Input */
   .chat-input {
-    position: absolute;
-    bottom: 0;
-    width: 94%;
     display: flex;
     align-items: center;
     padding: 12px;
