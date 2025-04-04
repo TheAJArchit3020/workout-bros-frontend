@@ -1,38 +1,43 @@
 .interests-container{
     display: flex;
     flex-direction: column;
-    padding-right: 5%;
-    padding-left: 5%;
+    padding: 0 5%;
     margin-top: 10%;
+    align-items: center;
 }
 .i-headerTitle{
   color: #000;
   margin-bottom: 15%;
   font-size:1rem;
 }
-div.interest-button {
+div.interest_button {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     border-radius: 16px;
-    background-color: transparent;
-    border: 1px solid #000;
+    background-color: #D9D7E1;
+    border: 1px solid #fff;
     padding: 0.6em;
     transition: all 0.2s ease;
 }
 
-div.interest-button.selected {
+.interest_button.selected_intrestButton{
     background-color: #000;
-    border-color: #000;
+    color: #DFFD52;
 }
 
-.interest-icon {
-    width: 1rem;
+.selected_intrestText{
+    color: #DFFD52;
+    font-size: .8rem;
+}
+
+.unSelected_intrestText{
+    font-size: .8rem;
     color: #000;
 }
 
-.interest-name {
-    font-size: 0.8rem;
+.interest-icon {
+   
     color: #000;
 }
 
@@ -40,10 +45,11 @@ div.interest-button.selected .interest-name {
     color: #DAFF3E;
 }
 
-.interests-grid {
+.interests_grid {
     display: flex;
+    width: 90%;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 15px;
     justify-content: center;
 }

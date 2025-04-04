@@ -8,7 +8,8 @@ const CreateProfileInfo = ({handleInput}) => {
     <>
       <div className="p_c_profileContainer">
         <div className="p_c_profileImageContainer" />
-        <span className="text">Add your Profile</span>
+        <button className="p_c_profilePlusButton"/> 
+        <span className="p_c_text">Add your Profile</span>
       </div>
 
       <div className="p_c_inputContainer">
@@ -27,7 +28,7 @@ const CreateProfileInfo = ({handleInput}) => {
         <textarea
           placeholder="Tell about yourself"
           className="p_c_input"
-          style={{ height: "50%", paddingTop: "5%" }}
+          style={{ height: "60%", paddingTop: "5%" }}
           value={description}
           onChange={(e) => {
             setDescription(e.target.value) 

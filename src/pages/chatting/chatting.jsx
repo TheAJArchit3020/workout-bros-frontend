@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import MessageBox from '../../components/chatting/messageBox';
 import { ArrowLeftIcon,PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import "./chatting.css";
@@ -8,10 +8,12 @@ const Chatting = () => {
       ]);
       const [input, setInput] = useState("");
       const [name, setname] = useState("Srujan");
+      const messageEndRef = useRef(null);
       const sendMessage = () => {
         if (input.trim().length === 0) return;
         setMessages([...messages, { id: Date.now(), text: input, isUser: true }]);
         setInput("");
+        messageEndRef.current.scrollIntoView({ behavior: "smooth" });
       };
     
       const handleKey = (e)=>{
@@ -33,10 +35,12 @@ const Chatting = () => {
             {messages.map((msg) => (
               <MessageBox key={msg.id} message={msg.text} isUser={msg.isUser} />
             ))}
+            <div style={{paddingBottom:"60px"}} ref={messageEndRef}></div>
           </div>
     
           {/* Input */}
           <div className="chat-input">
+            <div className="c-i-Container">
             <input
               type="text"
               placeholder="Type your message..."
@@ -47,6 +51,7 @@ const Chatting = () => {
             <button className="send-button" onClick={sendMessage}>
               <PaperAirplaneIcon className="icon" />
             </button>
+            </div>
           </div>
         </div>
       );

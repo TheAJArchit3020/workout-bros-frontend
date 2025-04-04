@@ -1,64 +1,84 @@
+ /* .refImage{
+  background-image: url("/images/referenceImages/profilescreen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.2;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  border:2px solid #000;
+}  */
+
 .profile_container{
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(to bottom, #D8D6E0, #F8FFC7);
+    background: linear-gradient(160deg, #D8D6E0 10%, #EAE8B6 50%, #F8FFC7 90%);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center; 
 }
-
 .p_c_header {
-  height: 8%;
-  width: 90%;
-  margin-top: 10%;
+  margin-top: 70px;
+  width: 87%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .p_c_header_left {
-  height: 100%;
-  width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 
 .p_c_backButton {
   background-color: #dffd52;
   width: 40px;
   height: 40px; 
   border-radius: 50%;
+  border: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
+  outline: none;
 }
 
 .arrowIcon{
+  border: none;
   color: #000;
   width: 80px;
   height: 80px; 
+  outline: none;
 }
 
 .text {
   color: #000;
-  font-weight: bold;
+  font-weight: 600;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
+.section{
+  font-weight: 400;
+  font-size: 16px;
+} 
+
 .p_c_buttonContainer {
-    width: 100%;
     display: flex;
-    justify-content: end;
-    align-items: center;
     position: absolute;
-    bottom: 5%;
-    right: 5%;
+    bottom: 30px;
+    right: 27px;
 }
   
   .p_c_nextButton {
@@ -66,11 +86,18 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 30%;
-    height: 15%;
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     color: #000;
-    gap: 5px;
+    width: 100px;
+    height: 40px; 
+    outline: none;
   }
+
+  @media  screen and (max-width: 800px) {
+    .profile_container{
+      width: 100vw;
+    }
+  }
+

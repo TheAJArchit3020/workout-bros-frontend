@@ -1,18 +1,10 @@
 import React from "react";
 import {interests} from "../../../data/interests";
-import "./profileIntrest.css";
-const CreateProfileIntrest = () => {
-
-  const [selectedInterests, setSelectedInterests] = React.useState([]);
+ import "./profileIntrest.css";
+const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
 
   const toggleInterest = (interestId) => {
-    setSelectedInterests((prev) =>{
-      if (prev.includes(interestId)) {
-        return prev.filter((id) => id !== interestId);
-      } else {
-        return [...prev, interestId];
-      }
-    });
+     handleIntrest(interestId);
   };
 
   return (
@@ -21,15 +13,17 @@ const CreateProfileIntrest = () => {
         Find your tribe! Pick your interests
       </span>
 
-      <div className="interests-grid">
+      <div className="interests_grid">
         {interests.map((interest) => {
-          const isSelected = selectedInterests.includes(interest.id);
+          const isSelected = selectedIntrests.includes(interest.id);
           return (
             <div
               key={interest.id}
-              className={`interest-button ${isSelected ? "selected" : ""}`}
+              className={`interest_button ${isSelected ? "selected_intrestButton" : ""}`}
               onClick={() => toggleInterest(interest.id)}
             >
+              <span className={isSelected ? "selected_intrestText" : "unSelected_intrestText"}>{interest.name}</span>
+
               <img
                 src={`/images/${
                   isSelected ? interest.activeIconFile : interest.iconFile
@@ -37,11 +31,10 @@ const CreateProfileIntrest = () => {
                 alt={interest.name}
                 className="interest-icon"
               />
-              <span className="interest-name">{interest.name}</span>
             </div>
           );
         })}
-      </div>
+      </div> 
     </div>
   );
 };

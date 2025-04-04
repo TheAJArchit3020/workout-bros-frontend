@@ -1,14 +1,16 @@
 /* Message Box */
 .message-box {
     max-width: 65%;
+    min-width: 10%;
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 18px;
     font-size: 14px;
-    line-height: 1.4;
     word-wrap: break-word;
     position: relative;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
   }
   
   /* User Sent Message */
@@ -17,22 +19,23 @@
     color: white;
     align-self: flex-end;
     font-family: "Montserrat";
+    
   }
   
   /* Tail for User Message */
   .user-message::after {
     content: "";
     position: absolute;
-    right: -6px;
-    bottom: -2px;
-    width: 8px;
-    height: 14px;
-    background-color: black;
-    border-bottom-left-radius: 10px;
-    transform: rotate(-45deg);
-  }
-  
-  
+    right: -5px; /* Adjust for proper positioning */
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid black; /* Triangle Base */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(45deg);
+}
+
   /* Received Message */
   .receiver-message {
     background-color: #dfff2f;
@@ -45,11 +48,12 @@
   .receiver-message::after {
     content: "";
     position: absolute;
-    left: -6px;
-    bottom: -2px;
-    width: 8px;
-    height: 14px;
-    background-color: #dfff2f;
-    border-bottom-right-radius: 10px;
-    transform: rotate(45deg);
-  }
+    left: -5px; /* Adjust to align properly */
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-right: 20px solid #dfff2f; /* Triangle Base */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    transform: rotate(-45deg);
+}
