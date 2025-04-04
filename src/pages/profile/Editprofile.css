@@ -1,10 +1,225 @@
-.edit-profile-container{
-    /* background: linear-gradient(5.646deg, #D8D6E0 37%, #F8FFC7 100%); */
-    height: 100vh;
+.edit-profile-container {
+    background: linear-gradient(144.49deg, #D8D6E0 61%, rgba(248, 255, 199, 40%) 100%);
+    /* min-height: 100vh; */
     position: relative;
     padding: 20px;
-    display: flex;
+    display: flex
+;
     flex-direction: column;
     gap: 30px;
     width: 100%;
+    box-sizing: content-box;
+    overflow-y: auto;
+    min-width: 320px;
+}
+
+.edit-profile-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: -3;
+    object-fit: cover;
+}
+
+
+.edit-profile-navbar-brand-name {
+    background: #fff;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10rem;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.edit-profile-navbar-wrapper {
+    margin-top: 2rem;
+}
+
+.edit-profile-navbar-brand-name-text {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.edit-profile-placeholder {
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+img.edit-profile-placeholder-image-plus {
+    position: absolute;
+    bottom: 10px;
+    right: 10rem;
+}
+
+.edit-profile-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.edit-profile-form-conatent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-profile-form-content-interests-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-profile-form-content-input {
+    border: 1px solid #ffffff;
+    border-radius: 10rem;
+    padding: 10px;
+    height: 40px;
+    background-color: transparent;
+}
+
+.edit-profile-form-content-title {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+.edit-profile-form-content-interests {
+    display: flex;
+    gap: 5px;
+    background: black;
+    border-radius: 12px;
+    padding: 6px 12px;
+}
+
+.edit-profile-form-content-interests-text {
+    font-size: 1rem;
+    color: #DFFD52;
+}
+
+.edit-profile-form-content-add-interests-title {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.text-area-input {
+    height: 140px;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.edit-profile-form-content-save-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    width: 95%;
+    padding-bottom: 1rem;
+}
+
+
+/* Mobile Responsive Styles */
+
+
+@media screen and (max-width: 480px) {
+    .edit-profile-container {
+        gap: 3rem;
+    }
+
+    .edit-profile-navbar-brand-name {
+        width: 45%;
+        padding: 1rem;
+
+    }
+
+    .edit-profile-navbar-brand-name-text {
+        font-size: 1rem;
+    }
+
+    .edit-profile-form-wrapper {
+        padding: 10px;
+    }
+
+    .edit-profile-form-content-title {
+        font-size: 0.8rem;
+    }
+
+    .edit-profile-form-content-input {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .edit-profile-form-content-interests {
+        padding: 6px 10px;
+    }
+
+    .edit-profile-form-content-interests-text {
+        font-size: 0.8rem;
+    }
+
+    .edit-profile-form-content-interests img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 320px) {
+    .edit-profile-container {
+        padding: 8px;
+        gap: 2rem;
+    }
+
+    img.edit-profile-placeholder-image-plus {
+        position: absolute;
+        bottom: 10px;
+        right: 7rem !important;
+    }
+
+
+
+    .edit-profile-navbar-brand-name-text {
+        font-size: 1.1rem;
+    }
+
+    .edit-profile-form-wrapper {
+        padding: 8px;
+    }
+
+    .edit-profile-form-content-title {
+        font-size: 0.75rem;
+    }
+
+    .edit-profile-form-content-input {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+
+    .edit-profile-form-content-interests {
+        padding: 5px 8px;
+    }
+
+    .edit-profile-form-content-interests-text {
+        font-size: 0.75rem;
+    }
+
+    .edit-profile-form-content-interests img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    img.edit-profile-placeholder-image-plus {
+        position: absolute;
+        bottom: 10px;
+        right: 8.3rem;
+    }
 }
