@@ -1,13 +1,23 @@
 /* mobile css */
 
+.navbar-container {
+    width: 100%;
+    max-width: 425px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 2rem;
+}
+
+.navbar-left {
+    flex: 1;
+}
+
 .navbar-wrapper {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     padding: 10px 20px;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     text-align: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1rem;
 }
 

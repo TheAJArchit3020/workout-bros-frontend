@@ -1,18 +1,17 @@
 .explore-container {
-  padding: 20px;
-  /* max-width: 800px; */
-  margin: 0 auto;
+  background: linear-gradient(5.646deg, #D8D6E0 86%, #f8ffc762 100%);
   min-height: calc(100vh - 100px);
-  background: linear-gradient(5.646deg, #D8D6E0 86%, #f8ffc762 100%);  max-height: 100vh;
-  overflow: auto;
+  overflow-x: hidden;
   padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.explore-page-image{
+.explore-page-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -35,8 +34,6 @@
   margin: 0;
   color: #333;
 }
-
-
 
 .install-icon {
   font-size: 1.2rem;
@@ -131,6 +128,17 @@
   font-size: 0.8em;
 }
 
+.explore-profile-card-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
 .explore-profile-card {
   display: flex;
   align-items: center;
@@ -144,6 +152,9 @@
   margin-bottom: 15px;
   background-color: #D9D7E1;
   border: 1px solid #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .explore-profile-card:hover {
@@ -161,16 +172,24 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .explore-profile-card-content span:first-child {
   font-weight: 600;
   font-size: 16px;
+  width: min-content;
+
+
 }
 
 .explore-profile-card-content span:last-child {
   color: #666;
   font-size: 10px;
+  width: min-content;
+
+
 }
 
 .explore-profile-card-button {
@@ -181,39 +200,88 @@
   font-size: 12px;
   font-weight: 600;
   padding: 5px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .explore-profile-card-name {
   font-size: 16px;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .explore-profile-card-interest {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
   box-shadow: 0px 2px 6px 0px rgba(42, 42, 42, 5%);
   padding: 2px 10px;
   border-radius: 12px;
   border: 1px solid #F8FFC7;
   background-color: #D9D7E1;
-  font-size: 10px;
-  width: max-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .explore-profile-card-image {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex: 1;
+  min-width: 0;
 }
 
-.explore-profile-card-title{
+.explore-profile-card-title {
   font-size: 16px;
   font-weight: 600;
   color: #000;
 }
 
-.explore-profile-card-section{
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.explore-footer-section {
+  position: fixed;
+  bottom: 1rem;
+  width: 100%;
 }
+
+/* Responsive styles for 320px to 425px */
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .explore-container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .explore-profile-card-section {
+    width: 100%;
+    padding: 0;
+  }
+
+  .explore-profile-card {
+    width: 100%;
+    padding: calc(15px + (20 - 15) * ((100vw - 320px) / (425 - 320)));
+  }
+
+  .explore-profile-card img {
+    width: calc(50px + (60 - 50) * ((100vw - 320px) / (425 - 320)));
+    height: calc(50px + (60 - 50) * ((100vw - 320px) / (425 - 320)));
+  }
+
+  .explore-profile-card-name {
+    font-size: calc(16px + (18 - 16) * ((100vw - 320px) / (425 - 320)));
+  }
+
+  .explore-profile-card-interest {
+    font-size: calc(10px + (12 - 10) * ((100vw - 320px) / (425 - 320)));
+    padding: calc(2px + (3 - 2) * ((100vw - 320px) / (425 - 320))) calc(10px + (12 - 10) * ((100vw - 320px) / (425 - 320)));
+  }
+
+  .explore-profile-card-button {
+    font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (425 - 320)));
+    padding: calc(5px + (8 - 5) * ((100vw - 320px) / (425 - 320))) calc(10px + (16 - 10) * ((100vw - 320px) / (425 - 320)));
+  }
+}
+
+/* Remove other media queries as they're no longer needed */

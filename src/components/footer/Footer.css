@@ -1,8 +1,13 @@
 /* small mobile css */
 .footer-container {
-    position: sticky;
-    bottom: 10px;
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
     width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    background-color: transparent;
 }
 
 .footer-content {
@@ -10,7 +15,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
+    width: 90%;
     background-color: #fff;
     color: #fff;
     border-radius: 60px;
@@ -31,4 +36,27 @@
     border: 4px solid #F8FFC7;
     display: flex;
     padding: 8px;
+}
+
+/* Responsive styles for 320px to 425px */
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .footer-content {
+        width: calc(90% + (95 - 90) * ((100vw - 320px) / (425 - 320)));
+        padding: calc(6px + (8 - 6) * ((100vw - 320px) / (425 - 320)));
+    }
+
+    .footer-section {
+        padding: calc(8px + (10 - 8) * ((100vw - 320px) / (425 - 320)));
+    }
+
+    .selected-tab {
+        padding: calc(8px + (10 - 8) * ((100vw - 320px) / (425 - 320)));
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer-content {
+        width: 60%;
+        max-width: 500px;
+    }
 }
