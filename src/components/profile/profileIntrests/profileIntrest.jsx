@@ -1,18 +1,10 @@
 import React from "react";
 import {interests} from "../../../data/interests";
  import "./profileIntrest.css";
-const CreateProfileIntrest = () => {
-
-  const [selectedInterests, setSelectedInterests] = React.useState([]);
+const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
 
   const toggleInterest = (interestId) => {
-    setSelectedInterests((prev) =>{
-      if (prev.includes(interestId)) {
-        return prev.filter((id) => id !== interestId);
-      } else {
-        return [...prev, interestId];
-      }
-    });
+     handleIntrest(interestId);
   };
 
   return (
@@ -23,7 +15,7 @@ const CreateProfileIntrest = () => {
 
       <div className="interests_grid">
         {interests.map((interest) => {
-          const isSelected = selectedInterests.includes(interest.id);
+          const isSelected = selectedIntrests.includes(interest.id);
           return (
             <div
               key={interest.id}
