@@ -4,6 +4,7 @@ import { interests } from "../../data/interests";
 
 const Editprofile = () => {
   const [selectedInterests, setSelectedInterests] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleInterest = (interestId) => {
     setSelectedInterests((prev) =>
@@ -13,13 +14,21 @@ const Editprofile = () => {
     );
   };
 
+  const handleSave = () => {
+    setShowModal(true);
+    // Hide modal after 2 seconds
+    // setTimeout(() => {
+    //   setShowModal(false);
+    // }, 2000);
+  };
+
   return (
     <div className="edit-profile-container">
-      <img
+      {/* <img
         src="/images/referenceImages/editprofilescreen.png"
         alt="edit-profile"
         className="edit-profile-background-image"
-      />
+      /> */}
       {/* Navbar */}
       <div className="edit-profile-navbar-container">
         <div className="edit-profile-navbar-wrapper">
@@ -79,7 +88,7 @@ const Editprofile = () => {
                     className="edit-profile-form-content-interests-image"
                   />
                   <span className="edit-profile-form-content-interests-text">
-                  Archery
+                    Archery
                   </span>
                 </div>
                 <div className="edit-profile-form-content-interests">
@@ -110,7 +119,7 @@ const Editprofile = () => {
               <span className="edit-profile-form-content-add-interests-title">
                 Add Interests
               </span>
-             
+
               <div className="interests-grid">
                 {interests.map((interest) => {
                   const isSelected = selectedInterests.includes(interest.id);
@@ -141,9 +150,20 @@ const Editprofile = () => {
         </div>
         {/* Save Button */}
       </div>
-      <div className="edit-profile-form-content-save-button">
+      <div className="edit-profile-form-content-save-button" onClick={handleSave}>
         <img src="./images/donebutton.svg" alt="edit-profile-done" />
       </div>
+
+      {/* modal */}
+      {showModal && (
+        <div className="edit-profile-modal">
+          <div className="edit-profile-modal-content">
+            <span className="edit-profile-modal-content-text">
+              Profile updated
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -28,6 +28,7 @@
     flex-direction: column;
     align-items: center;
     padding: 8px;
+    transition: all 0.3s ease-in-out;
 }
 
 .selected-tab {
@@ -36,6 +37,8 @@
     border: 4px solid #F8FFC7;
     display: flex;
     padding: 8px;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.1);
 }
 
 /* Responsive styles for 320px to 425px */
