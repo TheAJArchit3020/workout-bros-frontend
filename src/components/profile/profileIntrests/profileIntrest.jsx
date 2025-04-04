@@ -1,6 +1,6 @@
 import React from "react";
 import {interests} from "../../../data/interests";
-import "./profileIntrest.css";
+ import "./profileIntrest.css";
 const CreateProfileIntrest = () => {
 
   const [selectedInterests, setSelectedInterests] = React.useState([]);
@@ -21,7 +21,7 @@ const CreateProfileIntrest = () => {
         Find your tribe! Pick your interests
       </span>
 
-      <div className="interests-grid">
+      <div className="interests_grid">
         {interests.map((interest) => {
           const isSelected = selectedInterests.includes(interest.id);
           return (
@@ -41,7 +41,7 @@ const CreateProfileIntrest = () => {
             </div>
           );
         })}
-      </div>
+      </div> 
     </div>
   );
 };

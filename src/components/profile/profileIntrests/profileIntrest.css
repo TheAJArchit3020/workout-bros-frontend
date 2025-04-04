@@ -1,8 +1,7 @@
 .interests-container{
     display: flex;
     flex-direction: column;
-    padding-right: 5%;
-    padding-left: 5%;
+    padding: 0 5%;
     margin-top: 10%;
 }
 .i-headerTitle{
@@ -31,8 +30,8 @@ div.interest-button.selected {
     color: #000;
 }
 
-.interest-name {
-    font-size: 0.8rem;
+.interest_name {
+    font-size: 1px;
     color: #000;
 }
 
@@ -40,10 +39,10 @@ div.interest-button.selected .interest-name {
     color: #DAFF3E;
 }
 
-.interests-grid {
+.interests_grid {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 10px;
     justify-content: center;
 }

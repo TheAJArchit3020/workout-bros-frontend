@@ -27,6 +27,8 @@ const CreateProfile = () => {
   const handleBackButton = () => {
     if (profileSection > 1) {
       setProfileSection(1);
+      setFullName("");
+      setDescription("");
     }
      else{
        navigate("/")
