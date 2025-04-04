@@ -6,16 +6,16 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-wrapper">
-      <div className="navbar-empty-space">
-        </div>
         <div className="navbar-brand-name">
           <span className="navbar-brand-name-text">SwolHomies</span>
         </div>
-        <Link to="/filter">
-          <div className="navbar-filter-container">
-            <img src="./images/filtericon.svg" alt="filter-icon" />
-          </div>
-        </Link>
+        <div className="navbar-right">
+          <Link to="/filter">
+            <div className="navbar-filter-container">
+              <img src="./images/filtericon.svg" alt="filter-icon" />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );
