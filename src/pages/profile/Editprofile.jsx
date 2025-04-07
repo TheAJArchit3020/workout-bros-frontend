@@ -64,6 +64,7 @@ const Editprofile = () => {
               className="edit-profile-placeholder-image-plus"
             />
           </div>
+          <span className="edit-profile-placeholder-text">Edit your profile</span>
         </div>
 
         {/* Edit Profile Form */}
@@ -96,7 +97,7 @@ const Editprofile = () => {
                 {selectedInterests.map((interest) => {
                   return (
                     <div className="edit-profile-form-content-interests" onClick={() => toggleDelSelectedInterest(interest)}>
-                      <span className="edit-profile-form-content-title" >{interest.name}</span>
+                      <span className="edit-profile-form-content-interests-name" >{interest.name}</span>
                       <img
                         src={`/images/${
                             interest.activeIconFile

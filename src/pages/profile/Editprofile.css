@@ -4,7 +4,7 @@
     position: relative;
     padding: 20px;
     display: flex;
-    color: #000;
+    color: #2A2A2A;
     flex-direction: column;
     gap: 30px;
     width: 100%;
@@ -52,12 +52,23 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+   
+}
+
+.edit-profile-placeholder-text{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #2A2A2A;
+    font-family: 'Montserrat';
+    margin-top: 5%;
 }
 
 img.edit-profile-placeholder-image-plus {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     right: 10rem;
+    margin-bottom: 5%;
 }
 
 .edit-profile-form-wrapper {
@@ -83,21 +94,27 @@ img.edit-profile-placeholder-image-plus {
 .edit-profile-form-content-input {
     border: none;
     border-radius: 10rem;
-    padding: 10px;
+    padding-left: 1rem !important;
     height: 40px;
     background-color: #D9D7E1;
-    color: #000;
+    color: #2A2A2A;
+    outline: none;
 }
 
 .edit-profile-form-content-title {
     font-size: 1rem;
     font-weight: bold;
-    color: #D9D7E1;
+    color: #2A2A2A;
+}
+
+.edit-profile-form-content-interests-name{
+    font-size: .8rem;
+    color: #DFFD52;
 }
 
 .edit-profile-form-content-interests {
     display: flex;
-    gap: 5px;
+    gap: 10px;
     background: black;
     border-radius: 12px;
     padding: 6px 12px;
@@ -221,7 +238,7 @@ img.edit-profile-placeholder-image-plus {
 @media screen and (max-width: 380px) {
     img.edit-profile-placeholder-image-plus {
         position: absolute;
-        bottom: 10px;
+        bottom: 20px;
         right: 8.3rem;
     }
 }

@@ -87,7 +87,7 @@ div.interest-button {
     border-radius: 16px;
     background-color: #D9D7E1;
     border: 1px solid #fff;
-    padding: 0.6em;
+    padding: 0.8em;
     transition: all 0.2s ease;
     cursor: pointer;
 }
@@ -236,7 +236,7 @@ div.interest-button.selected .interest-name {
     }
 
     .interests-grid {
-        gap: 0.5rem;
+        gap: 0.8rem;
     }
 
     div.interest-button {

@@ -8,7 +8,7 @@
     gap: 30px;
     overflow: hidden;
     padding-bottom: 15rem;
-    }
+}
 
 .connection-segmentbutton-container {
     display: flex;
@@ -83,8 +83,8 @@
 .connection-request-item-info-text,
 .connection-notification-item-info-text,
 .connection-chat-item-info-text {
-    color: #2A2A2A;
-    font-size: 0.8rem;
+    color: hsl(0, 0%, 16%);
+    font-size: .8rem;
 }
 
 .connection-request-item-button-text {
@@ -121,18 +121,18 @@
 .connection-chat-list{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 .connection-chat-item-info-text-time{
     color: #2A2A2A;
-    font-size: 9px;
+    font-size: 13px;
     font-weight: bold;
 }
 
 .connection-chat-item-button-text{
     background-color: #2A2A2A;
     color: #FFFFFF;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: bold;
     padding: 5px 7px;
     border-radius: 10rem;
