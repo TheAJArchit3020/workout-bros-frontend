@@ -3,6 +3,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./Login.css";
+import { loginapi } from "../../common/apis";
+
 const Login = () => {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
@@ -31,15 +33,23 @@ const Login = () => {
     );
 
     console.log("google Response", response);
-    navigate("/createProfile");
+    const loginResponse = await axios.post(loginapi, {
+      email: response.data.email,
+      googleId: response.data.sub,
+    });
+    const { data, status } = loginResponse;
+    console.log("login Response", data);
+    if (status === 200) {
+      localStorage.setItem("token", JSON.stringify(data.token));
+      navigate("/createProfile");
+    }
   };
 
   return (
     <div className="login-container">
-      <div className="overlay"/>
+      <div className="overlay" />
       <div className="content-container">
-        <div className="logo-container">
-        </div>
+        <div className="logo-container"></div>
         <h1>
           Meet people nearby who share your interests! Connect, chat, and do
           activities together. Join now.!

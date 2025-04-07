@@ -1,10 +1,11 @@
 import React from "react";
-import {interests} from "../../../data/interests";
- import "./profileIntrest.css";
-const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
+import { interests } from "../../../data/interests";
+import "./profileIntrest.css";
 
-  const toggleInterest = (interestId) => {
-     handleIntrest(interestId);
+const CreateProfileIntrest = ({ selectedIntrests, handleIntrest }) => {
+  
+  const toggleInterest = (interestName) => {
+    handleIntrest(interestName);
   };
 
   return (
@@ -15,14 +16,22 @@ const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
 
       <div className="interests_grid">
         {interests.map((interest) => {
-          const isSelected = selectedIntrests.includes(interest.id);
+          const isSelected = selectedIntrests.includes(interest.name);
           return (
             <div
-              key={interest.id}
-              className={`interest_button ${isSelected ? "selected_intrestButton" : ""}`}
-              onClick={() => toggleInterest(interest.id)}
+              key={interest.name}
+              className={`interest_button ${
+                isSelected ? "selected_intrestButton" : ""
+              }`}
+              onClick={() => toggleInterest(interest.name)}
             >
-              <span className={isSelected ? "selected_intrestText" : "unSelected_intrestText"}>{interest.name}</span>
+              <span
+                className={
+                  isSelected ? "selected_intrestText" : "unSelected_intrestText"
+                }
+              >
+                {interest.name}
+              </span>
 
               <img
                 src={`/images/${
@@ -34,7 +43,7 @@ const CreateProfileIntrest = ({selectedIntrests,handleIntrest}) => {
             </div>
           );
         })}
-      </div> 
+      </div>
     </div>
   );
 };
