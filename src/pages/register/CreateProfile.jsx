@@ -4,6 +4,8 @@ import CreateProfileInfo from "../../components/profile/profileInfo/profileInfo"
 import CreateProfileIntrest from "../../components/profile/profileIntrests/profileIntrest";
 import { useNavigate } from "react-router";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+
+
 const CreateProfile = () => {
   const [profileSection, setProfileSection] = useState(1);
   const navigate = useNavigate();
@@ -13,6 +15,8 @@ const CreateProfile = () => {
 
   const isValidInfo = fullName.length > 0 && description.length > 0;
   const isValidIntrest = selectedIntrests.length > 0;
+
+  
   const handleInput = (name, description) => {
     setFullName(name);
     setDescription(description);

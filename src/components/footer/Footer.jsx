@@ -18,7 +18,7 @@ const Footer = () => {
           to="/explore"
           className={`${
             isSelected === "explore" ? "selected-tab" : "footer-section"
-          }`}
+          } nav-btn`}
         >
           <img src="./images/exploreicon.svg" alt="explore-icon" />
         </Link>
@@ -27,7 +27,7 @@ const Footer = () => {
           to="/connection"
           className={`${
             isSelected === "connection" ? "selected-tab" : "footer-section"
-          }`}
+          } nav-btn`}
         >
           <img src="./images/connectionicon.svg" alt="connection-icon" />
         </Link>
@@ -36,7 +36,7 @@ const Footer = () => {
           to="/profile"
           className={`${
             isSelected === "profile" ? "selected-tab" : "footer-section"
-          }`}
+          } nav-btn`}
         >
           <img src="./images/usericon.svg" alt="user-icon" />
         </Link>
