@@ -1,6 +1,6 @@
-const baseurl = "http://localhost:8080/api";
+const baseurl = "https://pools-transcripts-cottages-contain.trycloudflare.com/api";
 
-const loginapi = `${baseurl}/login/auth/google`;
+const loginapi = `${baseurl}/auth/google`;
 const registerprofileapi = `${baseurl}/registerprofile`;
 
 export { loginapi, registerprofileapi };

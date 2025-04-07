@@ -37,8 +37,10 @@ const Login = () => {
       email: response.data.email,
       googleId: response.data.sub,
     });
-    console.log("login Response", loginResponse);
-    if (loginResponse.status === 200) {
+    const { data, status } = loginResponse;
+    console.log("login Response", data);
+    if (status === 200) {
+      localStorage.setItem("token", JSON.stringify(data.token));
       navigate("/createProfile");
     }
   };
