@@ -60,6 +60,11 @@ const Publicprofile = () => {
 
   return (
     <div className="public-profile-container">
+      {/* <img
+        src="./images/referenceImages/profilescreen4.png"
+        alt="back"
+        className="public-profile-image"
+      /> */}
       <Navbar />
       <div className="public-profile-header">
         <div className="public-profile-info-container">
@@ -77,7 +82,10 @@ const Publicprofile = () => {
         </span>
         <div className="public-profile-interests-container">
           {profile.interests.map((item) => (
-            <span className="public-profile-interests-list">{item}</span>
+            <div className="public-profile-interests-list">
+              <span className="public-profile-interests-list-text">{item}</span>
+              <img src="./images/fishhookfill.svg" alt="close" />
+            </div>
           ))}
         </div>
       </div>

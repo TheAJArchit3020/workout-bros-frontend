@@ -113,7 +113,7 @@ img.edit-profile-placeholder-image-plus {
 .text-area-input {
     height: 140px;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1rem !important;
 }
 
 .edit-profile-form-content-save-button {
