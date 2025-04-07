@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import "./Connection.css";
-import Layout from "../../components/layout/Layout";
 import Footer from "../../components/footer/Footer";
 
 const Connection = () => {
@@ -10,7 +9,15 @@ const Connection = () => {
   return (
       <div className="connection-container">
         <img src="/images/referenceImages/connectionscreen.png" alt="connection-page" className="filter-page-image" />
-        <Navbar />
+        <div className="edit-profile-navbar-container">
+        <div className="edit-profile-navbar-wrapper">
+          <div className="edit-profile-navbar-brand-name">
+            <span className="edit-profile-navbar-brand-name-text">
+              SwolHomies
+            </span>
+          </div>
+        </div>
+      </div>
 
         <div className="connection-segmentbutton-container">
           <div
