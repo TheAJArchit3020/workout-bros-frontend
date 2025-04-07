@@ -76,10 +76,11 @@ const CreateProfile = () => {
       const formDataToSubmit = new FormData();
       formDataToSubmit.append("fullName", formData.fullName);
       formDataToSubmit.append("description", formData.description);
-      formDataToSubmit.append(
-        "interests",
-        JSON.stringify(formData.selectedIntrests)
-      );
+      // Loop through selectedIntrests and append each interest separately
+      formData.selectedIntrests.forEach((interest) => {
+        formDataToSubmit.append("interests[]", interest);
+      });
+
       if (formData.profileImage) {
         formDataToSubmit.append("photo", formData.profileImage);
       }

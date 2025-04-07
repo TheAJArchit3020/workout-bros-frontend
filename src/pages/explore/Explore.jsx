@@ -1,12 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useLocation from "../../hooks/useLocation";
 import "./Explore.css";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import axios from "axios";
+import { getExplorelocationapi } from "../../common/apis";
 const Explore = () => {
   const { location, error, loading, requestLocation, locationDetails, cities } =
     useLocation();
- 
+
+  const token = localStorage.getItem("token");
+  const tokenData = JSON.parse(token);
+
+  useEffect(() => {
+    const getUsersLocation = async () => {
+      const response = await axios.put(
+        getExplorelocationapi,
+        {
+          coordinates: [location.latitude, location.longitude],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        }
+      );
+      console.log(response.data);
+    };
+    getUsersLocation();
+  }, [location]);
+
+  console.log(location);
 
   const brosArray = [
     {
@@ -62,53 +86,47 @@ const Explore = () => {
   ];
 
   return (
-      <div className="explore-container">
-       
-        <Navbar  displayFilterButton={true}/>
-      
+    <div className="explore-container">
+      <Navbar displayFilterButton={true} />
 
-        {loading && (
-          <div className="location-status">
-            <p>Requesting location access...</p>
-          </div>
-        )}
+      {loading && (
+        <div className="location-status">
+          <p>Requesting location access...</p>
+        </div>
+      )}
 
-        {error && (
-          <div className="location-status error">
-            <p>{error}</p>
-            <button onClick={requestLocation}>Enable Location</button>
-          </div>
-        )}
+      {error && (
+        <div className="location-status error">
+          <p>{error}</p>
+          <button onClick={requestLocation}>Enable Location</button>
+        </div>
+      )}
 
-
-        <div className="explore-profile-card-section">
-          <span className="explore-profile-card-title">Explore Bro's</span>
-          {brosArray.map((bro) => (
-            <div className="explore-profile-card" key={bro.name}>
-              <div className="explore-profile-card-image">
-                <img src={bro.image} alt="profile" />
-                <div className="explore-profile-card-content">
-                  <span className="explore-profile-card-name">
-                    {bro.name}
-                  </span>
-                  <span className="explore-profile-card-interest">
-                    {bro.interest}
-                  </span>
-                </div>
-              </div>
-              <div className="explore-profile-card-button">
-                <span>Connect</span>
+      <div className="explore-profile-card-section">
+        <span className="explore-profile-card-title">Explore Bro's</span>
+        {brosArray.map((bro) => (
+          <div className="explore-profile-card" key={bro.name}>
+            <div className="explore-profile-card-image">
+              <img src={bro.image} alt="profile" />
+              <div className="explore-profile-card-content">
+                <span className="explore-profile-card-name">{bro.name}</span>
+                <span className="explore-profile-card-interest">
+                  {bro.interest}
+                </span>
               </div>
             </div>
-          ))}
-        </div>
-
-        <div className="explore-footer-section">
-         <Footer />
-        </div>
+            <div className="explore-profile-card-button">
+              <span>Connect</span>
+            </div>
+          </div>
+        ))}
       </div>
+
+      <div className="explore-footer-section">
+        <Footer />
+      </div>
+    </div>
   );
 };
 
 export default Explore;
-
