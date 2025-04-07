@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./CreateProfile.css";
 import { useNavigate } from "react-router";
 import { ArrowLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { interests } from "../../data/interests";
 import { registerprofileapi } from "../../common/apis";
+import { getAllInterests } from "../../common/getallinterest";
 
 const CreateProfile = () => {
   const [profileSection, setProfileSection] = useState(1);
@@ -11,6 +12,10 @@ const CreateProfile = () => {
   const fileInputRef = useRef(null);
   const [profileImage, setProfileImage] = useState(null);
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [interestArray, setInterestArray] = useState([]);
+
+  const token = localStorage.getItem("token");
+  const tokenData = JSON.parse(token);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -57,6 +62,10 @@ const CreateProfile = () => {
         : [...prev.selectedIntrests, interestName],
     }));
   };
+
+  useEffect(() => {
+    getAllInterests(tokenData, setInterestArray);
+  }, []);
 
   const submitFormData = async () => {
     const token = localStorage.getItem("token");
@@ -199,7 +208,7 @@ const CreateProfile = () => {
               </span>
 
               <div className="interests_grid">
-                {interests.map((interest) => {
+                {interestArray?.map((interest) => {
                   const isSelected = formData.selectedIntrests.includes(
                     interest.name
                   );
