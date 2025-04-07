@@ -24,6 +24,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .p_c_header {
   margin-top: 70px;
   width: 87%;
@@ -33,11 +34,11 @@
   align-items: center;
 }
 
- .p_c_header_left {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
- }
+.p_c_header_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .p_c_backButton {
   background-color: #dffd52;
@@ -97,8 +98,254 @@
   border: none;
 }
 
+.p_c_profileContainer {
+  height: 30%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.p_c_text {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: .9rem;
+  color: #000;
+  text-align: center;
+}
+
+.createprofile-uploadprofile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  z-index: 1000;
+  max-width: 425px;
+
+
+}
+
+.createprofile-uploadprofile-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.createprofile-uploadprofile-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.createprofile-uploadprofile-modal-title {
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.createprofile-uploadprofile-modal-header img {
+  margin-left: auto;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.createprofile-uploadprofile-modal input[type="file"] {
+  margin-top: 10px;
+}
+
+.createprofile-uploadprofile-modal-donebutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dffd52;
+  padding: 6px 24px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 6px 0px rgba(35, 49, 2, 10%);
+}
+
+.createprofile-uploadprofile-modal-donebutton-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2A2A2A;
+}
+
+.close-modal-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-modal-btn:hover {
+  background-color: #e63946;
+}
+
+.p_c_profilePlusButton {
+  width: 3%;
+  height: 3%;
+  position: absolute;
+  right: 35%;
+  top: 31.5%;
+  background-image: url('/images/plusicon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.p_c_profilePlusButton:hover {
+  border: none;
+  outline: none;
+}
+
+.p_c_inputContainer {
+  height: 30%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 5%;
+  gap: 15%;
+}
+
+.p_c_input {
+  width: 95%;
+  border: 1px solid #fff;
+  background-color: #D9D7E1;
+  border-radius: 25px;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: #000;
+  text-align: left;
+  vertical-align: top;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .8rem;
+  outline: none;
+}
+
+.createprofile-uploadprofile-modal-uploadbutton {
+  width: 100%;
+  cursor: pointer;
+}
+
+
+.interests-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%;
+  margin-top: 10%;
+  align-items: center;
+}
+
+.i-headerTitle {
+  color: #000;
+  margin-bottom: 15%;
+  font-size: 1rem;
+}
+
+div.interest_button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 16px;
+  background-color: #d9d7e1;
+  border: 1px solid #fff;
+  padding: 0.6em;
+  transition: all 0.2s ease;
+}
+
+.interest_button.selected_intrestButton {
+  background-color: #000;
+  color: #dffd52;
+}
+
+.selected_intrestText {
+  color: #dffd52;
+  font-size: 0.8rem;
+}
+
+.unSelected_intrestText {
+  font-size: 0.8rem;
+  color: #000;
+}
+
+.interest-icon {
+  color: #000;
+}
+
+div.interest-button.selected .interest-name {
+  color: #daff3e;
+}
+
+.interests_grid {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+
+
+@media (min-width : 768px) {
+  .p_c_profilePlusButton {
+    right: 43.5%;
+  }
+
+  .interests_grid {
+    gap: 5px;
+  }
+
+  .interest_button {
+    gap: 0.5rem;
+  }
+
+  .selected_intrestText {
+    color: #dffd52;
+    font-size: 0.6rem;
+  }
+
+  .unSelected_intrestText {
+    font-size: 0.6rem;
+    color: #000;
+  }
+}
+
+
+
+
 @media screen and (min-width: 768px) {
   .profile_container {
-    width: 300px;
+    width: 425px;
+
   }
 }

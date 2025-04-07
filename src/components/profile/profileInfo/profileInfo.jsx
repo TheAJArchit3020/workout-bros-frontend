@@ -1,14 +1,49 @@
-import React,{useState} from "react";
+import React, { useRef } from "react";
 import "./profileInfo.css";
-const CreateProfileInfo = ({handleInput}) => {
-  const [fullName,setFullName] = useState("");
-  const [description,setDescription] = useState("");
+
+const CreateProfileInfo = ({
+  handleInput,
+  formData,
+  profileImage,
+  handleFileChange,
+}) => {
+  const fileInputRef = useRef(null);
+
+  const handleImageClick = () => {
+    fileInputRef.current.click();
+  };
 
   return (
     <>
       <div className="p_c_profileContainer">
-        <div className="p_c_profileImageContainer" />
-        <button className="p_c_profilePlusButton"/> 
+        <div className="p_c_profileImageContainer">
+          {profileImage ? (
+            <img
+              src={profileImage}
+              alt="Profile"
+              className="p_c_profileImage"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "50%",
+              }}
+            />
+          ) : (
+            <button
+              className="p_c_profilePlusButton"
+              onClick={handleImageClick}
+            />
+          )}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept="image/*"
+            style={{ display: "none" }}
+          />
+        </div>
+
         <span className="p_c_text">Add your Profile</span>
       </div>
 
@@ -17,11 +52,10 @@ const CreateProfileInfo = ({handleInput}) => {
           type="text"
           placeholder="Full Name"
           className="p_c_input"
-          style={{ height: "20%",borderRadius:'20px'}}
-          value={fullName}
+          style={{ height: "20%", borderRadius: "20px" }}
+          value={formData.fullName || ""}
           onChange={(e) => {
-            setFullName(e.target.value) 
-            handleInput(e.target.value,description)
+            handleInput("fullName", e.target.value);
           }}
         />
 
@@ -29,10 +63,9 @@ const CreateProfileInfo = ({handleInput}) => {
           placeholder="Tell about yourself"
           className="p_c_input"
           style={{ height: "60%", paddingTop: "5%" }}
-          value={description}
+          value={formData.description || ""}
           onChange={(e) => {
-            setDescription(e.target.value) 
-            handleInput(fullName,e.target.value)
+            handleInput("description", e.target.value);
           }}
         />
       </div>

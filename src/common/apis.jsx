@@ -1,6 +1,6 @@
-const baseurl = "https://pools-transcripts-cottages-contain.trycloudflare.com/api";
+const baseurl = "https://api.swolhomies.com/api";
 
 const loginapi = `${baseurl}/auth/google`;
-const registerprofileapi = `${baseurl}/registerprofile`;
+const registerprofileapi = `${baseurl}/users/profile`;
 
 export { loginapi, registerprofileapi };
