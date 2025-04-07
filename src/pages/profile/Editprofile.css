@@ -76,6 +76,8 @@ img.edit-profile-placeholder-image-plus {
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 90%;
+    flex-wrap: wrap;
 }
 
 .edit-profile-form-content-input {
@@ -90,8 +92,8 @@ img.edit-profile-placeholder-image-plus {
 .edit-profile-form-content-title {
     font-size: 1rem;
     font-weight: bold;
+    color: #D9D7E1;
 }
-
 
 .edit-profile-form-content-interests {
     display: flex;
@@ -124,7 +126,6 @@ img.edit-profile-placeholder-image-plus {
     width: 95%;
     padding-bottom: 1rem;
 }
-
 
 /* Mobile Responsive Styles */
 
