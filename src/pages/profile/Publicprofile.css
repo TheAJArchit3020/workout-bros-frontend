@@ -1,5 +1,5 @@
 .public-profile-container {
-    background: linear-gradient(-3.964deg, #D8D6E0 73%, rgba(248, 255, 199, 40%) 100%);
+    background-color: #ffffff;
     height: 100vh;
     position: relative;
     padding: 20px;
@@ -7,6 +7,7 @@
     flex-direction: column;
     gap: 30px;
     overflow: auto;
+    color: #000000;
 }
 
 .public-profile-image {
