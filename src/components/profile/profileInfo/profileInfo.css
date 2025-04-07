@@ -68,4 +68,10 @@
 }
 
 
+@media (min-width : 768px) {
+  .p_c_profilePlusButton{
+    right: 46.5%;
+  }
+}
+
 

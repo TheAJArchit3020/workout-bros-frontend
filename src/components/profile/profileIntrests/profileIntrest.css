@@ -1,55 +1,73 @@
-.interests-container{
-    display: flex;
-    flex-direction: column;
-    padding: 0 5%;
-    margin-top: 10%;
-    align-items: center;
+.interests-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5%;
+  margin-top: 10%;
+  align-items: center;
 }
-.i-headerTitle{
+.i-headerTitle {
   color: #000;
   margin-bottom: 15%;
-  font-size:1rem;
+  font-size: 1rem;
 }
 div.interest_button {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-radius: 16px;
-    background-color: #D9D7E1;
-    border: 1px solid #fff;
-    padding: 0.6em;
-    transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 16px;
+  background-color: #d9d7e1;
+  border: 1px solid #fff;
+  padding: 0.6em;
+  transition: all 0.2s ease;
 }
 
-.interest_button.selected_intrestButton{
-    background-color: #000;
-    color: #DFFD52;
+.interest_button.selected_intrestButton {
+  background-color: #000;
+  color: #dffd52;
 }
 
-.selected_intrestText{
-    color: #DFFD52;
-    font-size: .8rem;
+.selected_intrestText {
+  color: #dffd52;
+  font-size: 0.8rem;
 }
 
-.unSelected_intrestText{
-    font-size: .8rem;
-    color: #000;
+.unSelected_intrestText {
+  font-size: 0.8rem;
+  color: #000;
 }
 
 .interest-icon {
-   
-    color: #000;
+  color: #000;
 }
 
 div.interest-button.selected .interest-name {
-    color: #DAFF3E;
+  color: #daff3e;
 }
 
 .interests_grid {
-    display: flex;
-    width: 90%;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+  display: flex;
+  width: 90%;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .interests_grid {
+    gap: 5px;
+  }
+  .interest_button {
+    gap: 0.5rem;
+  }
+
+  .selected_intrestText {
+    color: #dffd52;
+    font-size: 0.6rem;
+  }
+
+  .unSelected_intrestText {
+    font-size: 0.6rem;
+    color: #000;
+  }
 }

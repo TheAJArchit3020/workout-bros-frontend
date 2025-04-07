@@ -1,23 +1,37 @@
+/* .refImage{
+  background-image: url("/images/referenceImages/profilescreen.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.2;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  border:2px solid #000;
+}  */
 
- .profile_container {
-   height: 100vh;
-   width: 100vw;
-   background: #FFFFFF;
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-start;
-   align-items: center;
- }
-
- .p_c_header {
-   margin-top: 70px;
-   width: 87%;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
-
- }
+.profile_container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(160deg, #d8d6e0 10%, #eae8b6 50%, #f8ffc7 90%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.p_c_header {
+  margin-top: 70px;
+  width: 87%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
  .p_c_header_left {
    display: flex;
@@ -25,63 +39,66 @@
    align-items: center;
  }
 
- .p_c_backButton {
-   background-color: #dffd52;
-   width: 40px;
-   height: 40px;
-   border-radius: 50%;
-   border: none;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin-right: 10px;
-   outline: none;
- }
+.p_c_backButton {
+  background-color: #dffd52;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  outline: none;
+}
 
- .arrowIcon {
-   border: none;
-   color: #000;
-   width: 80px;
-   height: 80px;
-   outline: none;
- }
+.arrowIcon {
+  border: none;
+  color: #000;
+  width: 80px;
+  height: 80px;
+  outline: none;
+}
 
- .text {
-   color: #000;
-   font-weight: 600;
-   font-family: 'Montserrat', sans-serif;
-   font-size: 18px;
- }
+.text {
+  color: #000;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
 
- .section {
-   font-weight: 400;
-   font-size: 16px;
- }
+.section {
+  font-weight: 400;
+  font-size: 16px;
+}
 
- .p_c_buttonContainer {
-   display: flex;
-   position: absolute;
-   bottom: 30px;
-   right: 27px;
- }
+.p_c_buttonContainer {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: 30px;
+}
 
- .p_c_nextButton {
-   background-color: transparent;
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-position: center;
-   display: flex;
-   justify-content: flex-start;
-   align-items: flex-start;
-   color: #000;
-   width: 100px;
-   height: 40px;
-   outline: none;
- }
+.p_c_nextButton {
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #000;
+  width: 100px;
+  height: 40px;
+  outline: none;
+  border: none;
+}
 
- @media screen and (max-width: 800px) {
-   .profile_container {
-     width: 100vw;
-   }
- }
+@media screen and (min-width: 768px) {
+  .profile_container {
+    width: 300px;
+  }
+}
