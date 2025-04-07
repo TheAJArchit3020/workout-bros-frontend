@@ -22,6 +22,7 @@
   height: 60%;
   width: 35%;
 }
+
 .p_c_profilePlusButton{
   width: 3%;
   height: 3%;
@@ -67,11 +68,75 @@
   outline: none;
 }
 
+@media  (min-height: 300px){
+  .p_c_profilePlusButton {
+    top: 35.5%;
+    right: 35.5%;
+  }
+}
 
-@media (min-width : 768px) {
-  .p_c_profilePlusButton{
+@media (min-height: 700px)  {
+  .p_c_profilePlusButton {
+    top: 33.5%;
+    right: 35.5%;
+  }
+}
+
+@media  (min-height: 800px){
+  .p_c_profilePlusButton {
+    top: 31%;
+    right: 35.5%;
+  }
+}
+
+
+@media  (min-height: 1000px){
+  .p_c_profilePlusButton {
+    top: 27.5%;
+    right: 43%;
+  }
+}
+
+@media  (min-height: 1100px){
+  .p_c_profilePlusButton {
+    top: 25.5%;
+    right: 43%;
+  }
+}
+
+
+@media  (min-height: 1300px){
+  .p_c_profilePlusButton {
+    top: 23.5%;
+    right: 44%;
+  }
+}
+
+@media (min-width : 1000px) and (min-height : 600px) {
+  .p_c_profilePlusButton {
+    top: 37%;
+    right: 45%;
+  }
+}
+
+@media (min-width : 1200px) and (min-height : 800px) {
+  .p_c_profilePlusButton {
+    top: 31%;
+    right: 46%;
+  }
+}
+
+@media (min-width : 800px) and (min-height : 700px) {
+  .p_c_profilePlusButton {
+    top: 34%;
     right: 46.5%;
   }
 }
+
+
+
+
+
+
 
 

@@ -1,5 +1,5 @@
 .profile-container {
-    background: linear-gradient(-3.964deg, #D8D6E0 73%, rgba(248, 255, 199, 40%) 100%);
+    background-color: #ffffff;
     height: 100vh;
     position: relative;
     padding: 20px;
@@ -10,6 +10,7 @@
     max-width: 425px;
     margin: 0 auto;
     box-sizing: border-box;
+    color: #000;
 }
 
 .profile-header {
