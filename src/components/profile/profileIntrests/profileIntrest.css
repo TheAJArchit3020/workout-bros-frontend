@@ -46,10 +46,10 @@ div.interest-button.selected .interest-name {
 
 .interests_grid {
   display: flex;
-  width: 90%;
+  width: 100%;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   justify-content: center;
 }
 

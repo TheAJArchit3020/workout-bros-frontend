@@ -1,5 +1,5 @@
 .explore-container {
-  background: #FFFFFF;
+  background-color: #ffffff;
   min-height: calc(100vh - 100px);
   overflow-x: hidden;
   padding-bottom: 5rem;

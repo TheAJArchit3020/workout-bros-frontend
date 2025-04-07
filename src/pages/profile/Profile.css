@@ -1,5 +1,5 @@
 .profile-container {
-    background: #FFFFFF;
+    background-color: #ffffff;
     height: 100vh;
     position: relative;
     padding: 20px;
@@ -10,6 +10,7 @@
     max-width: 425px;
     margin: 0 auto;
     box-sizing: border-box;
+    color: #000;
 }
 
 .profile-header {

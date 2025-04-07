@@ -64,7 +64,7 @@ const Explore = () => {
   return (
       <div className="explore-container">
        
-        <Navbar />
+        <Navbar  displayFilterButton={true}/>
       
 
         {loading && (

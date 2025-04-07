@@ -2,14 +2,14 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router";
 
-const Navbar = () => {
+const Navbar = ({displayFilterButton}) => {
   return (
     <div className="navbar-container">
-      <div className="navbar-wrapper">
-        <div className="navbar-left"></div>
-        <div className="navbar-brand-name">
+        <div className="navbar-brand-name" style={displayFilterButton && {marginLeft: '20%'}}>
           <span className="navbar-brand-name-text">SwolHomies</span>
         </div>
+
+       { displayFilterButton &&
         <div className="navbar-right">
           <Link to="/filter">
             <div className="navbar-filter-container">
@@ -17,8 +17,8 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
+        }
       </div>
-    </div>
   );
 };
 
