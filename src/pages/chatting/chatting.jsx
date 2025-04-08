@@ -1,7 +1,9 @@
-import React,{useState,useRef} from 'react';
+import React,{useState,useRef,useEffect} from 'react';
+import {io} from 'socket.io-client';
 import MessageBox from '../../components/chatting/messageBox';
 import { ArrowLeftIcon,PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import "./chatting.css";
+
 const Chatting = () => {
     const [messages, setMessages] = useState([
         { id: 1, text: "Hello, how are you?", isUser: false },
@@ -9,6 +11,8 @@ const Chatting = () => {
       const [input, setInput] = useState("");
       const [name, setname] = useState("Srujan");
       const messageEndRef = useRef(null);
+
+      const socket = useRef(null);
       const sendMessage = () => {
         if (input.trim().length === 0) return;
         setMessages([...messages, { id: Date.now(), text: input, isUser: true }]);
@@ -19,6 +23,32 @@ const Chatting = () => {
       const handleKey = (e)=>{
          if(e.key === "Enter") sendMessage();
       };
+
+      useEffect(() => {
+        const token = localStorage.getItem("token");
+        const tokenData = JSON.parse(token);
+
+         console.log(tokenData);
+         socket.current = io("https://api.swolhomies.com/",{
+            auth:{
+               token: tokenData
+            }
+        });
+
+          socket.current.on('connect', () => {
+            console.log(' Connected  to server');
+          });
+
+          socket.current.on
+    
+          return() =>{
+              socket.on('disconnect', () => {
+              console.log('[SOCKET] Disconnected');
+              }); 
+              
+              socket.current.disconnect();
+          }
+      },[]);
 
       return (
         <div className="chat-container">
