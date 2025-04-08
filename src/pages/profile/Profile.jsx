@@ -22,7 +22,6 @@ const Profile = () => {
 
   const handleSubmitReview = () => {
     // Implement submit review logic
-    console.log("Submitting review:", { rating, comment });
     setShowReviewModal(false);
     setRating(0);
     setComment("");
@@ -44,7 +43,6 @@ const Profile = () => {
     getUserProfile();
   }, []);
 
-  console.log("profile", profile);
 
   return (
     <Layout>

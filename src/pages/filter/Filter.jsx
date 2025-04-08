@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import "./Filter.css";
 import { interests } from "../../data/interests";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { getnearbyusersapi } from "../../common/apis";
+
 const Filter = () => {
+  const token = localStorage.getItem("token");
+  const tokenData = JSON.parse(token);
+
   const navigate = useNavigate();
   const [distance, setDistance] = useState(50);
   const [selectedInterests, setSelectedInterests] = useState([]);
@@ -15,9 +21,33 @@ const Filter = () => {
     );
   };
 
-  const handleApply = () => {
+  const handleApply = async () => {
+    console.log("tokenData :", tokenData);
     // Handle apply logic here
-    console.log("Applied filters:", { distance, selectedInterests });
+    console.log("Applied filters:", {
+      d: Number(distance) * 1000,
+      selectedInterests,
+    });
+
+
+    if (tokenData) {
+      try {
+        const response = await axios.get(
+          getnearbyusersapi,
+          // {
+          //   maxDistance: Number(distance) * 1000,
+          // },
+          {
+            headers: {
+              Authorization: `Bearer ${tokenData}`,
+            },
+          }
+        );
+        console.log("response", response);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
   };
 
   const handleBack = () => {
@@ -87,7 +117,11 @@ const Filter = () => {
           {/* Apply button */}
           <div className="apply-button-container">
             <div className="apply-button" onClick={handleApply}>
-              <img src="/images/filterpage/applybutton.svg" alt="apply-button" className="apply-button-image" />
+              <img
+                src="/images/filterpage/applybutton.svg"
+                alt="apply-button"
+                className="apply-button-image"
+              />
             </div>
           </div>
         </div>

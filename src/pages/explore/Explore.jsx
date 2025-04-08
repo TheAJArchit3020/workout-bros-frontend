@@ -9,7 +9,9 @@ import {
   sendconnectrequestapi,
   getnearbyusersapi,
 } from "../../common/apis";
+import { useNavigate } from "react-router";
 const Explore = () => {
+  const navigate = useNavigate();
   const [usersArray, setUsersArray] = useState(null);
   const { location, error, loading, requestLocation } = useLocation();
 
@@ -100,7 +102,7 @@ const Explore = () => {
   };
 
   const navigateToPublicProfile = (userId) => {
-    navigate("publicprofile", { state: { userId } });
+    navigate("/publicprofile", { state: { userId } });
   };
 
   return (
@@ -124,11 +126,14 @@ const Explore = () => {
         <span className="explore-profile-card-title">Explore Bro's</span>
         {usersArray && usersArray.length > 0 ? (
           usersArray.map((bro) => (
-            <div className="explore-profile-card" key={bro._id}>
+            <div
+              className="explore-profile-card"
+              key={bro._id}
+              onClick={() => navigateToPublicProfile(bro._id)}
+            >
               <div className="explore-profile-card-image">
                 <img
                   src={`${bro.profilePic}` || "/images/profile.png"}
-                  // src="/images/profile.png"
                   alt="profile"
                 />
                 <div className="explore-profile-card-content">
