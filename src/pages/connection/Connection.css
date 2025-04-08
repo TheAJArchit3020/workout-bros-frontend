@@ -10,6 +10,7 @@
     padding-bottom: 15rem;
 }
 
+
 .connection-segmentbutton-container {
     display: flex;
     gap: 10px;
@@ -118,18 +119,19 @@
     flex: 1;
 }
 
-.connection-chat-list{
+.connection-chat-list {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
-.connection-chat-item-info-text-time{
+
+.connection-chat-item-info-text-time {
     color: #2A2A2A;
     font-size: 13px;
     font-weight: bold;
 }
 
-.connection-chat-item-button-text{
+.connection-chat-item-button-text {
     background-color: #2A2A2A;
     color: #FFFFFF;
     font-size: 8px;
