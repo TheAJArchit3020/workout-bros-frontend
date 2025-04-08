@@ -26,7 +26,6 @@ const Chatting = () => {
     });
     setMessages([...messages, message]);
     setInput("");
-    messageEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleKey = (e) => {
@@ -37,6 +36,10 @@ const Chatting = () => {
     socket.current.disconnect();
     navigate(-1);
   };
+
+  useEffect(() => {
+    messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -77,9 +80,8 @@ const Chatting = () => {
       if (senderId !== senderId) {
         socket.emit('markAsRead', { roomId });
       }
-      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     });
-    
+
     socket.current.on("disconnect", () => {
       console.log("Disconnected");
     });

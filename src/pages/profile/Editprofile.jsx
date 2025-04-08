@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Editprofile.css";
 import { interests } from "../../data/interests";
 import axios from "axios";
@@ -17,14 +17,12 @@ const Editprofile = () => {
 
   const toggleInterest = (interest) => {
     setSelectedInterests([...selectedInterests, interest]);
-
     setdeSelectedInterests((prev) => {
       return prev.filter((int) => int.id !== interest.id);
     });
   };
 
   const toggleDelSelectedInterest = (interest) => {
-      
     setdeSelectedInterests([...deSelectedInterests,interest]);
     setSelectedInterests((prev) => {
       return prev.filter((int) => int.id !== interest.id);
