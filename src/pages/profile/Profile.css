@@ -35,7 +35,7 @@
     flex-direction: row;
     gap: 1rem;
     align-items: center;
-    
+
 }
 
 .profile-edit-info-button {
@@ -60,6 +60,14 @@
     font-size: 16px;
     font-weight: 500;
     word-break: break-word;
+}
+
+
+.profile-interests-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 span.profile-interests-list {
@@ -257,16 +265,16 @@ span.reviews-title {
     }
 }
 
-@media (min-width : 1020px){
-    .profile-container{
-     width: 300px;
-     padding: 10px;
-     scrollbar-width: none;
-     overflow: hidden;
+@media (min-width : 1020px) {
+    .profile-container {
+        width: 300px;
+        padding: 10px;
+        scrollbar-width: none;
+        overflow: hidden;
     }
+
     .profile-name,
     .profile-email {
         font-size: 10px;
     }
-  }
-  
+}

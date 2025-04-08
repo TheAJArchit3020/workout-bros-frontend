@@ -28,7 +28,6 @@ const Connection = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-      console.log("getPendingRequests", response.data);
       setChatPending(response.data);
     } catch (error) {
       console.log("getPendingRequests", error);
@@ -42,7 +41,6 @@ const Connection = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-      console.log("getChatRequests", response.data);
       setChatRequests(response.data);
     } catch (error) {
       console.log("getChatRequests", error);
@@ -66,7 +64,9 @@ const Connection = () => {
           },
         }
       );
-      console.log("acceptChatRequest", response.data);
+      getPendingRequests();
+      getChatRequests();
+      getChats();
     } catch (error) {
       console.log("acceptChatRequest", error);
     }
@@ -80,7 +80,6 @@ const Connection = () => {
         },
       });
       if (response.status === 200) {
-        console.log("getChats", response.data);
         const { connections } = response.data;
         setChats(connections);
       }
@@ -89,7 +88,6 @@ const Connection = () => {
     }
   };
 
-  console.log("chatRequests", chatRequests);
 
   return (
     <div className="connection-container">
@@ -189,24 +187,26 @@ const Connection = () => {
                 Notifications
               </span>
             </div>
-            {chatRequests && chatRequests?.notification?.length > 0 ? (
-              <div className="connection-notification-list">
-                <div className="connection-notification-item">
-                  <img
-                    src="./images/profile.png"
-                    alt=""
-                    className="connection-notification-item-image"
-                  />
-                  <div className="connection-notification-item-info">
-                    <span className="connection-notification-item-info-text">
-                      <b>Benjamin</b> accepted your request.Time to meet up.
-                    </span>
-                  </div>
-                  <div className="connection-notification-item-button">
-                    <img src="./images/message.svg" alt="message" />
+            {chatRequests && chatRequests?.notifications?.length > 0 ? (
+              chatRequests?.notifications?.map((item, index) => (
+                <div className="connection-notification-list" key={index}>
+                  <div className="connection-notification-item">
+                    {/* <img
+                      src={item?.senderId?.profilePic}
+                      alt=""
+                      className="connection-notification-item-image"
+                    /> */}
+                    <div className="connection-notification-item-info">
+                      <span className="connection-notification-item-info-text">
+                        <b>Benjamin</b> {item?.message}.
+                      </span>
+                    </div>
+                    <div className="connection-notification-item-button">
+                      <img src="./images/message.svg" alt="message" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))
             ) : (
               <div className="connection-notification-item">
                 <span className="connection-notification-item-text">

@@ -38,10 +38,14 @@ const Login = () => {
       googleId: response.data.sub,
     });
     const { data, status } = loginResponse;
-    console.log("login Response", data);
+    console.log("login Response", data?.user?.isProfileUpdated);
     if (status === 200) {
       localStorage.setItem("token", JSON.stringify(data.token));
-      navigate("/createProfile");
+      if (data?.user?.isProfileUpdated) {
+        navigate("/explore");
+      } else {
+        navigate("/createProfile");
+      }
     }
   };
 

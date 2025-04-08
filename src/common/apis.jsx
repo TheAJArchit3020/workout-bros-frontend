@@ -12,7 +12,7 @@ const sendconnectrequestapi = `${baseurl}/chat/request`;
 const getnearbyusersapi = `${baseurl}/users/nearby`;
 
 // profile api
-const getpublicprofileapi = `${baseurl}/users/profile`;
+const getpublicprofileapi = `${baseurl}/users`;
 const getuserprofileapi = `${baseurl}/users/profile`;
 
 // chat api
