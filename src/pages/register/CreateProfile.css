@@ -315,7 +315,6 @@ div.interest-button.selected .interest-name {
 }
 
 
-
 @media (min-width : 768px) {
   .p_c_profilePlusButton {
     right: 43.5%;
@@ -409,3 +408,8 @@ div.interest-button.selected .interest-name {
   }
 }
 
+@media (min-width : 1020px){
+   .profile_container{
+    width: 300px;
+   }
+}

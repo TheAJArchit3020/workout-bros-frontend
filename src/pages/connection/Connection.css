@@ -143,4 +143,11 @@
     margin-bottom: 4rem;
 }
 
+@media (min-width : 1020px){
+    .connection-container {
+     width: 300px;
+     padding: 10px;
+    }
+  }
+  
 

@@ -281,3 +281,8 @@
   }
 }
 
+@media (min-width : 1020px){
+  .explore-container{
+   width: 300px;
+  }
+}

@@ -273,3 +273,10 @@ img.edit-profile-placeholder-image-plus {
     font-weight: bold;
   }
   
+
+  @media (min-width : 1024px){
+    .edit-profile-container{
+        width: 300px;
+    }
+    
+  }
