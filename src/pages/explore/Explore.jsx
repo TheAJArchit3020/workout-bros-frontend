@@ -127,10 +127,8 @@ const Explore = () => {
             <div className="explore-profile-card" key={bro._id}>
               <div className="explore-profile-card-image">
                 <img
-                  // src={
-                  //   `${bro.profilePic}` || "/public/images/profile/cross.svg"
-                  // }
-                  src="/images/profile.png"
+                  src={`${bro.profilePic}` || "/images/profile.png"}
+                  // src="/images/profile.png"
                   alt="profile"
                 />
                 <div className="explore-profile-card-content">

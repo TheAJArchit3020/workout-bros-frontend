@@ -11,8 +11,6 @@ export const getAllInterests = async (tokenData, setInterestArray) => {
     });
     const { interests } = response.data;
 
-    console.log("API Interests:", interests);
-    console.log("All Interests:", allInterests);
 
     // Map through interests and find matches with allInterests
     const matchedInterests = interests.map((interest) => {

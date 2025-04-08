@@ -37,7 +37,6 @@ const Profile = () => {
       });
       if (response.status === 200) {
         const { user } = response.data;
-        console.log("User profile:", user);
         setProfile(user);
       }
     };
@@ -79,8 +78,8 @@ const Profile = () => {
           </div>
           <span className="profile-description">{profile?.description}</span>
           <div className="profile-interests-container">
-            {profile?.interests.map((item) => (
-              <span className="profile-interests-list">{item}</span>
+            {profile?.interests.map((item,index) => (
+              <span className="profile-interests-list" key={index}>{item}</span>
             ))}
           </div>
         </div>
