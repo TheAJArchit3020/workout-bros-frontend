@@ -158,16 +158,24 @@ const Explore = () => {
                 </div>
               </div>
               <div
-                className="explore-profile-card-button"
+                className="explore-profile-card-button1"
                 onClick={() => sendConnectRequest(bro._id)}
               >
-                <span className="explore-profile-card-button-text">
-                  {bro.connectionStatus === null
-                    ? "Connect"
-                    : bro.connectionStatus === "pending"
-                    ? "Pending"
-                    : "Message"}
-                </span>
+                {bro.connectionStatus === null ? (
+                  <span className="explore-profile-card-button-text">
+                    Connect
+                  </span>
+                ) : bro.connectionStatus === "pending" ? (
+                  <span className="explore-profile-card-button-text-pending">
+                    requested
+                  </span>
+                ) : (
+                  <img
+                    src="/images/explore/exploremessage.svg"
+                    alt="message"
+                    className="explore-profile-card-exploremessage-image"
+                  />
+                )}
               </div>
             </div>
           ))
