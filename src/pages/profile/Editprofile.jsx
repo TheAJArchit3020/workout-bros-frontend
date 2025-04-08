@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import "./Editprofile.css";
 import { interests } from "../../data/interests";
+import axios from "axios";
+import { getuserprofileapi } from "../../common/apis";
 
 const Editprofile = () => {
+  const token = localStorage.getItem("token");
+  const tokenData = JSON.parse(token);
+
+  const [profile, setProfile] = useState(null);
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -22,13 +28,25 @@ const Editprofile = () => {
     }, 2000);
   };
 
+  useEffect(() => {
+    const getUserProfile = async () => {
+      const response = await axios.get(getuserprofileapi, {
+        headers: {
+          Authorization: `Bearer ${tokenData}`,
+        },
+      });
+      if (response.status === 200) {
+        const { user } = response.data;
+        console.log("User profile:", user);
+        setProfile(user);
+      }
+    };
+
+    getUserProfile();
+  }, []);
+
   return (
     <div className="edit-profile-container">
-      {/* <img
-        src="/images/referenceImages/editprofilescreen.png"
-        alt="edit-profile"
-        className="edit-profile-background-image"
-      /> */}
       {/* Navbar */}
       <div className="edit-profile-navbar-container">
         <div className="edit-profile-navbar-wrapper">
@@ -150,7 +168,10 @@ const Editprofile = () => {
         </div>
         {/* Save Button */}
       </div>
-      <div className="edit-profile-form-content-save-button" onClick={handleSave}>
+      <div
+        className="edit-profile-form-content-save-button"
+        onClick={handleSave}
+      >
         <img src="./images/donebutton.svg" alt="edit-profile-done" />
       </div>
 

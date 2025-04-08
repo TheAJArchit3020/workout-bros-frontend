@@ -8,9 +8,34 @@ const getAllInterestsapi = `${baseurl}/users/all/interest`;
 
 // explore api
 const getExplorelocationapi = `${baseurl}/users/location`;
+const sendconnectrequestapi = `${baseurl}/chat/request`;
+const getnearbyusersapi = `${baseurl}/users/nearby`;
+
+// profile api
+const getpublicprofileapi = `${baseurl}/users/profile`;
+const getuserprofileapi = `${baseurl}/users/profile`;
+
+// chat api
+const getchatpendingapi = `${baseurl}/chat/pending`;
+const getchatrequestsapi = `${baseurl}/notifications`;
+const acceptchatrequestsapi = `${baseurl}/chat/accept`;
+const getchatsapi = `${baseurl}/chat`;
 
 
 
 
 
-export { loginapi, registerprofileapi, getAllInterestsapi, getExplorelocationapi };
+export {
+  loginapi,
+  registerprofileapi,
+  getAllInterestsapi,
+  getExplorelocationapi,
+  sendconnectrequestapi,
+  getnearbyusersapi,
+  getpublicprofileapi,
+  getuserprofileapi,
+  getchatpendingapi,
+  getchatrequestsapi,
+  acceptchatrequestsapi,
+  getchatsapi,
+};

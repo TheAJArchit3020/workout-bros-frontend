@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import "./CreateProfile.css";
 import { useNavigate } from "react-router";
 import { ArrowLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { interests } from "../../data/interests";
 import { registerprofileapi } from "../../common/apis";
 import { getAllInterests } from "../../common/getallinterest";
 
@@ -18,14 +17,14 @@ const CreateProfile = () => {
   const tokenData = JSON.parse(token);
 
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     description: "",
     selectedIntrests: [],
     profileImage: null,
   });
 
   const isValidInfo =
-    formData.fullName.length > 0 && formData.description.length > 0;
+    formData.name.length > 0 && formData.description.length > 0;
   const isValidIntrest = formData.selectedIntrests.length > 0;
 
   const handleInput = (key, value) => {
@@ -74,7 +73,7 @@ const CreateProfile = () => {
 
     try {
       const formDataToSubmit = new FormData();
-      formDataToSubmit.append("fullName", formData.fullName);
+      formDataToSubmit.append("name", formData.name);
       formDataToSubmit.append("description", formData.description);
       // Loop through selectedIntrests and append each interest separately
       formData.selectedIntrests.forEach((interest) => {
@@ -126,7 +125,7 @@ const CreateProfile = () => {
       setProfileSection(1);
       setFormData((prev) => ({
         ...prev,
-        fullName: "",
+        name: "",
         description: "",
       }));
     } else {
@@ -184,9 +183,9 @@ const CreateProfile = () => {
                 placeholder="Full Name"
                 className="p_c_input"
                 style={{ height: "20%", borderRadius: "20px" }}
-                value={formData.fullName || ""}
+                value={formData.name || ""}
                 onChange={(e) => {
-                  handleInput("fullName", e.target.value);
+                  handleInput("name", e.target.value);
                 }}
               />
 

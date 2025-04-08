@@ -1,51 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import "./Profile.css";
 import Navbar from "../../components/navbar/Navbar";
+import axios from "axios";
+import { getuserprofileapi } from "../../common/apis";
+import { Link } from "react-router";
 
 const Profile = () => {
-  // Mock data - replace with actual data from your backend
-  const [profile] = useState({
-    name: "John Doe",
-    email: "xyz@gmail.com",
-    profilePicture: "./images/profile.png",
-    description:
-      "I'm a fitness enthusiast who loves to lift weights and run marathons. I'm also a big fan of yoga and crossfit.",
-    interests: ["Golf", "Fishing", "Beach Volleyball"],
-    reviews: [
-      {
-        id: 1,
-        reviewerName: "Alice Smith",
-        rating: 5,
-        comment: "Great workout partner! Very motivating and punctual.",
-      },
-      {
-        id: 2,
-        reviewerName: "Bob Johnson",
-        rating: 4,
-        comment: "Good communication and reliable. Would recommend!",
-      },
-    ],
-    connectionStatus: "not_connected", // possible values: "not_connected", "requested", "connected"
-  });
+  const token = localStorage.getItem("token");
+  const tokenData = JSON.parse(token);
+
+  const [profile, setProfile] = useState(null);
 
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-
-  const handleConnect = () => {
-    // Implement connection logic
-    console.log("Connecting...");
-  };
-
-  const handleAcceptConnection = () => {
-    // Implement accept connection logic
-    console.log("Accepting connection...");
-  };
-
-  const handleAddReview = () => {
-    setShowReviewModal(true);
-  };
 
   const handleRatingClick = (value) => {
     setRating(value);
@@ -59,6 +28,25 @@ const Profile = () => {
     setComment("");
   };
 
+  useEffect(() => {
+    const getUserProfile = async () => {
+      const response = await axios.get(getuserprofileapi, {
+        headers: {
+          Authorization: `Bearer ${tokenData}`,
+        },
+      });
+      if (response.status === 200) {
+        const { user } = response.data;
+        console.log("User profile:", user);
+        setProfile(user);
+      }
+    };
+
+    getUserProfile();
+  }, []);
+
+  console.log("profile", profile);
+
   return (
     <Layout>
       <div className="profile-container">
@@ -68,31 +56,34 @@ const Profile = () => {
 
           <div className="profile-info-container">
             <img
-              src={profile.profilePicture}
+              src={profile?.profilePic}
               alt="Profile"
               className="profile-picture"
+              onError={(e) => {
+                e.target.onerror = null; 
+                e.target.src =
+                  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%23CCCCCC'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23666666'%3EProfile Image%3C/text%3E%3C/svg%3E";
+              }}
             />
             <div className="profile-info-content">
-              <span className="profile-name">{profile.name}</span>
-              <span className="profile-email">{profile.email}</span>
+              <span className="profile-name">{profile?.name}</span>
+              <span className="profile-email">{profile?.email}</span>
             </div>
 
-            <div className="profile-edit-info-button">
+            <Link className="profile-edit-info-button" to="/editprofile">
               <img src="./images/editpencil.svg" alt="edit" />
               <span className="profile-edit-info-button-text">
                 Edit profile
               </span>
-            </div>
+            </Link>
           </div>
-          <span className="profile-description">{profile.description}</span>
+          <span className="profile-description">{profile?.description}</span>
           <div className="profile-interests-container">
-            {profile.interests.map((item) => (
+            {profile?.interests.map((item) => (
               <span className="profile-interests-list">{item}</span>
             ))}
           </div>
         </div>
-
-     
 
         {showReviewModal && (
           <div className="modal-overlay">
