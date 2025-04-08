@@ -16,15 +16,15 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/createProfile" element={<CreateProfile />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Login />} /> //finish
+        <Route path="/createProfile" element={<CreateProfile />} /> //finish-plus icon gap 
+        <Route path="/profile" element={<Profile />} />  //PROFILE - icons
         <Route path="/explore" element={<Explore />} />
         <Route path="/publicprofile" element={<Publicprofile />} />
-        <Route path="/editprofile" element={<Editprofile />} />
-        <Route path="/filter" element={<Filter />} />
-        <Route path="/connection" element={<Connection />} />
-        <Route path="/Chatting" element={<Chatting />} />
+        <Route path="/editprofile" element={<Editprofile />} />  //finish
+        <Route path="/filter" element={<Filter />} />  //finish
+        <Route path="/connection" element={<Connection />} /> //
+        <Route path="/Chatting" element={<Chatting />} /> //finish
       </Routes>
     </BrowserRouter>
   );

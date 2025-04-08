@@ -12,7 +12,7 @@ const CreateProfile = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [interestArray, setInterestArray] = useState([]);
-
+  const [isImageSelected,setisImageSelected] = useState(false); 
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
 
@@ -50,8 +50,13 @@ const CreateProfile = () => {
       // Create a preview URL for the image
       const imageUrl = URL.createObjectURL(file);
       setProfileImage(imageUrl);
+      setisImageSelected(true); 
     }
   };
+
+  useEffect(() => {
+    console.log("Image selected:", isImageSelected);
+  },[isImageSelected])
 
   const toggleInterest = (interestName) => {
     setFormData((prev) => ({
@@ -152,7 +157,7 @@ const CreateProfile = () => {
               <div
                 className="p_c_profileImageContainer"
                 onClick={() => {
-                  handleImageClick(), setProfileImage(null);
+                  handleImageClick()
                 }} // This triggers modal open
               >
                 <div className="p_c_profilePlusButtonContainer">
@@ -162,8 +167,8 @@ const CreateProfile = () => {
                       alt="Profile"
                       className="p_c_profileImage"
                       style={{
-                        width: "100px",
-                        height: "100px",
+                        width: "120px",
+                        height: "120px",
                         borderRadius: "50%",
                       }}
                     />
@@ -271,7 +276,7 @@ const CreateProfile = () => {
             <div className="createprofile-uploadprofile-modal-content">
               <div className="createprofile-uploadprofile-modal-header">
                 <span className="createprofile-uploadprofile-modal-title">
-                  Upload Profile Image
+                  Upload Profile Photo
                 </span>
                 <img
                   src="/images/profile/cross.svg"
@@ -279,7 +284,7 @@ const CreateProfile = () => {
                   onClick={handleImageClick}
                 />
               </div>
-              {profileImage ? (
+              {isImageSelected ? (
                 <>
                   <img
                     src={profileImage}
@@ -294,7 +299,8 @@ const CreateProfile = () => {
                   <div className="createprofile-uploadprofile-modal-donebutton">
                     <span
                       className="createprofile-uploadprofile-modal-donebutton-text"
-                      onClick={handleImageClick}
+                      onClick={()=>{handleImageClick() ;
+                        setisImageSelected(false)}}
                     >
                       Done
                     </span>

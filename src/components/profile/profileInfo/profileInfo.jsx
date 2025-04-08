@@ -5,21 +5,16 @@ const CreateProfileInfo = ({
   handleInput,
   formData,
   profileImage,
-  handleFileChange,
+  handleImageClick,
 }) => {
-  const fileInputRef = useRef(null);
-
-  const handleImageClick = () => {
-    fileInputRef.current.click();
-  };
-
+  console.log("Form Data:", formData);
   return (
     <>
       <div className="p_c_profileContainer">
         <div className="p_c_profileImageContainer">
-          {profileImage ? (
+
             <img
-              src={profileImage}
+              src={profileImage ? profileImage : "/images/profile/profile.svg"}
               alt="Profile"
               className="p_c_profileImage"
               style={{
@@ -28,20 +23,8 @@ const CreateProfileInfo = ({
                 objectFit: "cover",
                 borderRadius: "50%",
               }}
-            />
-          ) : (
-            <button
-              className="p_c_profilePlusButton"
               onClick={handleImageClick}
             />
-          )}
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleFileChange}
-            accept="image/*"
-            style={{ display: "none" }}
-          />
         </div>
 
         <span className="p_c_text">Add your Profile</span>

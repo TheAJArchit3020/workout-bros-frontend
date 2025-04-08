@@ -4,7 +4,7 @@
     flex-direction: column;
     height: 100dvh;
     background-color: #ffff;
-    width: 20vw;
+    width: 100vw;
   }
   
   /* Chat Header */
@@ -103,9 +103,8 @@
     transform: rotate(45deg);
   }
 
-  @media screen and (max-width: 1024px){
+  @media screen and (min-width: 700px){
     .chat-container {
-      width: 100vw;
-      height: 100vh;
+      width: 300px;
     }
   }

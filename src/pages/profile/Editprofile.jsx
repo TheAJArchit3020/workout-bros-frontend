@@ -10,14 +10,25 @@ const Editprofile = () => {
 
   const [profile, setProfile] = useState(null);
   const [selectedInterests, setSelectedInterests] = useState([]);
+  const [deSelectedInterests, setdeSelectedInterests] = useState([
+    ...interests,
+  ]);
   const [showModal, setShowModal] = useState(false);
 
-  const toggleInterest = (interestId) => {
-    setSelectedInterests((prev) =>
-      prev.includes(interestId)
-        ? prev.filter((id) => id !== interestId)
-        : [...prev, interestId]
-    );
+  const toggleInterest = (interest) => {
+    setSelectedInterests([...selectedInterests, interest]);
+
+    setdeSelectedInterests((prev) => {
+      return prev.filter((int) => int.id !== interest.id);
+    });
+  };
+
+  const toggleDelSelectedInterest = (interest) => {
+      
+    setdeSelectedInterests([...deSelectedInterests,interest]);
+    setSelectedInterests((prev) => {
+      return prev.filter((int) => int.id !== interest.id);
+    });
   };
 
   const handleSave = () => {
@@ -71,6 +82,7 @@ const Editprofile = () => {
               className="edit-profile-placeholder-image-plus"
             />
           </div>
+          <span className="edit-profile-placeholder-text">Edit your profile</span>
         </div>
 
         {/* Edit Profile Form */}
@@ -99,37 +111,23 @@ const Editprofile = () => {
                 Your Interests
               </span>
               <div className="edit-profile-form-content-interests-container">
-                <div className="edit-profile-form-content-interests">
-                  <img
-                    src="./images/archeryfill.svg"
-                    alt="edit-profile-interest"
-                    className="edit-profile-form-content-interests-image"
-                  />
-                  <span className="edit-profile-form-content-interests-text">
-                    Archery
-                  </span>
-                </div>
-                <div className="edit-profile-form-content-interests">
-                  <img
-                    src="./images/archeryfill.svg"
-                    alt="edit-profile-interest"
-                    className="edit-profile-form-content-interests-image"
-                  />
-                  <span className="edit-profile-form-content-interests-text">
-                    Golf
-                  </span>
-                </div>
-                <div className="edit-profile-form-content-interests">
-                  <img
-                    src="./images/archeryfill.svg"
-                    alt="edit-profile-interest"
-                    className="edit-profile-form-content-interests-image"
-                  />
-                  <span className="edit-profile-form-content-interests-text">
-                    Golf
-                  </span>
-                </div>
+
+                {selectedInterests.map((interest) => {
+                  return (
+                    <div className="edit-profile-form-content-interests" onClick={() => toggleDelSelectedInterest(interest)}>
+                      <span className="edit-profile-form-content-interests-name" >{interest.name}</span>
+                      <img
+                        src={`/images/${
+                            interest.activeIconFile
+                        }`}
+                        alt="edit-profile-interest"
+                        className="edit-profile-form-content-interests-image"
+                      />
+                    </div>
+                  );
+                })}
               </div>
+
             </div>
 
             {/* Add Interests */}
@@ -139,22 +137,17 @@ const Editprofile = () => {
               </span>
 
               <div className="interests-grid">
-                {interests.map((interest) => {
-                  const isSelected = selectedInterests.includes(interest.id);
+                {deSelectedInterests.map((interest) => {
                   return (
                     <div
                       key={interest.id}
-                      className={`interest-button ${
-                        isSelected ? "selected" : ""
-                      }`}
-                      onClick={() => toggleInterest(interest.id)}
+                      className={"interest-button"}
+                      onClick={() => toggleInterest(interest)}
                     >
                       <span className="interest-name">{interest.name}</span>
                       <img
                         src={`/images/${
-                          isSelected
-                            ? interest.activeIconFile
-                            : interest.iconFile
+                             interest.iconFile
                         }`}
                         alt={interest.name}
                         className="interest-icon"

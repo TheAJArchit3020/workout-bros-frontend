@@ -1,5 +1,5 @@
 .public-profile-container {
-    background: #FFFFFF;
+    background-color: #ffffff;
     height: 100vh;
     position: relative;
     padding: 20px;
@@ -7,6 +7,7 @@
     flex-direction: column;
     gap: 30px;
     overflow: auto;
+    color: #000000;
 }
 
 .public-profile-image {
@@ -105,4 +106,10 @@
 .public-profile-messageimage {
     width: 35px;
     height: 35px;
+}
+
+@media (min-width : 1024px){
+    .public-profile-container{
+        width: 300px;
+    }
 }

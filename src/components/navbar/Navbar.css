@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10%;
+    gap: 12%;
 }
 
 .navbar-wrapper {
@@ -66,4 +66,11 @@
 
 .tab-settings.selected {
     background-color: #96CEB4;
+}
+
+@media (min-width:1024px){
+    .navbar-container {
+        padding-right: 4%;
+        gap: 8%;
+    }
 }
