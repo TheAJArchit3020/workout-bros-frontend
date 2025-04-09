@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import axios from "axios";
 import { getpublicprofileapi } from "../../common/apis";
 import { interests as allInterests } from "../../data/interests";
+import { useNavigate } from "react-router";
 const Publicprofile = () => {
   const { state } = useLocation();
   const userId = state?.userId;
@@ -12,7 +13,7 @@ const Publicprofile = () => {
   const [profile, setProfile] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
-
+  const navigation = useNavigate();
   useEffect(() => {
     const fetchProfile = async () => {
       const response = await axios.get(`${getpublicprofileapi}/${userId}`, {
@@ -78,6 +79,15 @@ const Publicprofile = () => {
             src="/images/explore/exploremessage.svg"
             alt="message"
             className="public-profile-card-exploremessage-image"
+            onClick={()=>{navigation('/chatting',{
+              state:{
+                chatId: profile?.id,
+                name: profile?.name,
+                roomId: profile?.roomId,
+                receiverId : profile?.receiverId,
+                senderId : profile?.senderId
+              }
+            })}}
           />
         )}
       </div>

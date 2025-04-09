@@ -24,6 +24,7 @@ const Chatting = () => {
       receiverId,
       message: message.text,
     });
+    console.log(message);
     setMessages([...messages, message]);
     setInput("");
   };

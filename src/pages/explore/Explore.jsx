@@ -162,7 +162,22 @@ const Explore = () => {
               </div>
               <div
                 className="explore-profile-card-button1"
-                onClick={() => sendConnectRequest(bro._id)}
+                onClick={(event) => {
+                  event.stopPropagation();          
+                  if(bro.connectionStatus === "accepted"){
+                    navigate('/chatting',{
+                      state: {
+                        chatId: bro?._id,
+                        name: bro?.name,
+                        roomId: bro?.roomId,
+                        receiverId : bro?.receiverId,
+                        senderId : bro?.senderId
+                      }
+                    })
+                    return;
+                  }
+                  sendConnectRequest(bro._id)
+                }}
               >
                 {bro.connectionStatus === null ? (
                   <span className="explore-profile-card-button-text">
