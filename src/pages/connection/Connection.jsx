@@ -235,6 +235,9 @@ const Connection = () => {
                       state: {
                         chatId: item?._id,
                         name: item?.name,
+                        roomId: item?.roomId,
+                        receiverId : item?.receiverId,
+                        senderId : item?.senderId
                       },
                     })
                   }
