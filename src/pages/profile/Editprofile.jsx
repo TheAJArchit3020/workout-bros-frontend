@@ -158,9 +158,6 @@ const Editprofile = () => {
         <div className="filter-back-button" onClick={handleBack}>
           <img src="./images/backbuttonicon.svg" alt="back-button" />
         </div>
-        {/* <div className="filter-title">
-          <span className="filter-title-text">Filters</span>
-        </div> */}
       </div>
 
       {/* Edit Profile */}

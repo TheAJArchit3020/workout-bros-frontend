@@ -21,26 +21,66 @@ const Filter = () => {
     );
   };
 
+  // const handleApply = async () => {
+  //   console.log("tokenData :", tokenData);
+  //   // Handle apply logic here
+  //   console.log("Applied filters:", {
+  //     d: Number(distance) * 1000,
+  //     selectedInterests,
+  //   });
+
+  //   if (tokenData) {
+  //     console.log("tokenData:", tokenData);
+  //     try {
+  //       const response = await axios.get(`${getnearbyusersapi}`, {
+  //         params: {
+  //           maxDistance: Number(distance) * 1000,
+  //         },
+  //         headers: {
+  //           Authorization: `Bearer ${tokenData}`,
+  //         },
+  //       });
+  //       console.log("response getnearbyusersapi", response);
+  //       if (response.status === 200) {
+  //         navigate("/explore");
+  //       }
+  //     } catch (error) {
+  //       console.log("error", error);
+  //     }
+  //   }
+  // };
+
   const handleApply = async () => {
-    console.log("tokenData :", tokenData);
-    // Handle apply logic here
+    console.log("tokenData:", tokenData);
+
+    // Convert selected interests into a comma-separated string
+    const interestNames = selectedInterests
+      .map((interestId) => {
+        const interest = interests.find((i) => i.id === interestId);
+        return interest ? interest.name : null;
+      })
+      .filter(Boolean) // Filter out nulls if any
+      .join(","); // Join interests into a single string
+
     console.log("Applied filters:", {
       d: Number(distance) * 1000,
       selectedInterests,
     });
 
     if (tokenData) {
-      console.log("tokenData:", tokenData);
       try {
         const response = await axios.get(`${getnearbyusersapi}`, {
           params: {
             maxDistance: Number(distance) * 1000,
+            interests: interestNames, // Add interests as a query parameter
           },
           headers: {
             Authorization: `Bearer ${tokenData}`,
           },
         });
+
         console.log("response getnearbyusersapi", response);
+
         if (response.status === 200) {
           navigate("/explore");
         }
