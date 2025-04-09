@@ -64,9 +64,12 @@ const Connection = () => {
           },
         }
       );
+      
       getPendingRequests();
       getChatRequests();
       getChats();
+
+      return response;
     } catch (error) {
       console.log("acceptChatRequest", error);
     }
@@ -150,8 +153,8 @@ const Connection = () => {
                 chatPending?.requests?.map((item, index) => (
                   <div className="connection-request-item" key={index}>
                     <img
-                      src="./images/profile.png"
-                      alt=""
+                      src={item?.senderId?.profilePic}
+                      alt="profilePic"
                       className="connection-request-item-image"
                     />
                     <div className="connection-request-item-info">
@@ -198,7 +201,7 @@ const Connection = () => {
                     /> */}
                     <div className="connection-notification-item-info">
                       <span className="connection-notification-item-info-text">
-                        <b>Benjamin</b> {item?.message}.
+                        <b>{item?.name || "User"}</b> {item?.message}.
                       </span>
                     </div>
                     <div className="connection-notification-item-button">

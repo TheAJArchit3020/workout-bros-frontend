@@ -138,16 +138,25 @@ const Editprofile = () => {
     getUserProfile();
   }, []);
 
+  const handleBack = () => {
+    navigate("/profile");
+  };
+
   return (
     <div className="edit-profile-container">
       {/* Navbar */}
-      <div className="edit-profile-navbar-container">
+      {/* <div className="edit-profile-navbar-container">
         <div className="edit-profile-navbar-wrapper">
           <div className="edit-profile-navbar-brand-name">
             <span className="edit-profile-navbar-brand-name-text">
               SwolHomies
             </span>
           </div>
+        </div>
+      </div> */}
+      <div className="public-profile-back-header">
+        <div className="filter-back-button" onClick={handleBack}>
+          <img src="./images/backbuttonicon.svg" alt="back-button" />
         </div>
       </div>
 

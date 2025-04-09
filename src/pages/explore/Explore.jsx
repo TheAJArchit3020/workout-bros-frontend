@@ -10,10 +10,13 @@ import {
   getnearbyusersapi,
 } from "../../common/apis";
 import { useNavigate } from "react-router";
+import Loader from "../../components/loader/Loader";
+
 const Explore = () => {
   const navigate = useNavigate();
   const [usersArray, setUsersArray] = useState(null);
   const { location, error, loading, requestLocation } = useLocation();
+  const [showLoader, setShowLoader] = useState(false);
 
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -63,7 +66,7 @@ const Explore = () => {
   }, []);
 
   const getNearByUsers = async () => {
-    console.log({ tokenData });
+    setShowLoader(true);
     try {
       const response = await axios.get(getnearbyusersapi, {
         headers: {
@@ -74,9 +77,11 @@ const Explore = () => {
       const { users } = response.data;
       console.log("User data:", users);
       setUsersArray(users);
+      setShowLoader(false);
     } catch (error) {
       console.error("Error fetching users:", error);
       setUsersArray([]);
+      setShowLoader(false);
     }
   };
 
@@ -106,21 +111,24 @@ const Explore = () => {
   };
 
   return (
-    <div className="explore-container">
-      <Navbar displayFilterButton={true} />
+    <>
+      {showLoader && <Loader />}
 
-      {loading && (
-        <div className="location-status">
-          <p>Requesting location access...</p>
-        </div>
-      )}
+      <div className="explore-container">
+        <Navbar displayFilterButton={true} />
 
-      {error && (
-        <div className="location-status error">
-          <p>{error}</p>
-          <button onClick={requestLocation}>Enable Location</button>
-        </div>
-      )}
+        {loading && (
+          <div className="location-status">
+            <p>Requesting location access...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="location-status error">
+            <p>{error}</p>
+            <button onClick={requestLocation}>Enable Location</button>
+          </div>
+        )}
 
       <div className="explore-profile-card-section">
         <span className="explore-profile-card-title">Explore Bro's</span>
@@ -202,10 +210,11 @@ const Explore = () => {
         )}
       </div>
 
-      <div className="explore-footer-section">
-        <Footer />
+        <div className="explore-footer-section">
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
