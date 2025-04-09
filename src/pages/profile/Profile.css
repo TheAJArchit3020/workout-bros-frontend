@@ -67,16 +67,27 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
+}
+
+.profile-interest-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #2A2A2A;
+    padding: 0.4rem 0.6rem;
+    border-radius: 10rem;
+    margin-right: 0.5rem;
+}
+
+.interest-icon {
+    width: 16px;
+    height: 16px;
 }
 
 span.profile-interests-list {
     font-size: 12px;
     font-weight: 600;
-    background-color: #2A2A2A;
-    padding: 0.4rem 0.6rem;
-    border-radius: 10rem;
-    margin-right: 0.5rem;
     color: #DFFD52;
 }
 

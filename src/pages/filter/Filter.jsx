@@ -29,21 +29,21 @@ const Filter = () => {
       selectedInterests,
     });
 
-
     if (tokenData) {
+      console.log("tokenData:", tokenData);
       try {
-        const response = await axios.get(
-          getnearbyusersapi,
-          // {
-          //   maxDistance: Number(distance) * 1000,
-          // },
-          {
-            headers: {
-              Authorization: `Bearer ${tokenData}`,
-            },
-          }
-        );
-        console.log("response", response);
+        const response = await axios.get(`${getnearbyusersapi}`, {
+          params: {
+            maxDistance: Number(distance) * 1000,
+          },
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        });
+        console.log("response getnearbyusersapi", response);
+        if (response.status === 200) {
+          navigate("/explore");
+        }
       } catch (error) {
         console.log("error", error);
       }

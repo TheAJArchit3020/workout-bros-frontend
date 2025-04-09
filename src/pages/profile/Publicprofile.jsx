@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Publicprofile.css";
-import Navbar from "../../components/navbar/Navbar";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import { getpublicprofileapi } from "../../common/apis";
 import { interests as allInterests } from "../../data/interests";
+
+
+
 const Publicprofile = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const userId = state?.userId;
 
@@ -26,11 +29,21 @@ const Publicprofile = () => {
     fetchProfile();
   }, [userId]);
 
-  console.log("profile", profile);
+  const handleBack = () => {
+    navigate("/explore");
+  };
 
   return (
     <div className="public-profile-container">
-      <Navbar />
+      {/* header section */}
+      <div className="public-profile-back-header">
+        <div className="filter-back-button" onClick={handleBack}>
+          <img src="./images/backbuttonicon.svg" alt="back-button" />
+        </div>
+        {/* <div className="filter-title">
+          <span className="filter-title-text">Filters</span>
+        </div> */}
+      </div>
       <div className="public-profile-header">
         <div className="public-profile-info-container">
           <img
@@ -56,8 +69,9 @@ const Publicprofile = () => {
                   {item}
                 </span>
                 <img
-                  src={`./images/${matchedInterest?.activeIconFile || "fishhookfill.svg"
-                    }`}
+                  src={`./images/${
+                    matchedInterest?.activeIconFile || "fishhookfill.svg"
+                  }`}
                   alt={item}
                 />
               </div>

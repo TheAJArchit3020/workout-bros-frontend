@@ -129,9 +129,9 @@ const Explore = () => {
             <div
               className="explore-profile-card"
               key={bro._id}
-              onClick={() => navigateToPublicProfile(bro._id)}
+            // onClick={() => navigateToPublicProfile(bro._id)}
             >
-              <div className="explore-profile-card-image">
+              <div className="explore-profile-card-image" onClick={() => navigateToPublicProfile(bro._id)}>
                 <img
                   src={`${bro.profilePic}` || "/images/profile.png"}
                   alt="profile"

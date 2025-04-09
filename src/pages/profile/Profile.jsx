@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";
 import { getuserprofileapi } from "../../common/apis";
 import { Link } from "react-router";
+import { interests as allInterests } from "../../data/interests";
 
 const Profile = () => {
   const token = localStorage.getItem("token");
@@ -43,7 +44,6 @@ const Profile = () => {
     getUserProfile();
   }, []);
 
-
   return (
     <Layout>
       <div className="profile-container">
@@ -57,7 +57,7 @@ const Profile = () => {
               alt="Profile"
               className="profile-picture"
               onError={(e) => {
-                e.target.onerror = null; 
+                e.target.onerror = null;
                 e.target.src =
                   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Crect width='150' height='150' fill='%23CCCCCC'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%23666666'%3EProfile Image%3C/text%3E%3C/svg%3E";
               }}
@@ -76,9 +76,24 @@ const Profile = () => {
           </div>
           <span className="profile-description">{profile?.description}</span>
           <div className="profile-interests-container">
-            {profile?.interests.map((item,index) => (
-              <span className="profile-interests-list" key={index}>{item}</span>
-            ))}
+            {profile?.interests.map((interest, index) => {
+              const matchingInterest = allInterests.find(
+                (item) => item.name === interest
+              );
+              return (
+                <div className="profile-interest-item" key={index}>
+                  <span className="profile-interests-list">{interest}</span>
+                  <img
+                    src={`./images/${
+                      matchingInterest?.activeIconFile ||
+                      matchingInterest?.iconFile
+                    }`}
+                    alt={interest}
+                    className="interest-icon"
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
 
