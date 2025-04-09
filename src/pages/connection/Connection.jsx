@@ -41,6 +41,7 @@ const Connection = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
+      
       setChatRequests(response.data);
     } catch (error) {
       console.log("getChatRequests", error);
@@ -83,6 +84,7 @@ const Connection = () => {
         },
       });
       if (response.status === 200) {
+        console.log("cahts data",response.data);
         const { connections } = response.data;
         setChats(connections);
       }
@@ -251,9 +253,15 @@ const Connection = () => {
                     <span className="connection-chat-item-info-text">
                       <b>{item?.name}</b>
                     </span>
-                    <span className="connection-chat-item-info-text">
+                    {/* <span className="connection-chat-item-info-text">
                       Sent 2 mins ago
-                    </span>
+                    </span> */}
+                    {  
+                       !item.isRead && 
+                       <span className="connection-chat-item-info-text info-text">
+                          Sent you a message
+                       </span>
+                    }
                   </div>
                 </div>
               ))

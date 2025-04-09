@@ -88,6 +88,10 @@
     font-size: .8rem;
 }
 
+.info-text{
+    font-weight: bold;
+}
+
 .connection-request-item-button-text {
     color: #DFFD52;
     font-size: 11px;

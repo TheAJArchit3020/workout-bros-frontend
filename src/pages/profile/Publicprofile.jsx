@@ -4,12 +4,11 @@ import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import { getpublicprofileapi } from "../../common/apis";
 import { interests as allInterests } from "../../data/interests";
-import { useNavigate } from "react-router";
+
 const Publicprofile = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const userId = state?.userId;
-
   const [profile, setProfile] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);

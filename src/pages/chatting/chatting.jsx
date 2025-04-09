@@ -9,9 +9,7 @@ const Chatting = () => {
   const { state } = useLocation();
   const { chatId, name: chatName , roomId,receiverId,senderId} = state;
   const currentUserId = senderId;
-  const [messages, setMessages] = useState([
-    { id: 1, text: "Hello, how are you?", isUser: false },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messageEndRef = useRef(null);
   const socket = useRef(null);
@@ -66,7 +64,7 @@ const Chatting = () => {
       return {
         id: time,
         text: message,
-        isUser: senderId !== currentUserId
+        isUser: senderId === currentUserId
       };
      })
        setMessages(formattedMessages);
@@ -78,7 +76,7 @@ const Chatting = () => {
       const time = new Date(timestamp).toLocaleTimeString();
       setMessages(prev => [...prev, { id: time, text: message, isUser:false }]);
 
-      if (senderId !== senderId) {
+      if (senderId !== currentUserId) {
         socket.emit('markAsRead', { roomId });
       }
     });
