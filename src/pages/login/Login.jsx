@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./Login.css";
 import { loginapi } from "../../common/apis";
-
+import Loader from "../../components/loader/Loader"
 const Login = () => {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
@@ -65,7 +65,7 @@ const Login = () => {
     <>
     {
       isuserLoggedIn && 
-      <div className="spinner"/>
+       <Loader/>
     }
     <div className="login-container">
       <div className="overlay" />

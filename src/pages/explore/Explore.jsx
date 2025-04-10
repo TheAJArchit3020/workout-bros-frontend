@@ -140,7 +140,7 @@ const Explore = () => {
               onClick={() => requestLocation()}
             >
               <img
-                src="/public/images/explore/location.svg"
+                src="/images/explore/location.svg"
                 alt="location"
                 className="location-enable-button-icon"
               />
