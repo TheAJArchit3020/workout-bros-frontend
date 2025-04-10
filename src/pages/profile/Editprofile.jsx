@@ -3,7 +3,6 @@ import "./Editprofile.css";
 import { interests } from "../../data/interests";
 import axios from "axios";
 import { getuserprofileapi } from "../../common/apis";
-import { getAllInterests } from "../../common/getallinterest";
 import { useNavigate } from "react-router";
 
 const Editprofile = () => {
@@ -71,6 +70,7 @@ const Editprofile = () => {
   };
 
   const handleSave = async () => {
+    // setShowModal(true);
     try {
       const formDataToSubmit = new FormData();
       formDataToSubmit.append("name", formData.name);
@@ -95,15 +95,28 @@ const Editprofile = () => {
       if (response.status === 200) {
         console.log("profile updatedresponse", response);
         setShowModal(true);
-        setTimeout(() => {
-          setShowModal(false);
-          navigate("/profile");
-        }, 2000);
+
+        if (showModal) {
+          const timer = setTimeout(() => {
+            setShowModal(false);
+            navigate("/profile");
+          }, 2000); // 2 seconds
+          return () => clearTimeout(timer);
+        }
       }
     } catch (error) {
       console.error("Error updating profile:", error);
     }
   };
+
+  // useEffect(() => {
+  //   if (showModal) {
+  //     const timer = setTimeout(() => {
+  //       setShowModal(false);
+  //     }, 2000); // 2 seconds
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [showModal]);
 
   useEffect(() => {
     const getUserProfile = async () => {
@@ -144,16 +157,6 @@ const Editprofile = () => {
 
   return (
     <div className="edit-profile-container">
-      {/* Navbar */}
-      {/* <div className="edit-profile-navbar-container">
-        <div className="edit-profile-navbar-wrapper">
-          <div className="edit-profile-navbar-brand-name">
-            <span className="edit-profile-navbar-brand-name-text">
-              SwolHomies
-            </span>
-          </div>
-        </div>
-      </div> */}
       <div className="public-profile-back-header">
         <div className="filter-back-button" onClick={handleBack}>
           <img src="./images/backbuttonicon.svg" alt="back-button" />
@@ -289,15 +292,21 @@ const Editprofile = () => {
       </div>
 
       {/* modal */}
-      {showModal && (
-        <div className="edit-profile-modal">
-          <div className="edit-profile-modal-content">
-            <span className="edit-profile-modal-content-text">
-              Profile updated
-            </span>
+      <div
+        className={`edit-profile-modal-wrapper ${
+          showModal ? "fade-in" : "fade-out"
+        }`}
+      >
+        {showModal && (
+          <div className="edit-profile-modal">
+            <div className="edit-profile-modal-content">
+              <span className="edit-profile-modal-content-text">
+                Profile updated
+              </span>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
