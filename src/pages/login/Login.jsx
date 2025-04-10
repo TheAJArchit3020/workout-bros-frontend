@@ -8,13 +8,21 @@ import { loginapi } from "../../common/apis";
 const Login = () => {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
-
+  const [isuserLoggedIn, setIsUserLoggedIn] = useState(false);
   const handleGoogleSignIn = useGoogleLogin({
     onSuccess: (response) => {
       console.log(response.access_token);
       setAccessToken(response.access_token);
     },
   });
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if(token){
+      navigate("/explore");
+    }
+  },[])
 
   useEffect(() => {
     if (accessToken) {
@@ -23,6 +31,7 @@ const Login = () => {
   }, [accessToken]);
 
   const getUserDetails = async () => {
+    console.log("accessToken", accessToken);
     const response = await axios.get(
       "https://www.googleapis.com/oauth2/v3/userinfo",
       {

@@ -143,7 +143,7 @@ const Filter = () => {
                     <span className="interest-name">{interest.name}</span>
                     <img
                       src={`/images/${
-                        isSelected ? interest.activeIconFile : interest.iconFile
+                        isSelected ? `yellowicons/${interest.activeIconFile}` : `Greyicon/${interest.iconFile}`
                       }`}
                       alt={interest.name}
                       className="interest-icon"
