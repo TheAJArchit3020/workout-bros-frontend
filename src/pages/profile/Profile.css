@@ -48,6 +48,12 @@
     border-radius: 10rem;
 }
 
+.profile-edit-info-button:active {
+   
+    background-color: #88AF01;
+    opacity: 0.5;
+}
+
 .profile-edit-info-button-text {
     font-size: 10px;
     font-weight: bold;
@@ -278,7 +284,7 @@ span.reviews-title {
 
 @media (min-width : 1020px) {
     .profile-container {
-        width: 300px;
+        width: 450px;
         padding: 10px;
         scrollbar-width: none;
         overflow: hidden;

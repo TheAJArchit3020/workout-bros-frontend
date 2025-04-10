@@ -280,7 +280,7 @@ div.interest-button.selected .interest-name {
 
 @media (min-width:1024px){
     .filter-container {
-       width: 300px;
+       width: 450px;
     }
     .interests-grid{
         gap:2px;

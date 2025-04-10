@@ -6,7 +6,7 @@ import axios from "axios";
 import { getuserprofileapi } from "../../common/apis";
 import { Link } from "react-router";
 import { interests as allInterests } from "../../data/interests";
-
+import { useNavigate } from "react-router";
 const Profile = () => {
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -16,7 +16,7 @@ const Profile = () => {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-
+  const navigate = useNavigate();
   const handleRatingClick = (value) => {
     setRating(value);
   };
@@ -67,12 +67,12 @@ const Profile = () => {
               <span className="profile-email">{profile?.email}</span>
             </div>
 
-            <Link className="profile-edit-info-button" to="/editprofile">
+            <div className="profile-edit-info-button" onClick={()=> navigate("/editprofile")}>
               <img src="./images/editpencil.svg" alt="edit" />
               <span className="profile-edit-info-button-text">
                 Edit profile
               </span>
-            </Link>
+            </div>
           </div>
           <span className="profile-description">{profile?.description}</span>
           <div className="profile-interests-container">

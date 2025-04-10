@@ -2,8 +2,6 @@
     background-color: #ffffff;
     /* min-height: 100vh; */
     position: relative;
-    padding: 20px;
-    display: flex;
     color: #2A2A2A;
     flex-direction: column;
     gap: 30px;
@@ -34,11 +32,19 @@
     width: 50%;
     margin: 0 auto;
     text-align: center;
+}
 
+.public-profile-back-header{
+    padding-left: 20px;
 }
 
 .edit-profile-navbar-wrapper {
     margin-top: 2rem;
+}
+
+.edit-profile-wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .edit-profile-navbar-brand-name-text {
@@ -154,14 +160,9 @@ img.profile-pic {
 
 
 @media screen and (max-width: 480px) {
-    .edit-profile-container {
-        gap: 3rem;
-    }
-
+   
     .edit-profile-navbar-brand-name {
-        width: 45%;
-        padding: 1rem;
-
+        width: 45%;      
     }
 
     .edit-profile-navbar-brand-name-text {
@@ -279,11 +280,14 @@ img.profile-pic {
     /* Text color */
     font-weight: bold;
 }
-
+.filter-back-button:active{
+    background-color: #88AF01;
+    opacity: 0.5;
+}
 
 @media (min-width : 1024px) {
     .edit-profile-container {
-        width: 300px;
+        width: 450px;
     }
 
 }

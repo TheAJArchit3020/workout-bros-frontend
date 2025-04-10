@@ -22,8 +22,6 @@ export const getAllInterests = async (tokenData, setInterestArray) => {
 
       // If there's a match, return the matched interest data with the new structure
       if (matchedInterest) {
-       
-
         // Return the matched interest data
         return {
           //   id: matchedInterest.id,
