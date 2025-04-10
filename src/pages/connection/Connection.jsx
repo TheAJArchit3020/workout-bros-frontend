@@ -96,11 +96,7 @@ const Connection = () => {
 
   return (
     <div className="connection-container">
-      <img
-        src="/images/referenceImages/connectionscreen.png"
-        alt="connection-page"
-        className="filter-page-image"
-      />
+    
       <div className="edit-profile-navbar-container">
         <div className="edit-profile-navbar-wrapper">
           <div className="edit-profile-navbar-brand-name">

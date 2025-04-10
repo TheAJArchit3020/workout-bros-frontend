@@ -58,8 +58,10 @@ h1 {
   font-size: 0.8rem;
 }
 
-.btn:hover {
-  cursor: pointer;
+.btn:active {
+   cursor: pointer;
+    background-color: #88AF01;
+    opacity: 0.5;
 }
 
 @media screen and (min-width: 768px) {
@@ -74,3 +76,17 @@ h1 {
     width: 300px;
   }
 }
+
+@media screen and (min-width: 1500px) {
+  .login-container {
+    width: 450px;  
+  }
+  .overlay{
+    width:  450px;  
+  }
+  .content-container{
+    padding: 0%;
+    width: 450px;
+  }
+}
+

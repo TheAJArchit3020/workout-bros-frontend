@@ -103,8 +103,13 @@
     transform: rotate(45deg);
   }
 
+  .back-button:active{
+    background-color: #88AF01;
+    opacity: 0.5;
+  }
+
   @media screen and (min-width: 700px){
     .chat-container {
-      width: 300px;
+      width: 450px;
     }
   }

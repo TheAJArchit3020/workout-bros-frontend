@@ -94,9 +94,9 @@ const Chatting = () => {
     <div className="chat-container">
       {/* Header */}
       <div className="chat-header">
-        <button className="back-button" onClick={handleBackButton}>
+        <div className="back-button" onClick={handleBackButton}>
           <ArrowLeftIcon className="icon arrow" />
-        </button>
+        </div>
         <span className="username">{chatName}</span>
       </div>
 

@@ -1,76 +1,77 @@
 /* mobile css */
 
 .navbar-container {
-    width: 100%;
-    max-width: 425px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    padding-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12%;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12%;
 }
 
 .navbar-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    text-align: center;
-    justify-content: flex-end;
-    gap: 1rem;
-    
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  text-align: center;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 .navbar-brand-name {
-    background: #fff;
-    padding: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10rem;
-    width: 11rem;
-    background-color: #EDEDED;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10rem;
+  width: 11rem;
+  background-color: #ededed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
 .navbar-brand-name-text {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #000;
-    font-family: 'Oswald';
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  font-family: "Oswald";
 }
 
 .navbar-filter-container {
-    background-color: #DFFD52;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
+  background-color: #dffd52;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
 }
 
 .tab-home.selected {
-    background-color: #FF6B6B;
+  background-color: #ff6b6b;
 }
 
 .tab-workout.selected {
-    background-color: #4ECDC4;
+  background-color: #4ecdc4;
 }
 
 .tab-profile.selected {
-    background-color: #45B7D1;
+  background-color: #45b7d1;
 }
 
 .tab-settings.selected {
-    background-color: #96CEB4;
+  background-color: #96ceb4;
 }
 
-@media (min-width:1024px){
-    .navbar-container {
-        padding-right: 4%;
-        gap: 8%;
-    }
+.navbar-filter-container:active {
+  background-color: #88af01;
+  opacity: 0.5;
+}
+@media (min-width: 1024px) {
+  .navbar-container {
+    padding-right: 4%;
+    gap: 8%;
+  }
 }
