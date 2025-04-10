@@ -313,6 +313,18 @@ img.explore-profile-card-exploremessage-image {
   color: #2A2A2A;
 }
 
+.viewPhoto-container{
+  position: fixed;
+  top:0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px); 
+  z-index: 999;
+}
 /* Responsive styles for 320px to 425px */
 @media screen and (min-width: 320px) and (max-width: 426px) {
   .explore-container {

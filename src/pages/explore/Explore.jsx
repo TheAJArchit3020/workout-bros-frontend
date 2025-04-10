@@ -11,13 +11,15 @@ import {
 } from "../../common/apis";
 import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
-
+import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
+import { use } from "react";
 const Explore = () => {
   const navigate = useNavigate();
   const [usersArray, setUsersArray] = useState(null);
   const { location, error, loading, requestLocation } = useLocation();
   const [showLoader, setShowLoader] = useState(false);
-
+  const [showProfilePic, setShowProfilePic] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
 
@@ -65,6 +67,9 @@ const Explore = () => {
     getNearByUsers();
   }, []);
 
+  useEffect(() => {
+    console.log("showProfilePic", showProfilePic);
+  }, [showProfilePic]);
   const getNearByUsers = async () => {
     setShowLoader(true);
     try {
@@ -113,7 +118,11 @@ const Explore = () => {
   return (
     <>
       {showLoader && <Loader />}
-
+      {showProfilePic && (
+        <div className="viewPhoto-container" onClick={() => setShowProfilePic(false)}>
+          <ViewPhoto image={selectedImage}  />
+        </div>
+      )}
       <div className="explore-container">
         <Navbar displayFilterButton={true} />
 
@@ -153,8 +162,21 @@ const Explore = () => {
               >
                 <div className="explore-profile-card-image">
                   <img
-                    src={`${bro.profilePic}` || "/images/profile.png"}
+                    src={
+                      bro.profilePic
+                        ? `${bro.profilePic}`
+                        : "/images/profile.png"
+                    }
                     alt="profile"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedImage(
+                        bro.profilePic
+                          ? `${bro.profilePic}`
+                          : "/images/profile.png"
+                      );
+                      setShowProfilePic(!showProfilePic);
+                    }}
                   />
                   <div className="explore-profile-card-content">
                     <span className="explore-profile-card-name">
