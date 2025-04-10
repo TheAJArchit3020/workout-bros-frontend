@@ -196,7 +196,7 @@ const CreateProfile = () => {
                         width: "120px",
                         height: "120px",
                         borderRadius: "50%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                       }}
                     />
                   ) : (
@@ -300,11 +300,6 @@ const CreateProfile = () => {
                 <span className="createprofile-uploadprofile-modal-title">
                   Upload Profile Photo
                 </span>
-                <img
-                  src="/images/profile/cross.svg"
-                  alt="profile"
-                  onClick={handleImageClick}
-                />
               </div>
               {isImageSelected ? (
                 <>
@@ -316,6 +311,7 @@ const CreateProfile = () => {
                       width: "100px",
                       height: "100px",
                       borderRadius: "50%",
+                      objectFit: 'contain',
                     }}
                   />
                   <div className="createprofile-uploadprofile-modal-donebutton">

@@ -61,16 +61,20 @@ span.explore-profile-card-interest-more {
 }
 
 .location-status {
-  padding: 20px;
+  background-color: #2A2A2A;
+  padding: 24px 50px;
   border-radius: 8px;
   margin: 20px 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .location-status.error {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 1px solid #ffcdd2;
+  color: #DFFD52;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .location-status.success {
@@ -292,6 +296,23 @@ img.explore-profile-card-exploremessage-image {
   border: 1px solid #F8FFC7;
 }
 
+.location-enable-button {
+  border-radius: 24px;
+  background: #DFFD52;
+  width: 145px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.location-enable-button-text {
+  color: #2A2A2A;
+}
+
 .viewPhoto-container{
   position: fixed;
   top:0%;
@@ -339,8 +360,14 @@ img.explore-profile-card-exploremessage-image {
   }
 }
 
+@media (min-width : 450px) {
+  .explore-container {
+    width: 425px;
+  }
+}
+
 @media (min-width : 1020px) {
   .explore-container {
-    width: 450px;
+    width: 425px;
   }
 }

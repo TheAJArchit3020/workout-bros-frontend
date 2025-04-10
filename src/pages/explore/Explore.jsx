@@ -135,7 +135,19 @@ const Explore = () => {
         {error && (
           <div className="location-status error">
             <p>{error}</p>
-            <button onClick={requestLocation}>Enable Location</button>
+            <div
+              className="location-enable-button"
+              onClick={() => requestLocation()}
+            >
+              <img
+                src="/public/images/explore/location.svg"
+                alt="location"
+                className="location-enable-button-icon"
+              />
+              <span className="location-enable-button-text">
+                Enable Location
+              </span>
+            </div>
           </div>
         )}
 
