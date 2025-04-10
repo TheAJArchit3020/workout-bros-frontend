@@ -196,7 +196,7 @@ const CreateProfile = () => {
                         width: "120px",
                         height: "120px",
                         borderRadius: "50%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                       }}
                     />
                   ) : (

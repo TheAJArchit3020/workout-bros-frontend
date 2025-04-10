@@ -73,7 +73,7 @@ const Editprofile = () => {
     }
   };
 
-  const handleSave = async () => {
+  const handleSave = async (type) => {
     // setShowModal(true);
     try {
       const formDataToSubmit = new FormData();
@@ -98,14 +98,13 @@ const Editprofile = () => {
 
       if (response.status === 200) {
         console.log("profile updatedresponse", response);
-        setShowModal(true);
+        if (type !== "image") {
+          setShowModal(true);
 
-        if (showModal) {
-          const timer = setTimeout(() => {
+          setTimeout(() => {
             setShowModal(false);
             navigate("/profile");
-          }, 2000); // 2 seconds
-          return () => clearTimeout(timer);
+          }, 2000);
         }
       }
     } catch (error) {
@@ -162,6 +161,7 @@ const Editprofile = () => {
   const handleImageClick = () => {
     // Toggle modal visibility
     setShowUploadModal(!showUploadModal);
+    handleSave("image");
   };
 
   return (
@@ -311,7 +311,6 @@ const Editprofile = () => {
               <span className="createprofile-uploadprofile-modal-title">
                 Upload Profile Photo
               </span>
-              
             </div>
             {selectedImagePreview ? (
               <>

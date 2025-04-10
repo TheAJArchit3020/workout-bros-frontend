@@ -28,7 +28,10 @@ window.addEventListener("beforeinstallprompt", (e) => {
 });
 
 createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider clientId="81865697310-626vq6gichnoc7bv3tv4fseu7i2vgavh.apps.googleusercontent.com">
+  <GoogleOAuthProvider
+    clientId="81865697310-626vq6gichnoc7bv3tv4fseu7i2vgavh.apps.googleusercontent.com"
+    // clientId="151193059285-r9d8q97is7qo0cgutufq2ndhld5mt78d.apps.googleusercontent.com"
+  >
     <StrictMode>
       <App />
     </StrictMode>
