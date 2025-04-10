@@ -8,7 +8,7 @@ import { loginapi } from "../../common/apis";
 const Login = () => {
   const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
-  const [isuserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isuserLoggedIn, setIsUserLoggedIn] = useState(true);
   const handleGoogleSignIn = useGoogleLogin({
     onSuccess: (response) => {
       console.log(response.access_token);
@@ -21,6 +21,9 @@ const Login = () => {
     console.log(token);
     if(token){
       navigate("/explore");
+    }
+    else{
+      setIsUserLoggedIn(false);
     }
   },[])
 
@@ -59,6 +62,11 @@ const Login = () => {
   };
 
   return (
+    <>
+    {
+      isuserLoggedIn && 
+      <div className="spinner"/>
+    }
     <div className="login-container">
       <div className="overlay" />
       <div className="content-container">
@@ -72,6 +80,7 @@ const Login = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 
