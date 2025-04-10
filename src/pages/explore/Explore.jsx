@@ -126,89 +126,105 @@ const Explore = () => {
         {error && (
           <div className="location-status error">
             <p>{error}</p>
-            <button onClick={requestLocation}>Enable Location</button>
+            <div
+              className="location-enable-button"
+              onClick={() => requestLocation()}
+            >
+              <img
+                src="/public/images/explore/location.svg"
+                alt="location"
+                className="location-enable-button-icon"
+              />
+              <span className="location-enable-button-text">
+                Enable Location
+              </span>
+            </div>
           </div>
         )}
 
-      <div className="explore-profile-card-section">
-        <span className="explore-profile-card-title">Explore Bro's</span>
-        {usersArray && usersArray.length > 0 ? (
-          usersArray.map((bro) => (
-            <div
-              className="explore-profile-card"
-              key={bro._id}
-              onClick={() => navigateToPublicProfile(bro._id)}
-            >
-              <div className="explore-profile-card-image">
-                <img
-                  src={`${bro.profilePic}` || "/images/profile.png"}
-                  alt="profile"
-                />
-                <div className="explore-profile-card-content">
-                  <span className="explore-profile-card-name">{bro.name}</span>
-                  <div className="explore-profile-card-interest-container">
-                    {bro.interests && bro.interests.length > 0 && (
-                      <>
-                        {bro.interests.slice(0, 2).map((interest, index) => (
-                          <span
-                            className="explore-profile-card-interest"
-                            key={index}
-                          >
-                            {interest}
-                            {index === 0 && bro.interests.length > 1 ? "" : ""}
-                          </span>
-                        ))}
-                        {bro.interests.length > 2 && (
-                          <span className="explore-profile-card-interest-more">
-                            +{bro.interests.length - 2} more
-                          </span>
-                        )}
-                      </>
-                    )}
+        <div className="explore-profile-card-section">
+          <span className="explore-profile-card-title">Explore Bro's</span>
+          {usersArray && usersArray.length > 0 ? (
+            usersArray.map((bro) => (
+              <div
+                className="explore-profile-card"
+                key={bro._id}
+                onClick={() => navigateToPublicProfile(bro._id)}
+              >
+                <div className="explore-profile-card-image">
+                  <img
+                    src={`${bro.profilePic}` || "/images/profile.png"}
+                    alt="profile"
+                  />
+                  <div className="explore-profile-card-content">
+                    <span className="explore-profile-card-name">
+                      {bro.name}
+                    </span>
+                    <div className="explore-profile-card-interest-container">
+                      {bro.interests && bro.interests.length > 0 && (
+                        <>
+                          {bro.interests.slice(0, 2).map((interest, index) => (
+                            <span
+                              className="explore-profile-card-interest"
+                              key={index}
+                            >
+                              {interest}
+                              {index === 0 && bro.interests.length > 1
+                                ? ""
+                                : ""}
+                            </span>
+                          ))}
+                          {bro.interests.length > 2 && (
+                            <span className="explore-profile-card-interest-more">
+                              +{bro.interests.length - 2} more
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
+                <div
+                  className="explore-profile-card-button1"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    if (bro.connectionStatus === "accepted") {
+                      navigate("/chatting", {
+                        state: {
+                          chatId: bro?._id,
+                          name: bro?.name,
+                          roomId: bro?.roomId,
+                          receiverId: bro?.receiverId,
+                          senderId: bro?.senderId,
+                        },
+                      });
+                      return;
+                    }
+                    sendConnectRequest(bro._id);
+                  }}
+                >
+                  {bro.connectionStatus === null ? (
+                    <span className="explore-profile-card-button-text">
+                      Connect
+                    </span>
+                  ) : bro.connectionStatus === "pending" ? (
+                    <span className="explore-profile-card-button-text-pending">
+                      requested
+                    </span>
+                  ) : (
+                    <img
+                      src="/images/explore/exploremessage.svg"
+                      alt="message"
+                      className="explore-profile-card-exploremessage-image"
+                    />
+                  )}
+                </div>
               </div>
-              <div
-                className="explore-profile-card-button1"
-                onClick={(event) => {
-                  event.stopPropagation();          
-                  if(bro.connectionStatus === "accepted"){
-                    navigate('/chatting',{
-                      state: {
-                        chatId: bro?._id,
-                        name: bro?.name,
-                        roomId: bro?.roomId,
-                        receiverId : bro?.receiverId,
-                        senderId : bro?.senderId
-                      }
-                    })
-                    return;
-                  }
-                  sendConnectRequest(bro._id)
-                }}
-              >
-                {bro.connectionStatus === null ? (
-                  <span className="explore-profile-card-button-text">
-                    Connect
-                  </span>
-                ) : bro.connectionStatus === "pending" ? (
-                  <span className="explore-profile-card-button-text-pending">
-                    requested
-                  </span>
-                ) : (
-                  <img
-                    src="/images/explore/exploremessage.svg"
-                    alt="message"
-                    className="explore-profile-card-exploremessage-image"
-                  />
-                )}
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>No users found in your area</p>
-        )}
-      </div>
+            ))
+          ) : (
+            <p>No users found in your area</p>
+          )}
+        </div>
 
         <div className="explore-footer-section">
           <Footer />
