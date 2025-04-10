@@ -245,7 +245,7 @@ const Editprofile = () => {
                         {interest.name}
                       </span>
                       <img
-                        src={`/images/${interest.activeIconFile}`}
+                        src={`/images/yellowicons/${interest.activeIconFile}`}
                         alt="edit-profile-interest"
                         className="edit-profile-form-content-interests-image"
                       />
@@ -271,7 +271,7 @@ const Editprofile = () => {
                     >
                       <span className="interest-name">{interest.name}</span>
                       <img
-                        src={`/images/${interest.iconFile}`}
+                        src={`/images/Greyicon/${interest.iconFile}`}
                         alt={interest.name}
                         className="interest-icon"
                       />

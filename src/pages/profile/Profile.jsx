@@ -84,7 +84,7 @@ const Profile = () => {
                 <div className="profile-interest-item" key={index}>
                   <span className="profile-interests-list">{interest}</span>
                   <img
-                    src={`./images/${
+                    src={`./images/yellowicons/${
                       matchingInterest?.activeIconFile ||
                       matchingInterest?.iconFile
                     }`}

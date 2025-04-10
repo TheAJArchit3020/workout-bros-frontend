@@ -1,7 +1,7 @@
 export const interests = [
   { id: 1, name: 'Badminton', iconFile: 'badminton.svg', activeIconFile: 'badminton.svg' },
   { id: 2, name: 'Cycling', iconFile: 'cycling.svg', activeIconFile: 'cycling.svg' },
-  { id: 3, name: 'basketball', iconFile: 'basketball.svg', activeIconFile: 'basketball.svg' },
+  { id: 3, name: 'Basketball', iconFile: 'basketball.svg', activeIconFile: 'basketball.svg' },
   { id: 4, name: 'Yoga', iconFile: 'Yogo.svg', activeIconFile: 'Yogo.svg' },
   { id: 5, name: 'Gym', iconFile: 'gym.svg', activeIconFile: 'gym.svg' },
   { id: 6, name: 'Running', iconFile: 'running.svg', activeIconFile: 'running.svg' },
