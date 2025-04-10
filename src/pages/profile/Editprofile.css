@@ -286,6 +286,13 @@ img.profile-pic {
     opacity: 0.5;
 }
 
+@media (min-width : 450px) {
+    .edit-profile-container {
+        width: 425px;
+    }
+
+}
+
 @media (min-width : 1024px) {
     .edit-profile-container {
         width: 425px;

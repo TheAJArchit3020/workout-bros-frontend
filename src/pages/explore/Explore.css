@@ -326,9 +326,13 @@ img.explore-profile-card-exploremessage-image {
     padding: calc(5px + (8 - 5) * ((100vw - 320px) / (425 - 320))) calc(10px + (16 - 10) * ((100vw - 320px) / (425 - 320)));
   }
 }
-
+@media (min-width : 450px) {
+  .explore-container {
+    width: 425px;
+  }
+}
 @media (min-width : 1020px) {
   .explore-container {
-    width: 450px;
+    width: 425px;
   }
 }
