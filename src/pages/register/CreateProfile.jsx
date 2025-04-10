@@ -13,9 +13,9 @@ const CreateProfile = () => {
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [interestArray, setInterestArray] = useState([]);
   const [isImageSelected, setisImageSelected] = useState(false);
-  const [isNextButtonClicked, setIsNextButtonClicked] = useState(false);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
+  const [animateModal, setAnimateModal] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +25,7 @@ const CreateProfile = () => {
   });
 
   const isValidInfo =
-    formData.name.length > 0 && formData.description.length > 0 && profileImage;
+    formData.name.length > 0 && formData.description.length > 0;
   const isValidIntrest = formData.selectedIntrests.length > 0;
 
   const handleInput = (key, value) => {
@@ -35,10 +35,18 @@ const CreateProfile = () => {
     }));
   };
 
-  const handleImageClick = () => {
-    // Toggle modal visibility
-    setShowUploadModal(!showUploadModal);
+
+  const openModal = () => {
+    setShowUploadModal(true);
+    setTimeout(() => setAnimateModal(true), 300);
   };
+
+  const closeModal = () => {
+    setAnimateModal(false);
+    setTimeout(() => setShowUploadModal(false), 300);
+  };
+
+ 
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -119,13 +127,6 @@ const CreateProfile = () => {
 
   const handleNextButton = () => {
     console.log(formData, "formData");
-
-    if (profileSection === 1 && !isValidInfo) {
-      return;
-    } else if (profileSection === 2 && !isValidIntrest) {
-      return;
-    }
-
     if (profileSection < 2) {
       setProfileSection((prev) => prev + 1);
     } else {
@@ -146,32 +147,14 @@ const CreateProfile = () => {
     }
   };
 
-  const getBackgroundImage = () => {
-    if (profileSection === 1 && isNextButtonClicked && isValidInfo) {
-      return "url('/images/CreateProfile/clickableButtonEffect.svg')";
-    } else if (profileSection === 2 && isNextButtonClicked && isValidIntrest) {
-      return "url('/images/CreateProfile/doneClickableButton.svg')";
-    }
-
-    const image =
-      profileSection === 1
-        ? isValidInfo
-          ? "url('/images/buttonActive.svg')"
-          : "url('/images/buttonDeActive.svg')"
-        : isValidIntrest
-        ? "url('/images/activeDone.svg')"
-        : "url('/images/inactiveDone.svg')";
-
-    return image;
-  };
   return (
     <>
       <div className="profile_container">
         <div className="p_c_header">
           <div className="p_c_header_left">
-            <div className="p_c_backButton" onClick={handleBackButton}>
+            <button className="p_c_backButton" onClick={handleBackButton}>
               <ArrowLeftIcon className="arrowIcon" />
-            </div>
+            </button>
             <span className="text">Set up your profile</span>
           </div>
           <span className="text section">{profileSection}/2</span>
@@ -183,7 +166,7 @@ const CreateProfile = () => {
               <div
                 className="p_c_profileImageContainer"
                 onClick={() => {
-                  handleImageClick();
+                  openModal();
                 }} // This triggers modal open
               >
                 <div className="p_c_profilePlusButtonContainer">
@@ -196,7 +179,6 @@ const CreateProfile = () => {
                         width: "120px",
                         height: "120px",
                         borderRadius: "50%",
-                        objectFit: "contain",
                       }}
                     />
                   ) : (
@@ -261,11 +243,12 @@ const CreateProfile = () => {
                       >
                         {interest.name}
                       </span>
+
                       <img
                         src={`/images/${
                           isSelected
-                            ? `yellowicons/${interest.activeIconFile}`
-                            : `Greyicon/${interest.iconFile}`
+                            ? interest.activeIconFile
+                            : interest.iconFile
                         }`}
                         alt={interest.name}
                         className="interest-icon"
@@ -279,22 +262,30 @@ const CreateProfile = () => {
         )}
 
         <div className="p_c_buttonContainer">
-          <div
+          <button
             className="p_c_nextButton"
             style={{
-              backgroundImage: getBackgroundImage(),
+              backgroundImage:
+                profileSection === 1
+                  ? isValidInfo
+                    ? "url('/images/buttonActive.svg')"
+                    : "url('/images/buttonDeActive.svg')"
+                  : isValidIntrest
+                  ? "url('/images/activeDone.svg')"
+                  : "url('/images/inactiveDone.svg')",
             }}
-            onMouseDown={() => setIsNextButtonClicked(true)}
-            onMouseUp={() => setIsNextButtonClicked(false)}
-            onTouchStart={() => setIsNextButtonClicked(true)}
-            onTouchEnd={() => setIsNextButtonClicked(false)}
+            disabled={profileSection === 1 ? !isValidInfo : !isValidIntrest}
             onClick={handleNextButton}
-          ></div>
+          ></button>
         </div>
 
         {/* Upload image modal */}
         {showUploadModal && (
-          <div className="createprofile-uploadprofile-modal">
+          <div
+            className={`createprofile-uploadprofile-modal ${
+              animateModal ? "fade-in" : "fade-out"
+            }`}
+          >
             <div className="createprofile-uploadprofile-modal-content">
               <div className="createprofile-uploadprofile-modal-header">
                 <span className="createprofile-uploadprofile-modal-title">
@@ -311,14 +302,14 @@ const CreateProfile = () => {
                       width: "100px",
                       height: "100px",
                       borderRadius: "50%",
-                      objectFit: 'contain',
+                      objectFit:"contain"
                     }}
                   />
                   <div className="createprofile-uploadprofile-modal-donebutton">
                     <span
                       className="createprofile-uploadprofile-modal-donebutton-text"
                       onClick={() => {
-                        handleImageClick();
+                        closeModal();
                         setisImageSelected(false);
                       }}
                     >
