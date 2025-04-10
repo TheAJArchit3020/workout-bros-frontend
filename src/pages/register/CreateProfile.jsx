@@ -12,7 +12,7 @@ const CreateProfile = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [interestArray, setInterestArray] = useState([]);
-  const [isImageSelected,setisImageSelected] = useState(false); 
+  const [isImageSelected, setisImageSelected] = useState(false);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
 
@@ -50,13 +50,13 @@ const CreateProfile = () => {
       // Create a preview URL for the image
       const imageUrl = URL.createObjectURL(file);
       setProfileImage(imageUrl);
-      setisImageSelected(true); 
+      setisImageSelected(true);
     }
   };
 
   useEffect(() => {
     console.log("Image selected:", isImageSelected);
-  },[isImageSelected])
+  }, [isImageSelected]);
 
   const toggleInterest = (interestName) => {
     setFormData((prev) => ({
@@ -157,7 +157,7 @@ const CreateProfile = () => {
               <div
                 className="p_c_profileImageContainer"
                 onClick={() => {
-                  handleImageClick()
+                  handleImageClick();
                 }} // This triggers modal open
               >
                 <div className="p_c_profilePlusButtonContainer">
@@ -278,11 +278,6 @@ const CreateProfile = () => {
                 <span className="createprofile-uploadprofile-modal-title">
                   Upload Profile Photo
                 </span>
-                <img
-                  src="/images/profile/cross.svg"
-                  alt="profile"
-                  onClick={handleImageClick}
-                />
               </div>
               {isImageSelected ? (
                 <>
@@ -294,13 +289,16 @@ const CreateProfile = () => {
                       width: "100px",
                       height: "100px",
                       borderRadius: "50%",
+                      objectFit: 'contain',
                     }}
                   />
                   <div className="createprofile-uploadprofile-modal-donebutton">
                     <span
                       className="createprofile-uploadprofile-modal-donebutton-text"
-                      onClick={()=>{handleImageClick() ;
-                        setisImageSelected(false)}}
+                      onClick={() => {
+                        handleImageClick();
+                        setisImageSelected(false);
+                      }}
                     >
                       Done
                     </span>

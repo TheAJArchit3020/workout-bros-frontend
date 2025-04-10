@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Editprofile.css";
 import { interests } from "../../data/interests";
 import axios from "axios";
@@ -23,6 +23,10 @@ const Editprofile = () => {
     ...interests,
   ]);
   const [showModal, setShowModal] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [isImageSelected, setisImageSelected] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -155,6 +159,11 @@ const Editprofile = () => {
     navigate("/profile");
   };
 
+  const handleImageClick = () => {
+    // Toggle modal visibility
+    setShowUploadModal(!showUploadModal);
+  };
+
   return (
     <div className="edit-profile-container">
       <div className="public-profile-back-header">
@@ -183,14 +192,17 @@ const Editprofile = () => {
               <img src="./images/editprofileusericon.svg" alt="edit-profile" />
             )}
           </div>
-          <div className="edit-profile-placeholder-image">
-            <input
+          <div
+            className="edit-profile-placeholder-image"
+            onClick={() => setShowUploadModal(true)}
+          >
+            {/* <input
               type="file"
               accept="image/*"
               onChange={handleImageChange}
               style={{ display: "none" }}
               id="profile-image-input"
-            />
+            /> */}
             <label htmlFor="profile-image-input">
               <img
                 src="./images/editprofileuserplusicon.svg"
@@ -290,6 +302,54 @@ const Editprofile = () => {
       >
         <img src="./images/donebutton.svg" alt="edit-profile-done" />
       </div>
+
+      {/* Upload image modal */}
+      {showUploadModal && (
+        <div className="createprofile-uploadprofile-modal">
+          <div className="createprofile-uploadprofile-modal-content">
+            <div className="createprofile-uploadprofile-modal-header">
+              <span className="createprofile-uploadprofile-modal-title">
+                Upload Profile Photo
+              </span>
+              
+            </div>
+            {selectedImagePreview ? (
+              <>
+                <img
+                  src={selectedImagePreview}
+                  alt="profile"
+                  className="profile-pic"
+                />
+                <div className="createprofile-uploadprofile-modal-donebutton">
+                  <span
+                    className="createprofile-uploadprofile-modal-donebutton-text"
+                    onClick={() => {
+                      handleImageClick();
+                      setisImageSelected(false);
+                    }}
+                  >
+                    Done
+                  </span>
+                </div>
+              </>
+            ) : (
+              <img
+                src="/images/profile/uploadprofileimage.svg"
+                alt="profile"
+                className="createprofile-uploadprofile-modal-uploadbutton"
+                onClick={() => fileInputRef.current.click()}
+              />
+            )}
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleImageChange}
+              accept="image/*"
+              style={{ display: "none" }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* modal */}
       <div
