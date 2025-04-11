@@ -230,6 +230,7 @@ span.explore-profile-card-interest-more {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  color: #2a2a2a;
 }
 
 .explore-profile-card-interest {
@@ -258,6 +259,9 @@ span.explore-profile-card-interest-more {
   color: #000;
 }
 
+.no-users-found{
+  color: #2a2a2a;
+}
 .explore-footer-section {
   position: fixed;
   bottom: 1rem;

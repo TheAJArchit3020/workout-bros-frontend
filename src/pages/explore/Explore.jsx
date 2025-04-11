@@ -305,7 +305,7 @@ const Explore = () => {
               </div>
             ))
           ) : (
-            <p>No users found in your area</p>
+            <p className="no-users-found">No users found in your area</p>
           )}
         </div>
 
