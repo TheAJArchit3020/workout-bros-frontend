@@ -14,6 +14,20 @@
   padding-top: 2rem;
 }
 
+.public-profile-card-button-text {
+  text-transform: capitalize;
+  background-color: #000;
+  padding: 12px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #DFFD52;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+
 .public-profile-image {
   width: 100%;
   height: 100%;
@@ -100,19 +114,19 @@
   color: #dffd52;
 }
 
-.viewPhoto-container{
-    position: fixed;
-    top:0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(8px); 
-    z-index: 999;
-  }
-  
+.viewPhoto-container {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  z-index: 999;
+}
+
 .public-profile-message-image {
   background: #dffd52;
   display: flex;
@@ -125,6 +139,7 @@
   width: 35px;
   height: 35px;
 }
+
 img.public-profile-card-exploremessage-image {
   width: 50px;
   height: 50px;

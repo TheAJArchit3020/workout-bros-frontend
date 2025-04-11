@@ -181,7 +181,7 @@ const Editprofile = () => {
 
   return (
     <div className="edit-profile-container">
-      <div className="public-profile-back-header">
+      <div className="edit-profile-back-header">
         <div className="filter-back-button" onClick={handleBack}>
           <img src="./images/backbuttonicon.svg" alt="back-button" />
         </div>

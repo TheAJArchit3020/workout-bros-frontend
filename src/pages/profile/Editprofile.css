@@ -33,8 +33,9 @@
   text-align: center;
 }
 
-.public-profile-back-header {
+.edit-profile-back-header {
   padding-left: 20px;
+  padding-top: 2rem;
 }
 
 .edit-profile-navbar-wrapper {

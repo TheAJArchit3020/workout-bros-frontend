@@ -16,11 +16,18 @@ const Filter = () => {
   const [distance, setDistance] = useState(50);
   const [selectedInterests, setSelectedInterests] = useState([]);
 
-  const toggleInterest = (interestId) => {
+  // const toggleInterest = (interestId) => {
+  //   setSelectedInterests((prev) =>
+  //     prev.includes(interestId)
+  //       ? prev.filter((id) => id !== interestId)
+  //       : [...prev, interestId]
+  //   );
+  // };
+  const toggleInterest = (interestName) => {
     setSelectedInterests((prev) =>
-      prev.includes(interestId)
-        ? prev.filter((id) => id !== interestId)
-        : [...prev, interestId]
+      prev.includes(interestName)
+        ? prev.filter((name) => name !== interestName)
+        : [...prev, interestName]
     );
   };
 
@@ -77,7 +84,7 @@ const Filter = () => {
     ) {
       const initialSelected = interests
         .filter((interest) => usersArray[0].interests.includes(interest.name))
-        .map((interest) => interest.id);
+        .map((interest) => interest.name); // use name, not id
       setSelectedInterests(initialSelected);
     }
   }, [usersArray]);
@@ -124,6 +131,8 @@ const Filter = () => {
                 const userHasInterest = userInterests.includes(interest?.name);
 
                 console.log(userHasInterest);
+                // const isSelected =
+                //   selectedInterests?.includes(interest.name) || userHasInterest;
                 const isSelected =
                   selectedInterests?.includes(interest.name) || userHasInterest;
 
