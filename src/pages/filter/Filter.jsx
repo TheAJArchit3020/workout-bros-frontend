@@ -7,7 +7,7 @@ import { getnearbyusersapi } from "../../common/apis";
 import { useUsers } from "../../common/context";
 
 const Filter = () => {
-  const { usersArray, setUsersArray } = useUsers();
+  const { usersArray, setUsersArray, setSelectType } = useUsers();
 
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -32,16 +32,11 @@ const Filter = () => {
   };
 
   const handleApply = async () => {
-    console.log("tokenData:", tokenData);
-
     // Convert selected interests into a comma-separated string
     const interestNames = selectedInterests
-      .map((interestId) => {
-        const interest = interests.find((i) => i.id === interestId);
-        return interest ? interest.name : null;
-      })
-      .filter(Boolean) // Filter out nulls if any
-      .join(","); // Join interests into a single string
+      .map((interestName) => interestName) // Already in name format
+      .filter(Boolean)
+      .join(",");
 
     console.log("Applied filters:", {
       d: Number(distance) * 1000,
@@ -53,17 +48,36 @@ const Filter = () => {
         const response = await axios.get(`${getnearbyusersapi}`, {
           params: {
             maxDistance: Number(distance) * 1000,
-            interests: interestNames, // Add interests as a query parameter
+            interests: interestNames,
           },
           headers: {
             Authorization: `Bearer ${tokenData}`,
           },
         });
 
-        console.log("response getnearbyusersapi", response);
-        setUsersArray(response.data);
-
         if (response.status === 200) {
+          setSelectType("filter");
+
+          setUsersArray((prevUsers) => {
+            const newUsers = response.data.users;
+
+            console.log({newUsers})
+
+            // Filter out duplicates (e.g., based on unique user ID or name)
+            const mergedUsers = [...prevUsers];
+
+            newUsers?.forEach((newUser) => {
+              const exists = mergedUsers?.some(
+                (user) => user.id === newUser.id // adjust if your users have different unique key
+              );
+              if (!exists) {
+                mergedUsers.push(newUser);
+              }
+            });
+
+            return mergedUsers;
+          });
+
           navigate("/explore");
         }
       } catch (error) {
@@ -73,7 +87,7 @@ const Filter = () => {
   };
 
   const handleBack = () => {
-    navigate("/explore");
+    navigate("/explore", { state: { type: "filter" } });
   };
 
   useEffect(() => {
@@ -91,7 +105,6 @@ const Filter = () => {
 
   return (
     <div className="filter-container">
-      {/* <img src="/images/referenceImages/filter360x740.png" alt="filter-page" className="filter-page-image" /> */}
       <div className="filter-wrapper">
         {/* header section */}
         <div className="filter-header">
@@ -130,7 +143,6 @@ const Filter = () => {
                 const userInterests = usersArray?.[0]?.interests || [];
                 const userHasInterest = userInterests.includes(interest?.name);
 
-                console.log(userHasInterest);
                 // const isSelected =
                 //   selectedInterests?.includes(interest.name) || userHasInterest;
                 const isSelected =
