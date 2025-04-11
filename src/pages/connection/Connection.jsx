@@ -196,7 +196,7 @@ const Connection = () => {
                     /> */}
                     <div className="connection-notification-item-info">
                       <span className="connection-notification-item-info-text">
-                        <b>{item?.name || "User"}</b> Has Accepted your
+                        <b>{item?.senderName || "User"}</b> Has Accepted your
                         connection Request.
                       </span>
                     </div>
