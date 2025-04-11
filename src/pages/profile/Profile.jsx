@@ -120,7 +120,7 @@ const Profile = () => {
             <div className="profile-workouts-logout-button" onClick={() => {
               localStorage.removeItem("token")
               navigate("/")
-            }}>
+             }}>
               <span className="profile-workouts-logout-text">Logout</span>
             </div>
           </div>
