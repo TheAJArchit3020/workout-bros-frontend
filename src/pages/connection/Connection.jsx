@@ -41,7 +41,7 @@ const Connection = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-      
+
       setChatRequests(response.data);
     } catch (error) {
       console.log("getChatRequests", error);
@@ -65,7 +65,7 @@ const Connection = () => {
           },
         }
       );
-      
+
       getPendingRequests();
       getChatRequests();
       getChats();
@@ -84,7 +84,7 @@ const Connection = () => {
         },
       });
       if (response.status === 200) {
-        console.log("cahts data",response.data);
+        console.log("cahts data", response.data);
         const { connections } = response.data;
         setChats(connections);
       }
@@ -93,10 +93,8 @@ const Connection = () => {
     }
   };
 
-
   return (
     <div className="connection-container">
-    
       <div className="edit-profile-navbar-container">
         <div className="edit-profile-navbar-wrapper">
           <div className="edit-profile-navbar-brand-name">
@@ -199,7 +197,7 @@ const Connection = () => {
                     /> */}
                     <div className="connection-notification-item-info">
                       <span className="connection-notification-item-info-text">
-                        <b>{item?.name || "User"}</b> {item?.message}.
+                        <b>{item?.senderName || "User"}</b> {item?.message}.
                       </span>
                     </div>
                     <div className="connection-notification-item-button">
@@ -234,8 +232,8 @@ const Connection = () => {
                         chatId: item?._id,
                         name: item?.name,
                         roomId: item?.roomId,
-                        receiverId : item?.receiverId,
-                        senderId : item?.senderId
+                        receiverId: item?.receiverId,
+                        senderId: item?.senderId,
                       },
                     })
                   }
@@ -252,12 +250,11 @@ const Connection = () => {
                     {/* <span className="connection-chat-item-info-text">
                       Sent 2 mins ago
                     </span> */}
-                    {  
-                       !item.isRead && 
-                       <span className="connection-chat-item-info-text info-text">
-                          Sent you a message
-                       </span>
-                    }
+                    {!item.isRead && (
+                      <span className="connection-chat-item-info-text info-text">
+                        Sent you a message
+                      </span>
+                    )}
                   </div>
                 </div>
               ))
