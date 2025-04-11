@@ -7,7 +7,7 @@ import { getnearbyusersapi } from "../../common/apis";
 import { useUsers } from "../../common/context";
 
 const Filter = () => {
-  const { usersArray, setUsersArray } = useUsers();
+  const { usersArray, setUsersArray, setSelectType } = useUsers();
 
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -32,8 +32,6 @@ const Filter = () => {
   };
 
   const handleApply = async () => {
-    console.log("tokenData:", tokenData);
-
     // Convert selected interests into a comma-separated string
     const interestNames = selectedInterests
       .map((interestId) => {
@@ -60,10 +58,9 @@ const Filter = () => {
           },
         });
 
-        console.log("response getnearbyusersapi", response);
-        setUsersArray(response.data);
-
         if (response.status === 200) {
+          setSelectType("filter");
+          setUsersArray(response.data);
           navigate("/explore");
         }
       } catch (error) {
@@ -73,7 +70,7 @@ const Filter = () => {
   };
 
   const handleBack = () => {
-    navigate("/explore");
+    navigate("/explore", { state: { type: "filter" } });
   };
 
   useEffect(() => {
@@ -91,7 +88,6 @@ const Filter = () => {
 
   return (
     <div className="filter-container">
-      {/* <img src="/images/referenceImages/filter360x740.png" alt="filter-page" className="filter-page-image" /> */}
       <div className="filter-wrapper">
         {/* header section */}
         <div className="filter-header">
@@ -130,7 +126,6 @@ const Filter = () => {
                 const userInterests = usersArray?.[0]?.interests || [];
                 const userHasInterest = userInterests.includes(interest?.name);
 
-                console.log(userHasInterest);
                 // const isSelected =
                 //   selectedInterests?.includes(interest.name) || userHasInterest;
                 const isSelected =

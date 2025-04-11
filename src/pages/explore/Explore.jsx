@@ -16,7 +16,7 @@ import { useUsers } from "../../common/context";
 
 const Explore = () => {
   const navigate = useNavigate();
-  const { usersArray, setUsersArray } = useUsers();
+  const { usersArray, setUsersArray, selectType, setSelectType } = useUsers();
   const { location, error, loading, requestLocation } = useLocation();
   const [showLoader, setShowLoader] = useState(false);
   const [showProfilePic, setShowProfilePic] = useState(false);
@@ -64,8 +64,12 @@ const Explore = () => {
     }
   }, [location?.latitude, location?.longitude]);
 
+  console.log(selectType)
   useEffect(() => {
-    getNearByUsers();
+    if (selectType === "explore") {
+
+      getNearByUsers();
+    }
   }, []);
 
   const getNearByUsers = async () => {
