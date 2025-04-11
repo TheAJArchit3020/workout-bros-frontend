@@ -35,7 +35,6 @@ const CreateProfile = () => {
     }));
   };
 
-
   const openModal = () => {
     setShowUploadModal(true);
     setTimeout(() => setAnimateModal(true), 300);
@@ -45,8 +44,6 @@ const CreateProfile = () => {
     setAnimateModal(false);
     setTimeout(() => setShowUploadModal(false), 300);
   };
-
- 
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -179,6 +176,7 @@ const CreateProfile = () => {
                         width: "120px",
                         height: "120px",
                         borderRadius: "50%",
+                        objectFit: "cover",
                       }}
                     />
                   ) : (
@@ -247,8 +245,8 @@ const CreateProfile = () => {
                       <img
                         src={`/images/${
                           isSelected
-                            ? interest.activeIconFile
-                            : interest.iconFile
+                            ? `yellowicons/${interest.activeIconFile}`
+                            : `Greyicon/${interest.iconFile}`
                         }`}
                         alt={interest.name}
                         className="interest-icon"
@@ -302,7 +300,7 @@ const CreateProfile = () => {
                       width: "100px",
                       height: "100px",
                       borderRadius: "50%",
-                      objectFit:"contain"
+                      objectFit: "cover",
                     }}
                   />
                   <div className="createprofile-uploadprofile-modal-donebutton">
