@@ -8,6 +8,7 @@ import {
   getExplorelocationapi,
   sendconnectrequestapi,
   getnearbyusersapi,
+  getuserprofileapi,
 } from "../../common/apis";
 import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
@@ -29,6 +30,7 @@ const Explore = () => {
 
 
    // check token...
+   const [MyuserId, setMyuserId] = useState();
    useCheckToken();
 
 
@@ -49,7 +51,7 @@ const Explore = () => {
 
         console.log("API Response:", response.data);
         const { user } = response.data;
-        console.log("User data:", user);
+        console.log("Location Response:", user);
 
         // Transform the user data into the format we need
         const transformedUser = {
@@ -73,8 +75,21 @@ const Explore = () => {
   }, [location?.latitude, location?.longitude]);
 
   useEffect(() => {
-    if (selectType === "explore") {
+    const getUserData = async () => {
+      const response = await axios.get(getuserprofileapi, {
+        headers: {
+          Authorization: `Bearer ${tokenData}`,
+        },
+      });
+      console.log("the current user Data: ", response.data.user._id);
+      setMyuserId(response.data.user._id);
+    };
+    getUserData();
+  }, []);
 
+  console.log(selectType);
+  useEffect(() => {
+    if (selectType === "explore") {
       getNearByUsers();
     }
   }, []);
@@ -89,7 +104,7 @@ const Explore = () => {
       });
       console.log("getnearbyusersapi API Response:", response.data);
       const { users } = response.data;
-      console.log("User data:", users);
+      console.log("Nearby Users Data", users);
       setUsersArray(users);
       setShowLoader(false);
     } catch (error) {
@@ -237,7 +252,6 @@ const Explore = () => {
                     if (bro.connectionStatus === "accepted") {
                       navigate("/chatting", {
                         state: {
-                          chatId: bro?._id,
                           name: bro?.name,
                           roomId: bro?.roomId,
                           receiverId: bro?.receiverId,

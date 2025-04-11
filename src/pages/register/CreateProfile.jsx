@@ -39,7 +39,10 @@ const CreateProfile = () => {
     }));
   };
 
- 
+  const handleImageClick = () => {
+    // Toggle modal visibility
+    setShowUploadModal(!showUploadModal);
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];

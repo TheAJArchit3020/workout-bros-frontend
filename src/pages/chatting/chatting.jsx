@@ -9,7 +9,7 @@ import useCheckToken from "../../hooks/useCheckToken";
 
 const Chatting = () => {
   const { state } = useLocation();
-  const { chatId, name: chatName , roomId,receiverId,senderId} = state;
+  const { name: chatName, roomId, receiverId, senderId } = state;
   const currentUserId = senderId;
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -38,7 +38,7 @@ const Chatting = () => {
     if (e.key === "Enter") sendMessage();
   };
 
-  const handleBackButton = ()=>{
+  const handleBackButton = () => {
     socket.current.disconnect();
     navigate(-1);
   };
@@ -60,31 +60,43 @@ const Chatting = () => {
 
     socket.current.on("connect", () => {
       console.log(" Connected  to server");
-      socket.current.emit('joinRoom', { roomId });
-      socket.current.emit('markAsRead', { roomId });
+      socket.current.emit("joinRoom", { roomId });
+      socket.current.emit("markAsRead", { roomId });
     });
 
-    socket.current.on('chatHistory', (messages) => {
-     console.log(messages);
-     const formattedMessages = messages.map(({ senderId, message, timestamp })=>{
-      const time = new Date(timestamp).toLocaleTimeString();
-      return {
-        id: time,
-        text: message,
-        isUser: senderId === currentUserId
-      };
-     })
-       setMessages(formattedMessages);
+    socket.current.on("chatHistory", (messages) => {
+      console.log(messages);
+      const formattedMessages = messages.map(
+        ({ senderId, message, timestamp }) => {
+          const time = new Date(timestamp).toLocaleTimeString();
+          return {
+            id: time,
+            text: message,
+            isUser: senderId === currentUserId,
+          };
+        }
+      );
+      setMessages(formattedMessages);
     });
-    
-    socket.current.on('chatMessage', ({ senderId, message, timestamp }) => {
-      console.log("called","senderId",senderId," "," currentId",currentUserId);
-      if(senderId ===  currentUserId) return;
+
+    socket.current.on("chatMessage", ({ senderId, message, timestamp }) => {
+      console.log(
+        "called",
+        "senderId",
+        senderId,
+        " ",
+        " currentId",
+        currentUserId
+      );
+      if (senderId === currentUserId) return;
       const time = new Date(timestamp).toLocaleTimeString();
-      setMessages(prev => [...prev, { id: time, text: message, isUser:false }]);
+      setMessages((prev) => [
+        ...prev,
+        { id: time, text: message, isUser: false },
+      ]);
 
       if (senderId !== currentUserId) {
-        socket.emit('markAsRead', { roomId });
+        socket.emit("markAsRead", { roomId });
       }
     });
 

@@ -16,9 +16,9 @@
 }*/
 
 .profile_container {
-  height: 100vh; 
-  width: 100vw;  
-  background-color: #F7F7F7;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -54,9 +54,9 @@
   outline: none;
 }
 
-.p_c_backButton:active  {
+.p_c_backButton:active {
   cursor: pointer;
-  background-color: #B3D62A;
+  background-color: #b3d62a;
 }
 
 .arrowIcon {
@@ -114,9 +114,9 @@
 }
 
 .p_c_text {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #000;
   text-align: center;
 }
@@ -149,7 +149,6 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
 }
 
 .createprofile-uploadprofile-modal-header {
@@ -161,7 +160,7 @@
 }
 
 .createprofile-uploadprofile-modal-title {
-  color: #2A2A2A;
+  color: #2a2a2a;
   font-size: 14px;
   font-weight: bold;
   position: absolute;
@@ -193,7 +192,7 @@
 .createprofile-uploadprofile-modal-donebutton-text {
   font-size: 14px;
   font-weight: bold;
-  color: #2A2A2A;
+  color: #2a2a2a;
 }
 
 .close-modal-btn {
@@ -216,7 +215,7 @@
   position: absolute;
   right: 35%;
   top: 31.5%;
-  background-image: url('/images/plusicon.svg');
+  background-image: url("/images/plusicon.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -244,15 +243,15 @@
 .p_c_input {
   width: 95%;
   border: 1px solid #fff;
-  background-color: #D9D7E1;
+  background-color: #d9d7e1;
   border-radius: 25px;
   padding-left: 5%;
   padding-right: 5%;
   color: #000;
   text-align: left;
   vertical-align: top;
-  font-family: 'Montserrat', sans-serif;
-  font-size: .8rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
   outline: none;
 }
 
@@ -260,7 +259,6 @@
   width: 100%;
   cursor: pointer;
 }
-
 
 .interests-container {
   display: flex;
@@ -288,7 +286,7 @@ div.interest_button {
 }
 
 div.interest_button:active {
-  background-color: #88AF01;
+  background-color: #88af01;
   opacity: 0.5;
 }
 
@@ -324,7 +322,7 @@ div.interest-button.selected .interest-name {
   justify-content: center;
 }
 
-@media (min-width : 768px) {
+@media (min-width: 768px) {
   .p_c_profilePlusButton {
     right: 43.5%;
   }
@@ -396,32 +394,32 @@ div.interest-button.selected .interest-name {
   }
 }
 
-@media (min-width : 1000px) and (min-height : 600px) {
+@media (min-width: 1000px) and (min-height: 600px) {
   .p_c_profilePlusButton {
     top: 36%;
     right: 45%;
   }
 }
 
-@media (min-width : 1200px) and (min-height : 800px) {
+@media (min-width: 1200px) and (min-height: 800px) {
   .p_c_profilePlusButton {
     top: 29%;
     right: 46%;
   }
 }
 
-@media (min-width : 760px) and (min-height : 700px) {
+@media (min-width: 760px) and (min-height: 700px) {
   .p_c_profilePlusButton {
     top: 33%;
     right: 45%;
   }
 }
 
-@media (min-width : 1020px){
-   .profile_container{
+@media (min-width: 1020px) {
+  .profile_container {
     width: 300px;
-   }
-   .createprofile-uploadprofile-modal {
+  }
+  .createprofile-uploadprofile-modal {
     position: absolute;
     top: 0;
     left: 36.06%;
@@ -434,8 +432,7 @@ div.interest-button.selected .interest-name {
 }
 
 @media screen and (min-width: 1500px) {
-  .profile_container{
+  .profile_container {
     width: 450px;
   }
-
 }
