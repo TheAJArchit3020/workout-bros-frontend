@@ -10,6 +10,7 @@ import {
 } from "../../common/apis";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Connection = () => {
   const token = localStorage.getItem("token");
@@ -20,6 +21,12 @@ const Connection = () => {
   const [chatPending, setChatPending] = useState([]);
   const [chatRequests, setChatRequests] = useState([]);
   const [chats, setChats] = useState([]);
+
+
+
+   // check token...
+   useCheckToken();
+
 
   const getPendingRequests = async () => {
     try {

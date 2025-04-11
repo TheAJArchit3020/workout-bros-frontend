@@ -5,6 +5,8 @@ import { ArrowLeftIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import "./chatting.css";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
+import useCheckToken from "../../hooks/useCheckToken";
+
 const Chatting = () => {
   const { state } = useLocation();
   const { name: chatName, roomId, receiverId, senderId } = state;
@@ -14,6 +16,11 @@ const Chatting = () => {
   const messageEndRef = useRef(null);
   const socket = useRef(null);
   const navigate = useNavigate();
+
+
+   // check token...
+   useCheckToken();
+
   const sendMessage = () => {
     if (input.trim().length === 0) return;
     const message = { id: Date.now(), text: input, isUser: true };

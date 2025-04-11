@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { ArrowLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { registerprofileapi } from "../../common/apis";
 import { getAllInterests } from "../../common/getallinterest";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const CreateProfile = () => {
   const [profileSection, setProfileSection] = useState(1);
@@ -27,6 +28,9 @@ const CreateProfile = () => {
   const isValidInfo =
     formData.name.length > 0 && formData.description.length > 0 && profileImage;
   const isValidIntrest = formData.selectedIntrests.length > 0;
+
+  // check token...
+  useCheckToken();
 
   const handleInput = (key, value) => {
     setFormData((prev) => ({
@@ -55,9 +59,7 @@ const CreateProfile = () => {
     }
   };
 
-  useEffect(() => {
-    console.log("Image selected:", isImageSelected);
-  }, [isImageSelected]);
+ 
 
   const toggleInterest = (interestName) => {
     setFormData((prev) => ({

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { getnearbyusersapi } from "../../common/apis";
 import { useUsers } from "../../common/context";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Filter = () => {
   const { usersArray, setUsersArray, setSelectType } = useUsers();
@@ -18,7 +19,11 @@ const Filter = () => {
 
   const __interest = usersArray?.length > 0 && usersArray[0]?.interests || [];
 
-  console.log(__interest);
+ 
+
+
+   // check token...
+   useCheckToken();
 
   // const toggleInterest = (interestId) => {
   //   setSelectedInterests((prev) =>

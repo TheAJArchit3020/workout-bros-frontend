@@ -14,6 +14,7 @@ import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
 import { useUsers } from "../../common/context";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -25,6 +26,9 @@ const Explore = () => {
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
   const [MyuserId, setMyuserId] = useState();
+
+  // check token...
+  useCheckToken();
 
   useEffect(() => {
     const getUsersLocation = async () => {
@@ -79,7 +83,6 @@ const Explore = () => {
     getUserData();
   }, []);
 
-  console.log(selectType);
   useEffect(() => {
     if (selectType === "explore") {
       getNearByUsers();
@@ -253,7 +256,37 @@ const Explore = () => {
                     sendConnectRequest(bro._id);
                   }}
                 >
-                  {bro.connectionStatus === null ? (
+                  {/* status null */}
+                  {/* {bro.connectionStatus === null && (
+                    <span className="explore-profile-card-button-text">
+                      Connect
+                    </span>
+                  )} */}
+
+                  {/* status pending */}
+                  {
+                    bro.connectionStatus === "pending" &&
+                    bro?._id != MyuserId ? (
+                      <span className="explore-profile-card-button-text">
+                        Requested
+                      </span>
+                    ) : null
+                    // <span className="explore-profile-card-button-text">
+                    //   Connect
+                    // </span>
+                  }
+
+                  {/* status pending */}
+                  {bro.connectionStatus === "accepted" &&
+                  bro?._id != MyuserId ? (
+                    <img
+                      src="/images/explore/exploremessage.svg"
+                      alt="message"
+                      className="explore-profile-card-exploremessage-image"
+                    />
+                  ) : null}
+
+                  {/* {bro.connectionStatus === null || bro?._id !== MyuserId ? (
                     <span className="explore-profile-card-button-text">
                       Connect
                     </span>
@@ -267,7 +300,7 @@ const Explore = () => {
                       alt="message"
                       className="explore-profile-card-exploremessage-image"
                     />
-                  )}
+                  )} */}
                 </div>
               </div>
             ))
