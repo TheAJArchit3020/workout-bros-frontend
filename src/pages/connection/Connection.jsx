@@ -10,6 +10,7 @@ import {
 } from "../../common/apis";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Connection = () => {
   const token = localStorage.getItem("token");
@@ -26,7 +27,7 @@ const Connection = () => {
    // check token...
    useCheckToken();
 
-   
+
   const getPendingRequests = async () => {
     try {
       const response = await axios.get(getchatpendingapi, {
