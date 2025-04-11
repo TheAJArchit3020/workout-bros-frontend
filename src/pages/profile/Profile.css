@@ -245,6 +245,16 @@ span.reviews-title {
     background-color: #5a6268;
 }
 
+.profile-workouts-logout-button{
+   border: 1px solid #FF6C6C;
+   border-radius: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 5px;
+   width: fit-content;
+}
+
 @media (max-width: 425px) {
     .profile-container {
         padding: 10px;
