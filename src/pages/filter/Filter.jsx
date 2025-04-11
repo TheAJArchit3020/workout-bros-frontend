@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Filter.css";
 import { interests } from "../../data/interests";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import { getnearbyusersapi } from "../../common/apis";
 import { useUsers } from "../../common/context";
@@ -15,6 +15,10 @@ const Filter = () => {
   const navigate = useNavigate();
   const [distance, setDistance] = useState(50);
   const [selectedInterests, setSelectedInterests] = useState([]);
+
+  const __interest = usersArray?.length > 0 && usersArray[0]?.interests || [];
+
+  console.log(__interest);
 
   // const toggleInterest = (interestId) => {
   //   setSelectedInterests((prev) =>
@@ -61,7 +65,7 @@ const Filter = () => {
           setUsersArray((prevUsers) => {
             const newUsers = response.data.users;
 
-            console.log({newUsers})
+            console.log({ newUsers });
 
             // Filter out duplicates (e.g., based on unique user ID or name)
             const mergedUsers = [...prevUsers];
@@ -92,12 +96,10 @@ const Filter = () => {
 
   useEffect(() => {
     if (
-      Array.isArray(usersArray) &&
-      usersArray.length > 0 &&
-      usersArray[0]?.interests?.length
+      __interest
     ) {
       const initialSelected = interests
-        .filter((interest) => usersArray[0].interests.includes(interest.name))
+        .filter((interest) => __interest?.includes(interest.name))
         .map((interest) => interest.name); // use name, not id
       setSelectedInterests(initialSelected);
     }
@@ -139,14 +141,9 @@ const Filter = () => {
             <span className="filter-section-title-text">Interests</span>
             <div className="interests-grid">
               {interests?.map((interest) => {
-                // Preselect based on user's interests (name match), or manual selection
-                const userInterests = usersArray?.[0]?.interests || [];
-                const userHasInterest = userInterests.includes(interest?.name);
-
                 // const isSelected =
                 //   selectedInterests?.includes(interest.name) || userHasInterest;
-                const isSelected =
-                  selectedInterests?.includes(interest.name) || userHasInterest;
+                const isSelected = selectedInterests?.includes(interest.name);
 
                 return (
                   <div
