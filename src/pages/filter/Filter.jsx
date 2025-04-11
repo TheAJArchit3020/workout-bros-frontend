@@ -34,12 +34,9 @@ const Filter = () => {
   const handleApply = async () => {
     // Convert selected interests into a comma-separated string
     const interestNames = selectedInterests
-      .map((interestId) => {
-        const interest = interests.find((i) => i.id === interestId);
-        return interest ? interest.name : null;
-      })
-      .filter(Boolean) // Filter out nulls if any
-      .join(","); // Join interests into a single string
+      .map((interestName) => interestName) // Already in name format
+      .filter(Boolean)
+      .join(",");
 
     console.log("Applied filters:", {
       d: Number(distance) * 1000,
@@ -51,7 +48,7 @@ const Filter = () => {
         const response = await axios.get(`${getnearbyusersapi}`, {
           params: {
             maxDistance: Number(distance) * 1000,
-            interests: interestNames, // Add interests as a query parameter
+            interests: interestNames,
           },
           headers: {
             Authorization: `Bearer ${tokenData}`,
@@ -60,7 +57,27 @@ const Filter = () => {
 
         if (response.status === 200) {
           setSelectType("filter");
-          setUsersArray(response.data);
+
+          setUsersArray((prevUsers) => {
+            const newUsers = response.data.users;
+
+            console.log({newUsers})
+
+            // Filter out duplicates (e.g., based on unique user ID or name)
+            const mergedUsers = [...prevUsers];
+
+            newUsers?.forEach((newUser) => {
+              const exists = mergedUsers?.some(
+                (user) => user.id === newUser.id // adjust if your users have different unique key
+              );
+              if (!exists) {
+                mergedUsers.push(newUser);
+              }
+            });
+
+            return mergedUsers;
+          });
+
           navigate("/explore");
         }
       } catch (error) {
