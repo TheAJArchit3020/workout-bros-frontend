@@ -12,10 +12,11 @@ import {
 import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
-import { use } from "react";
+import { useUsers } from "../../common/context";
+
 const Explore = () => {
   const navigate = useNavigate();
-  const [usersArray, setUsersArray] = useState(null);
+  const { usersArray, setUsersArray } = useUsers();
   const { location, error, loading, requestLocation } = useLocation();
   const [showLoader, setShowLoader] = useState(false);
   const [showProfilePic, setShowProfilePic] = useState(false);
@@ -67,9 +68,6 @@ const Explore = () => {
     getNearByUsers();
   }, []);
 
-  useEffect(() => {
-    console.log("showProfilePic", showProfilePic);
-  }, [showProfilePic]);
   const getNearByUsers = async () => {
     setShowLoader(true);
     try {
@@ -119,18 +117,31 @@ const Explore = () => {
     <>
       {showLoader && <Loader />}
       {showProfilePic && (
-        <div className="viewPhoto-container" onClick={() => setShowProfilePic(false)}>
-          <ViewPhoto image={selectedImage}  />
+        <div
+          className="viewPhoto-container"
+          onClick={() => setShowProfilePic(false)}
+        >
+          <ViewPhoto image={selectedImage} />
         </div>
       )}
       <div className="explore-container">
-        <Navbar displayFilterButton={true} />
+        <div className="navbar-container">
+          <div className="navbar-brand-name" style={{ marginLeft: "4rem" }}>
+            <span className="navbar-brand-name-text">SwolHomies</span>
+          </div>
 
-        {loading && (
+          <div className="navbar-right" onClick={() => navigate("/filter")}>
+            <div className="navbar-filter-container">
+              <img src="./images/filtericon.svg" alt="filter-icon" />
+            </div>
+          </div>
+        </div>
+
+        {/* {loading && (
           <div className="location-status">
             <p>Requesting location access...</p>
           </div>
-        )}
+        )} */}
 
         {error && (
           <div className="location-status error">

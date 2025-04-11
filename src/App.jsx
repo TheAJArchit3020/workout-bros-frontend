@@ -1,12 +1,16 @@
 import "./App.css";
+import { UsersProvider } from "./common/context";
 import Routing from "./common/routing";
 import usePWAInstall from "./hooks/usePWAInstall";
 
 function App() {
-  const { deferredPrompt, handleInstallClick } = usePWAInstall();
+  // const { deferredPrompt, handleInstallClick } = usePWAInstall();
 
   return (
     <>
+      <UsersProvider>
+        <Routing />
+      </UsersProvider>
       {/* {deferredPrompt && (
         <button
           onClick={handleInstallClick}
@@ -24,7 +28,6 @@ function App() {
           Add to Home Screen
         </button>
       )} */}
-      <Routing />
     </>
   );
 }
