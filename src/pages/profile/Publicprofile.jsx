@@ -5,6 +5,7 @@ import axios from "axios";
 import { getpublicprofileapi } from "../../common/apis";
 import { interests as allInterests } from "../../data/interests";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Publicprofile = () => {
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ const Publicprofile = () => {
   const navigation = useNavigate();
   const [showProfilePic, setShowProfilePic] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  // check token...
+  useCheckToken();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -54,7 +58,6 @@ const Publicprofile = () => {
           <div className="filter-back-button" onClick={handleBack}>
             <img src="./images/backbuttonicon.svg" alt="back-button" />
           </div>
-         
         </div>
         <div className="public-profile-header">
           <div className="public-profile-info-container">

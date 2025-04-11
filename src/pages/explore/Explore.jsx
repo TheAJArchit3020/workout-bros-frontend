@@ -13,6 +13,7 @@ import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
 import { useUsers } from "../../common/context";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -23,6 +24,13 @@ const Explore = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
+
+
+
+
+   // check token...
+   useCheckToken();
+
 
   useEffect(() => {
     const getUsersLocation = async () => {
@@ -64,7 +72,6 @@ const Explore = () => {
     }
   }, [location?.latitude, location?.longitude]);
 
-  console.log(selectType)
   useEffect(() => {
     if (selectType === "explore") {
 
@@ -116,6 +123,8 @@ const Explore = () => {
   const navigateToPublicProfile = (userId) => {
     navigate("/publicprofile", { state: { userId } });
   };
+
+ 
 
   return (
     <>

@@ -21,6 +21,12 @@ const Connection = () => {
   const [chatRequests, setChatRequests] = useState([]);
   const [chats, setChats] = useState([]);
 
+
+
+   // check token...
+   useCheckToken();
+
+   
   const getPendingRequests = async () => {
     try {
       const response = await axios.get(getchatpendingapi, {

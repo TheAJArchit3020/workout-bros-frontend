@@ -4,6 +4,7 @@ import { interests } from "../../data/interests";
 import axios from "axios";
 import { getuserprofileapi } from "../../common/apis";
 import { useNavigate } from "react-router";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Editprofile = () => {
   const navigate = useNavigate();
@@ -29,6 +30,11 @@ const Editprofile = () => {
   const fileInputRef = useRef(null);
 
   const [animateModal, setAnimateModal] = useState(false);
+
+
+
+   // check token...
+   useCheckToken();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
