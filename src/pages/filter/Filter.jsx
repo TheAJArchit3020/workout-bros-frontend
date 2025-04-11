@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Filter.css";
 import { interests } from "../../data/interests";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import { getnearbyusersapi } from "../../common/apis";
+import { useUsers } from "../../common/context";
 
 const Filter = () => {
+  const { usersArray, setUsersArray } = useUsers();
+
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
 
@@ -13,42 +16,20 @@ const Filter = () => {
   const [distance, setDistance] = useState(50);
   const [selectedInterests, setSelectedInterests] = useState([]);
 
-  const toggleInterest = (interestId) => {
+  // const toggleInterest = (interestId) => {
+  //   setSelectedInterests((prev) =>
+  //     prev.includes(interestId)
+  //       ? prev.filter((id) => id !== interestId)
+  //       : [...prev, interestId]
+  //   );
+  // };
+  const toggleInterest = (interestName) => {
     setSelectedInterests((prev) =>
-      prev.includes(interestId)
-        ? prev.filter((id) => id !== interestId)
-        : [...prev, interestId]
+      prev.includes(interestName)
+        ? prev.filter((name) => name !== interestName)
+        : [...prev, interestName]
     );
   };
-
-  // const handleApply = async () => {
-  //   console.log("tokenData :", tokenData);
-  //   // Handle apply logic here
-  //   console.log("Applied filters:", {
-  //     d: Number(distance) * 1000,
-  //     selectedInterests,
-  //   });
-
-  //   if (tokenData) {
-  //     console.log("tokenData:", tokenData);
-  //     try {
-  //       const response = await axios.get(`${getnearbyusersapi}`, {
-  //         params: {
-  //           maxDistance: Number(distance) * 1000,
-  //         },
-  //         headers: {
-  //           Authorization: `Bearer ${tokenData}`,
-  //         },
-  //       });
-  //       console.log("response getnearbyusersapi", response);
-  //       if (response.status === 200) {
-  //         navigate("/explore");
-  //       }
-  //     } catch (error) {
-  //       console.log("error", error);
-  //     }
-  //   }
-  // };
 
   const handleApply = async () => {
     console.log("tokenData:", tokenData);
@@ -80,6 +61,7 @@ const Filter = () => {
         });
 
         console.log("response getnearbyusersapi", response);
+        setUsersArray(response.data);
 
         if (response.status === 200) {
           navigate("/explore");
@@ -93,6 +75,19 @@ const Filter = () => {
   const handleBack = () => {
     navigate("/explore");
   };
+
+  useEffect(() => {
+    if (
+      Array.isArray(usersArray) &&
+      usersArray.length > 0 &&
+      usersArray[0]?.interests?.length
+    ) {
+      const initialSelected = interests
+        .filter((interest) => usersArray[0].interests.includes(interest.name))
+        .map((interest) => interest.name); // use name, not id
+      setSelectedInterests(initialSelected);
+    }
+  }, [usersArray]);
 
   return (
     <div className="filter-container">
@@ -130,20 +125,31 @@ const Filter = () => {
           <div className="filter-section2">
             <span className="filter-section-title-text">Interests</span>
             <div className="interests-grid">
-              {interests.map((interest) => {
-                const isSelected = selectedInterests.includes(interest.id);
+              {interests?.map((interest) => {
+                // Preselect based on user's interests (name match), or manual selection
+                const userInterests = usersArray?.[0]?.interests || [];
+                const userHasInterest = userInterests.includes(interest?.name);
+
+                console.log(userHasInterest);
+                // const isSelected =
+                //   selectedInterests?.includes(interest.name) || userHasInterest;
+                const isSelected =
+                  selectedInterests?.includes(interest.name) || userHasInterest;
+
                 return (
                   <div
                     key={interest.id}
                     className={`interest-button ${
                       isSelected ? "selected" : ""
                     }`}
-                    onClick={() => toggleInterest(interest.id)}
+                    onClick={() => toggleInterest(interest.name)}
                   >
                     <span className="interest-name">{interest.name}</span>
                     <img
                       src={`/images/${
-                        isSelected ? `yellowicons/${interest.activeIconFile}` : `Greyicon/${interest.iconFile}`
+                        isSelected
+                          ? `yellowicons/${interest.activeIconFile}`
+                          : `Greyicon/${interest.iconFile}`
                       }`}
                       alt={interest.name}
                       className="interest-icon"

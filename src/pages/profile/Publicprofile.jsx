@@ -24,8 +24,9 @@ const Publicprofile = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-      console.log("response", response);
+      console.log("response", response.data.user);
       setProfile(response.data.user);
+      console.log(profile?.profilePic);
     };
     fetchProfile();
   }, [userId]);
@@ -39,9 +40,9 @@ const Publicprofile = () => {
       {showProfilePic && (
         <div
           className="viewPhoto-container"
-          onClick={() =>{
-             setShowProfilePic(false)
-             setSelectedImage(null);
+          onClick={() => {
+            setShowProfilePic(false);
+            setSelectedImage(null);
           }}
         >
           <ViewPhoto image={selectedImage} />
@@ -53,9 +54,7 @@ const Publicprofile = () => {
           <div className="filter-back-button" onClick={handleBack}>
             <img src="./images/backbuttonicon.svg" alt="back-button" />
           </div>
-          {/* <div className="filter-title">
-          <span className="filter-title-text">Filters</span>
-        </div> */}
+         
         </div>
         <div className="public-profile-header">
           <div className="public-profile-info-container">
@@ -99,7 +98,7 @@ const Publicprofile = () => {
 
         <div className="public-profile-connect-container">
           {profile?.connectionStatus === null ? (
-            <span className="explore-profile-card-button-text">Connect</span>
+            <span className="public-profile-card-button-text">Connect</span>
           ) : profile?.connectionStatus === "pending" ? (
             <span className="explore-profile-card-button-text-pending">
               requested

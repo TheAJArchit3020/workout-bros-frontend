@@ -16,6 +16,7 @@ const Editprofile = () => {
     selectedIntrests: [],
   });
   const [selectedImagePreview, setSelectedImagePreview] = useState(null);
+  const [selectedImagePreview2, setSelectedImagePreview2] = useState(null);
 
   const [profile, setProfile] = useState(null);
   const [selectedInterests, setSelectedInterests] = useState([]);
@@ -24,9 +25,10 @@ const Editprofile = () => {
   ]);
   const [showModal, setShowModal] = useState(false);
   const [showUploadModal, setShowUploadModal] = useState(false);
-  const [isImageSelected, setisImageSelected] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
+
   const fileInputRef = useRef(null);
+
+  const [animateModal, setAnimateModal] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -70,6 +72,7 @@ const Editprofile = () => {
       // Create URL for preview
       const imageUrl = URL.createObjectURL(file);
       setSelectedImagePreview(imageUrl);
+      setSelectedImagePreview2(imageUrl);
     }
   };
 
@@ -160,13 +163,25 @@ const Editprofile = () => {
 
   const handleImageClick = () => {
     // Toggle modal visibility
+    closeModal();
     setShowUploadModal(!showUploadModal);
     handleSave("image");
+    setSelectedImagePreview2(null);
+  };
+
+  const openModal = () => {
+    setShowUploadModal(true);
+    setTimeout(() => setAnimateModal(true), 10);
+  };
+
+  const closeModal = () => {
+    setAnimateModal(false);
+    setTimeout(() => setShowUploadModal(false), 300);
   };
 
   return (
     <div className="edit-profile-container">
-      <div className="public-profile-back-header">
+      <div className="edit-profile-back-header">
         <div className="filter-back-button" onClick={handleBack}>
           <img src="./images/backbuttonicon.svg" alt="back-button" />
         </div>
@@ -192,10 +207,7 @@ const Editprofile = () => {
               <img src="./images/editprofileusericon.svg" alt="edit-profile" />
             )}
           </div>
-          <div
-            className="edit-profile-placeholder-image"
-            onClick={() => setShowUploadModal(true)}
-          >
+          <div className="edit-profile-placeholder-image" onClick={openModal}>
             {/* <input
               type="file"
               accept="image/*"
@@ -305,17 +317,21 @@ const Editprofile = () => {
 
       {/* Upload image modal */}
       {showUploadModal && (
-        <div className="createprofile-uploadprofile-modal">
+        <div
+          className={`editprofile-uploadprofile-modal ${
+            animateModal ? "fade-in" : "fade-out"
+          }`}
+        >
           <div className="createprofile-uploadprofile-modal-content">
             <div className="createprofile-uploadprofile-modal-header">
               <span className="createprofile-uploadprofile-modal-title">
                 Upload Profile Photo
               </span>
             </div>
-            {selectedImagePreview ? (
+            {selectedImagePreview2 ? (
               <>
                 <img
-                  src={selectedImagePreview}
+                  src={selectedImagePreview2}
                   alt="profile"
                   className="profile-pic"
                 />
@@ -324,7 +340,7 @@ const Editprofile = () => {
                     className="createprofile-uploadprofile-modal-donebutton-text"
                     onClick={() => {
                       handleImageClick();
-                      setisImageSelected(false);
+                      closeModal();
                     }}
                   >
                     Done
