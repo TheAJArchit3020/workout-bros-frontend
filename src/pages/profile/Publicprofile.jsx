@@ -20,8 +20,9 @@ const Publicprofile = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-      console.log("response", response);
+      console.log("response", response.data.user);
       setProfile(response.data.user);
+      console.log(profile?.profilePic);
     };
     fetchProfile();
   }, [userId]);
@@ -66,7 +67,7 @@ const Publicprofile = () => {
                   {item}
                 </span>
                 <img
-                  src={`./images/${
+                  src={`/images/yellowicons/${
                     matchedInterest?.activeIconFile || "fishhookfill.svg"
                   }`}
                   alt={item}
@@ -89,15 +90,17 @@ const Publicprofile = () => {
             src="/images/explore/exploremessage.svg"
             alt="message"
             className="public-profile-card-exploremessage-image"
-            onClick={()=>{navigation('/chatting',{
-              state:{
-                chatId: profile?.id,
-                name: profile?.name,
-                roomId: profile?.roomId,
-                receiverId : profile?.receiverId,
-                senderId : profile?.senderId
-              }
-            })}}
+            onClick={() => {
+              navigation("/chatting", {
+                state: {
+                  chatId: profile?.id,
+                  name: profile?.name,
+                  roomId: profile?.roomId,
+                  receiverId: profile?.receiverId,
+                  senderId: profile?.senderId,
+                },
+              });
+            }}
           />
         )}
       </div>
