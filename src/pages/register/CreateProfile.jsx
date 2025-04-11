@@ -35,14 +35,9 @@ const CreateProfile = () => {
     }));
   };
 
-  const openModal = () => {
-    setShowUploadModal(true);
-    setTimeout(() => setAnimateModal(true), 300);
-  };
-
-  const closeModal = () => {
-    setAnimateModal(false);
-    setTimeout(() => setShowUploadModal(false), 300);
+  const handleImageClick = () => {
+    // Toggle modal visibility
+    setShowUploadModal(!showUploadModal);
   };
 
   const handleFileChange = (e) => {
