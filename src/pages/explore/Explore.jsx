@@ -28,9 +28,7 @@ const Explore = () => {
   const tokenData = JSON.parse(token);
   const [MyuserId, setMyuserId] = useState();
 
-  useEffect(() => {
-    useCheckToken();
-  });
+  useCheckToken();
 
   useEffect(() => {
     const getUsersLocation = async () => {
