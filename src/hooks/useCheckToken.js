@@ -1,22 +1,22 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { getnearbyusersapi } from "../common/apis";
+import { getnearbyusersapi, getuserprofileapi } from "../common/apis";
 
 const useCheckToken = () => {
   const navigate = useNavigate();
 
-  const checkToken = async () => {
-    const token = localStorage.getItem("token");
-    const tokenData = JSON.parse(token);
+  useEffect(() => {
+    const checkToken = async () => {
+      const token = localStorage.getItem("token");
+      const tokenData = JSON.parse(token || "null");
 
-    console.log("hook token :", tokenData);
+      if (!tokenData) {
+        navigate("/"); // Redirect if token is missing
+        return;
+      }
 
-    if (!tokenData) {
-      navigate("/");
-    } else {
       try {
-        console.log("Calling the get user api");
         const response = await axios.get(getuserprofileapi, {
           headers: {
             Authorization: `Bearer ${tokenData}`,
@@ -25,16 +25,15 @@ const useCheckToken = () => {
 
         const { users } = response.data;
         console.log("Fetched users:", users);
-        return users;
+        // You can store users in state if needed
       } catch (error) {
-        console.log("Inside the error");
-        console.error("Invalid token or error fetching users:", error);
-        navigate("/"); // Redirect to login if error
+        console.error("Token check failed:", error);
+        navigate("/"); // Redirect if token is invalid
       }
-    }
-  };
+    };
 
-  checkToken();
+    checkToken();
+  }, [navigate]); // Add navigate to dependency array
 };
 
 export default useCheckToken;
