@@ -267,7 +267,7 @@ div.interest-button.selected .interest-name {
     }
 
     .apply-button-container {
-        bottom: 1rem;
+        bottom: -1rem;
         right: 1rem;
     }
 

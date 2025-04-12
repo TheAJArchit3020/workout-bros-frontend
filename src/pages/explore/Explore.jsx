@@ -8,11 +8,14 @@ import {
   getExplorelocationapi,
   sendconnectrequestapi,
   getnearbyusersapi,
+  getuserprofileapi,
+  acceptchatrequestsapi,
 } from "../../common/apis";
 import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
 import { useUsers } from "../../common/context";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -23,6 +26,10 @@ const Explore = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
+  const [MyuserId, setMyuserId] = useState();
+
+  // check token...
+  useCheckToken();
 
   useEffect(() => {
     const getUsersLocation = async () => {
@@ -41,7 +48,7 @@ const Explore = () => {
 
         console.log("API Response:", response.data);
         const { user } = response.data;
-        console.log("User data:", user);
+        console.log("Location Response:", user);
 
         // Transform the user data into the format we need
         const transformedUser = {
@@ -64,10 +71,21 @@ const Explore = () => {
     }
   }, [location?.latitude, location?.longitude]);
 
-  console.log(selectType)
+  useEffect(() => {
+    const getUserData = async () => {
+      const response = await axios.get(getuserprofileapi, {
+        headers: {
+          Authorization: `Bearer ${tokenData}`,
+        },
+      });
+      console.log("the current user Data: ", response.data.user._id);
+      setMyuserId(response.data.user._id);
+    };
+    getUserData();
+  }, []);
+
   useEffect(() => {
     if (selectType === "explore") {
-
       getNearByUsers();
     }
   }, []);
@@ -82,7 +100,7 @@ const Explore = () => {
       });
       console.log("getnearbyusersapi API Response:", response.data);
       const { users } = response.data;
-      console.log("User data:", users);
+      console.log("Nearby Users Data", users);
       setUsersArray(users);
       setShowLoader(false);
     } catch (error) {
@@ -115,6 +133,27 @@ const Explore = () => {
 
   const navigateToPublicProfile = (userId) => {
     navigate("/publicprofile", { state: { userId } });
+  };
+
+  console.log({ MyuserId });
+
+  const acceptChatRequest = async (id) => {
+    try {
+      const response = await axios.post(
+        `${acceptchatrequestsapi}/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        }
+      );
+      getNearByUsers();
+
+      return response;
+    } catch (error) {
+      console.log("acceptChatRequest", error);
+    }
   };
 
   return (
@@ -228,7 +267,6 @@ const Explore = () => {
                     if (bro.connectionStatus === "accepted") {
                       navigate("/chatting", {
                         state: {
-                          chatId: bro?._id,
                           name: bro?.name,
                           roomId: bro?.roomId,
                           receiverId: bro?.receiverId,
@@ -237,10 +275,49 @@ const Explore = () => {
                       });
                       return;
                     }
-                    sendConnectRequest(bro._id);
+
+                    if (
+                      bro.connectionStatus === "pending" &&
+                      bro?.senderRequestId !== MyuserId
+                    ) {
+                      acceptChatRequest(bro?.connectionRequestId);
+                    } else {
+                      sendConnectRequest(bro._id);
+                    }
                   }}
                 >
-                  {bro.connectionStatus === null ? (
+                  {/* status null */}
+                  {bro.connectionStatus === null && (
+                    <span className="explore-profile-card-button-text">
+                      Connect
+                    </span>
+                  )}
+
+                  {/* status pending */}
+                  {bro.connectionStatus === "pending" &&
+                    bro?.senderRequestId === MyuserId && (
+                      <span className="explore-profile-card-button-text">
+                        Requested
+                      </span>
+                    )}
+
+                  {bro.connectionStatus === "pending" &&
+                    bro?.senderRequestId !== MyuserId && (
+                      <span className="explore-profile-card-button-text">
+                        Accept
+                      </span>
+                    )}
+
+                  {/* status accepted */}
+                  {bro.connectionStatus === "accepted" && (
+                    <img
+                      src="/images/explore/exploremessage.svg"
+                      alt="message"
+                      className="explore-profile-card-exploremessage-image"
+                    />
+                  )}
+
+                  {/* {bro.connectionStatus === null || bro?._id !== MyuserId ? (
                     <span className="explore-profile-card-button-text">
                       Connect
                     </span>
@@ -254,12 +331,12 @@ const Explore = () => {
                       alt="message"
                       className="explore-profile-card-exploremessage-image"
                     />
-                  )}
+                  )} */}
                 </div>
               </div>
             ))
           ) : (
-            <p>No users found in your area</p>
+            <p className="no-users-found">No users found in your area</p>
           )}
         </div>
 

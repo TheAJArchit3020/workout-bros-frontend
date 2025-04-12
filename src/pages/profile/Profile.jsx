@@ -8,6 +8,7 @@ import { Link } from "react-router";
 import { interests as allInterests } from "../../data/interests";
 import { useNavigate } from "react-router";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
+import useCheckToken from "../../hooks/useCheckToken";
 const Profile = () => {
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -23,6 +24,9 @@ const Profile = () => {
   const handleRatingClick = (value) => {
     setRating(value);
   };
+
+   // check token...
+   useCheckToken();
 
   const handleSubmitReview = () => {
     // Implement submit review logic

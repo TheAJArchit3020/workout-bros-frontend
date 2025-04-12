@@ -20,7 +20,7 @@ span.explore-profile-card-interest {
 span.explore-profile-card-interest-more {
   font-size: 9px !important;
   font-weight: normal !important;
-  width: max-content !important
+  width: max-content !important;
 }
 
 .explore-profile-card-interest-container {
@@ -29,8 +29,6 @@ span.explore-profile-card-interest-more {
   flex-wrap: wrap;
   align-items: center;
 }
-
-
 
 .explore-page-image {
   position: absolute;
@@ -61,7 +59,7 @@ span.explore-profile-card-interest-more {
 }
 
 .location-status {
-  background-color: #2A2A2A;
+  background-color: #2a2a2a;
   padding: 24px 50px;
   border-radius: 8px;
   margin: 0px 20px;
@@ -72,7 +70,7 @@ span.explore-profile-card-interest-more {
 }
 
 .location-status.error {
-  color: #DFFD52;
+  color: #dffd52;
   font-weight: 600;
   font-size: 1rem;
 }
@@ -171,11 +169,11 @@ span.explore-profile-card-interest-more {
   padding: 20px;
   background: white;
   border-radius: 24px;
-  box-shadow: 0px 2px 6px 0px rgba(35, 49, 2, 5%);
+  box-shadow: 0px 4px 5.699999809265137px 0px rgba(0, 0, 0, 25%);
   transition: box-shadow 0.3s ease;
   margin-bottom: 15px;
-  background-color: #D9D7E1;
-  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  border: 1px solid #2a2a2a;
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -215,8 +213,8 @@ span.explore-profile-card-interest-more {
 .explore-profile-card-button {
   background-color: #000;
   border-radius: 1rem;
-  border: 1px solid #F8FFC7;
-  color: #DFFD52;
+  border: 1px solid #f8ffc7;
+  color: #dffd52;
   font-size: 12px;
   font-weight: 600;
   padding: 5px 10px;
@@ -225,8 +223,6 @@ span.explore-profile-card-interest-more {
   cursor: pointer;
 }
 
-
-
 .explore-profile-card-name {
   font-size: 16px;
   font-weight: 600;
@@ -234,14 +230,15 @@ span.explore-profile-card-interest-more {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  color: #2a2a2a;
 }
 
 .explore-profile-card-interest {
   box-shadow: 0px 2px 6px 0px rgba(42, 42, 42, 5%);
   padding: 0px 7px;
   border-radius: 12px;
-  border: 1px solid #F8FFC7;
-  background-color: #D9D7E1;
+  border: 1px solid #f8ffc7;
+  background-color: #d9d7e1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -262,13 +259,14 @@ span.explore-profile-card-interest-more {
   color: #000;
 }
 
+.no-users-found{
+  color: #2a2a2a;
+}
 .explore-footer-section {
   position: fixed;
   bottom: 1rem;
   width: 100%;
 }
-
-
 
 img.explore-profile-card-exploremessage-image {
   width: 30px !important;
@@ -282,22 +280,22 @@ img.explore-profile-card-exploremessage-image {
   border-radius: 100px;
   font-size: 12px;
   font-weight: 600;
-  color: #DFFD52;
+  color: #dffd52;
 }
 
 .explore-profile-card-button-text-pending {
   text-transform: capitalize;
   padding: 5px 10px;
-  background: #DFFD52;
+  background: #dffd52;
   border-radius: 100px;
   font-size: 12px;
   font-weight: 600;
-  border: 1px solid #F8FFC7;
+  border: 1px solid #f8ffc7;
 }
 
 .location-enable-button {
   border-radius: 24px;
-  background: #DFFD52;
+  background: #dffd52;
   width: 145px;
   font-size: 0.8rem;
   display: flex;
@@ -309,19 +307,19 @@ img.explore-profile-card-exploremessage-image {
 }
 
 .location-enable-button-text {
-  color: #2A2A2A;
+  color: #2a2a2a;
 }
 
-.viewPhoto-container{
+.viewPhoto-container {
   position: fixed;
-  top:0%;
+  top: 0%;
   left: 0%;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px); 
+  backdrop-filter: blur(8px);
   z-index: 999;
 }
 /* Responsive styles for 320px to 425px */
@@ -342,30 +340,30 @@ img.explore-profile-card-exploremessage-image {
     padding: calc(15px + (20 - 15) * ((100vw - 320px) / (425 - 320)));
   }
 
-
-
   .explore-profile-card-name {
     font-size: calc(20px + (18 - 16) * ((100vw - 320px) / (425 - 320)));
   }
 
   .explore-profile-card-interest {
     font-size: calc(10px + (12 - 10) * ((100vw - 320px) / (425 - 320)));
-    padding: calc(4px + (3 - 2) * ((100vw - 320px) / (425 - 320))) calc(10px + (12 - 10) * ((100vw - 320px) / (425 - 320)));
+    padding: calc(4px + (3 - 2) * ((100vw - 320px) / (425 - 320)))
+      calc(10px + (12 - 10) * ((100vw - 320px) / (425 - 320)));
   }
 
   .explore-profile-card-button {
     font-size: calc(12px + (14 - 12) * ((100vw - 320px) / (425 - 320)));
-    padding: calc(5px + (8 - 5) * ((100vw - 320px) / (425 - 320))) calc(10px + (16 - 10) * ((100vw - 320px) / (425 - 320)));
+    padding: calc(5px + (8 - 5) * ((100vw - 320px) / (425 - 320)))
+      calc(10px + (16 - 10) * ((100vw - 320px) / (425 - 320)));
   }
 }
 
-@media (min-width : 450px) {
+@media (min-width: 450px) {
   .explore-container {
     width: 425px;
   }
 }
 
-@media (min-width : 1020px) {
+@media (min-width: 1020px) {
   .explore-container {
     width: 425px;
   }

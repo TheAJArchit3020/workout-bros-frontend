@@ -1,179 +1,179 @@
 .connection-container {
-    background-color: #fff;
-    height: 100vh;
-    position: relative;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    overflow: hidden;
-    padding-bottom: 15rem;
+  background-color: #fff;
+  height: 100vh;
+  position: relative;
+  /* padding: 0 20px 20px; */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  overflow: hidden;
+  padding-bottom: 15rem;
 }
 
-
-.edit-profile-navbar-brand-name-text{
-    font-family: 'Oswald';
-    color: #000;
+.edit-profile-navbar-brand-name-text {
+  font-family: "Oswald";
+  color: #000;
 }
 
 .connection-segmentbutton-container {
-    display: flex;
-    gap: 10px;
-    background-color: #2A2A2A;
-    padding: 6px;
-    border-radius: 10rem;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  background-color: #2a2a2a;
+  padding: 6px;
+  border-radius: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .connection-segmentbutton {
-    flex: 1;
-    text-align: center;
-    cursor: pointer;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
 }
 
 .connection-segmentbutton-text {
-    color: #fff;
-    font-size: 16px;
-    font-weight: normal;
-    display: inline-block;
-    padding: 6px 6px;
-    width: 90%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  display: inline-block;
+  padding: 6px 6px;
+  width: 90%;
 }
 
 .connection-segmentbutton-text-selected {
-    color: #DFFD52;
-    font-size: 16px;
-    font-weight: normal;
-    background-color: #454545;
-    padding: 6px 6px;
-    border-radius: 10rem;
-    display: inline-block;
-    width: 90%;
+  color: #dffd52;
+  font-size: 16px;
+  font-weight: normal;
+  background-color: #454545;
+  padding: 6px 6px;
+  border-radius: 10rem;
+  display: inline-block;
+  width: 90%;
+  transition: 0.5s ease;
 }
 
 .connection-request-container,
 .connection-notification-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .connection-request-header-text,
 .connection-notification-header-text {
-    color: #2A2A2A;
-    font-size: 1.1rem;
-    font-weight: bold;
+  color: #2a2a2a;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .connection-request-item,
 .connection-notification-item,
 .connection-chat-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .connection-request-item-image,
 .connection-notification-item-image,
 .connection-chat-item-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .connection-request-item-info-text,
 .connection-notification-item-info-text,
 .connection-chat-item-info-text {
-    color: hsl(0, 0%, 16%);
-    font-size: .8rem;
+  color: hsl(0, 0%, 16%);
+  font-size: 0.8rem;
 }
 
-.info-text{
-    font-weight: bold;
+.info-text {
+  font-weight: bold;
 }
 
 .connection-request-item-button-text {
-    color: #DFFD52;
-    font-size: 11px;
-    font-weight: bold;
-    background-color: #2A2A2A;
-    padding: 5px 20px;
-    border-radius: 10rem;
-    display: inline-block;
+  color: #dffd52;
+  font-size: 11px;
+  font-weight: bold;
+  background-color: #2a2a2a;
+  padding: 5px 20px;
+  border-radius: 10rem;
+  display: inline-block;
 }
 
 .connection-notification-item-button {
-    background-color: #DFFD52;
-    padding: 5px;
-    border-radius: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #dffd52;
+  padding: 5px;
+  border-radius: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .connection-notification-item-button-text {
-    color: #DFFD52;
+  color: #dffd52;
 }
 
 .connection-request-item-info,
 .connection-notification-item-info,
 .connection-chat-item-info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .connection-chat-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .connection-chat-item-info-text-time {
-    color: #2A2A2A;
-    font-size: 13px;
-    font-weight: bold;
+  color: #2a2a2a;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .connection-chat-item-button-text {
-    background-color: #2A2A2A;
-    color: #FFFFFF;
-    font-size: 8px;
-    font-weight: bold;
-    padding: 5px 7px;
-    border-radius: 10rem;
-    display: inline-block;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 5px 7px;
+  border-radius: 10rem;
+  display: inline-block;
 }
-
-
 
 .connection-notification-container {
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
-.connection-chat-item:hover{
-    background-color: rgb(0, 0, 0,0.1);
-    border-radius: 10px;
+.connection-chat-item:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 span.connection-request-item-text,
 span.connection-notification-item-text,
 span.connection-chat-item-text {
-    text-align: center;
-    font-size: 14px;
-    color: #6D6D6D;
-    font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+  color: #6d6d6d;
+  font-weight: 600;
 }
 
-@media (min-width : 1020px){
-    .connection-container {
-     width: 450px;
-    }
+@media (min-width: 1020px) {
+  .connection-container {
+    width: 450px;
   }
-  
-
+}

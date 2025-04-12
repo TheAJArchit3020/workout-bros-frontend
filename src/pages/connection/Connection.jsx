@@ -10,6 +10,7 @@ import {
 } from "../../common/apis";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import useCheckToken from "../../hooks/useCheckToken";
 
 const Connection = () => {
   const token = localStorage.getItem("token");
@@ -20,6 +21,12 @@ const Connection = () => {
   const [chatPending, setChatPending] = useState([]);
   const [chatRequests, setChatRequests] = useState([]);
   const [chats, setChats] = useState([]);
+
+
+
+   // check token...
+   useCheckToken();
+
 
   const getPendingRequests = async () => {
     try {
@@ -41,7 +48,7 @@ const Connection = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-
+      console.log("notifications", response.data);
       setChatRequests(response.data);
     } catch (error) {
       console.log("getChatRequests", error);
@@ -95,15 +102,14 @@ const Connection = () => {
 
   return (
     <div className="connection-container">
-      <div className="edit-profile-navbar-container">
-        <div className="edit-profile-navbar-wrapper">
+      {/* <div className="edit-profile-navbar-wrapper">
           <div className="edit-profile-navbar-brand-name">
             <span className="edit-profile-navbar-brand-name-text">
               SwolHomies
             </span>
           </div>
-        </div>
-      </div>
+        </div> */}
+      <Navbar />
 
       <div className="connection-segmentbutton-container">
         <div
@@ -197,12 +203,13 @@ const Connection = () => {
                     /> */}
                     <div className="connection-notification-item-info">
                       <span className="connection-notification-item-info-text">
-                        <b>{item?.senderName || "User"}</b> {item?.message}.
+                        <b>{item?.senderName || "User"}</b> Has Accepted your
+                        connection Request.
                       </span>
                     </div>
-                    <div className="connection-notification-item-button">
+                    {/* <div className="connection-notification-item-button">
                       <img src="./images/message.svg" alt="message" />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))
