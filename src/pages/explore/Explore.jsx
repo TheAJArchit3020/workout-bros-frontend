@@ -9,6 +9,7 @@ import {
   sendconnectrequestapi,
   getnearbyusersapi,
   getuserprofileapi,
+  acceptchatrequestsapi,
 } from "../../common/apis";
 import { useNavigate } from "react-router";
 import Loader from "../../components/loader/Loader";
@@ -134,6 +135,27 @@ const Explore = () => {
     navigate("/publicprofile", { state: { userId } });
   };
 
+  console.log({ MyuserId });
+
+  const acceptChatRequest = async (id) => {
+    try {
+      const response = await axios.post(
+        `${acceptchatrequestsapi}/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        }
+      );
+      getNearByUsers();
+
+      return response;
+    } catch (error) {
+      console.log("acceptChatRequest", error);
+    }
+  };
+
   return (
     <>
       {showLoader && <Loader />}
@@ -253,38 +275,47 @@ const Explore = () => {
                       });
                       return;
                     }
-                    sendConnectRequest(bro._id);
+
+                    if (
+                      bro.connectionStatus === "pending" &&
+                      bro?.senderRequestId !== MyuserId
+                    ) {
+                      acceptChatRequest(bro?.connectionRequestId);
+                    } else {
+                      sendConnectRequest(bro._id);
+                    }
                   }}
                 >
                   {/* status null */}
-                  {/* {bro.connectionStatus === null && (
+                  {bro.connectionStatus === null && (
                     <span className="explore-profile-card-button-text">
                       Connect
                     </span>
-                  )} */}
+                  )}
 
                   {/* status pending */}
-                  {
-                    bro.connectionStatus === "pending" &&
-                    bro?._id != MyuserId ? (
+                  {bro.connectionStatus === "pending" &&
+                    bro?.senderRequestId === MyuserId && (
                       <span className="explore-profile-card-button-text">
                         Requested
                       </span>
-                    ) : null
-                    // <span className="explore-profile-card-button-text">
-                    //   Connect
-                    // </span>
-                  }
+                    )}
 
-                  {/* status pending */}
-                  {bro.connectionStatus === "accepted" &&
-                  bro?._id != MyuserId ? (
+                  {bro.connectionStatus === "pending" &&
+                    bro?.senderRequestId !== MyuserId && (
+                      <span className="explore-profile-card-button-text">
+                        Accept
+                      </span>
+                    )}
+
+                  {/* status accepted */}
+                  {bro.connectionStatus === "accepted" && (
                     <img
                       src="/images/explore/exploremessage.svg"
                       alt="message"
                       className="explore-profile-card-exploremessage-image"
                     />
-                  ) : null}
+                  )}
 
                   {/* {bro.connectionStatus === null || bro?._id !== MyuserId ? (
                     <span className="explore-profile-card-button-text">

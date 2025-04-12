@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Publicprofile.css";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
-import { getpublicprofileapi } from "../../common/apis";
+import {
+  acceptchatrequestsapi,
+  getpublicprofileapi,
+  getuserprofileapi,
+} from "../../common/apis";
 import { interests as allInterests } from "../../data/interests";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
 import useCheckToken from "../../hooks/useCheckToken";
@@ -17,6 +21,7 @@ const Publicprofile = () => {
   const navigation = useNavigate();
   const [showProfilePic, setShowProfilePic] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [myuserId, setMyuserId] = useState();
 
   // check token...
   useCheckToken();
@@ -35,8 +40,38 @@ const Publicprofile = () => {
     fetchProfile();
   }, [userId]);
 
+  useEffect(() => {
+    const getUserData = async () => {
+      const response = await axios.get(getuserprofileapi, {
+        headers: {
+          Authorization: `Bearer ${tokenData}`,
+        },
+      });
+      console.log("the current user Data: ", response.data.user._id);
+      setMyuserId(response.data.user._id);
+    };
+    getUserData();
+  }, []);
+
   const handleBack = () => {
     navigate("/explore");
+  };
+
+  const acceptChatRequest = async (id) => {
+    try {
+      const response = await axios.post(
+        `${acceptchatrequestsapi}/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        }
+      );
+      return response;
+    } catch (error) {
+      console.log("acceptChatRequest", error);
+    }
   };
 
   return (
@@ -100,7 +135,48 @@ const Publicprofile = () => {
         </div>
 
         <div className="public-profile-connect-container">
-          {profile?.connectionStatus === null ? (
+          {/* status null */}
+          {profile?.connectionStatus === null && (
+            <span className="explore-profile-card-button-text">Connect</span>
+          )}
+
+          {/* status pending */}
+          {profile?.connectionStatus === "pending" &&
+            profile?.senderRequestId === myuserId && (
+              <span className="explore-profile-card-button-text">
+                Requested
+              </span>
+            )}
+
+          {profile?.connectionStatus === "pending" &&
+            profile?.senderRequestId !== myuserId && (
+              <span
+                className="explore-profile-card-button-text"
+                onClick={() => acceptChatRequest(profile?.connectionRequestId)}
+              >
+                Accept
+              </span>
+            )}
+
+          {/* status accepted */}
+          {profile?.connectionStatus === "accepted" && (
+            <img
+              src="/images/explore/exploremessage.svg"
+              alt="message"
+              className="public-profile-card-exploremessage-image"
+              onClick={() => {
+                navigation("/chatting", {
+                  state: {
+                    name: profile?.name,
+                    roomId: profile?.roomId,
+                    receiverId: profile?.receiverId,
+                    senderId: profile?.senderId,
+                  },
+                });
+              }}
+            />
+          )}
+          {/* {profile?.connectionStatus === null ? (
             <span className="public-profile-card-button-text">Connect</span>
           ) : profile?.connectionStatus === "pending" ? (
             <span className="explore-profile-card-button-text-pending">
@@ -123,7 +199,7 @@ const Publicprofile = () => {
                 });
               }}
             />
-          )}
+          )} */}
         </div>
 
         {/* <span className="public-profile-message-image">
