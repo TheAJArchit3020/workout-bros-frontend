@@ -90,7 +90,6 @@ const Publicprofile = () => {
         }
       );
       console.log("Connect request sent successfully:", response.data);
-      getNearByUsers();
     } catch (error) {
       console.error("Error sending connect request:", error);
     }
@@ -158,10 +157,12 @@ const Publicprofile = () => {
 
         <div className="public-profile-connect-container">
           {/* status null */}
-          {profile?.connectionStatus === null && (
+          { 
+            profile?.connectionStatus === null && (
+            
             <span
               className="explore-profile-card-button-text"
-              onClick={() => sendConnectRequest(profile?._id)}
+              onClick={() => sendConnectRequest(profile?.id)}
             >
               Connect
             </span>
@@ -169,14 +170,14 @@ const Publicprofile = () => {
 
           {/* status pending */}
           {profile?.connectionStatus === "pending" &&
-            profile?.senderRequestId === myuserId && (
+            profile?.senderId === myuserId && (
               <span className="explore-profile-card-button-text">
                 Requested
               </span>
             )}
 
           {profile?.connectionStatus === "pending" &&
-            profile?.senderRequestId !== myuserId && (
+            profile?.senderId !== myuserId && (
               <span
                 className="explore-profile-card-button-text"
                 onClick={() => acceptChatRequest(profile?.connectionRequestId)}
