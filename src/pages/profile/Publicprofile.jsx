@@ -90,7 +90,6 @@ const Publicprofile = () => {
         }
       );
       console.log("Connect request sent successfully:", response.data);
-      getNearByUsers();
     } catch (error) {
       console.error("Error sending connect request:", error);
     }
