@@ -27,6 +27,7 @@ const useCheckToken = () => {
         // You can store users in state if needed
       } catch (error) {
         console.error("Token check failed:");
+        localStorage.removeItem("token");
         navigate("/"); // Redirect if token is invalid
       }
     };
