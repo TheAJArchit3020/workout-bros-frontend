@@ -308,7 +308,7 @@ const Explore = () => {
                       </span>
                     )}
 
-                  {/* status pending */}
+                  {/* status accepted */}
                   {bro.connectionStatus === "accepted" && (
                     <img
                       src="/images/explore/exploremessage.svg"

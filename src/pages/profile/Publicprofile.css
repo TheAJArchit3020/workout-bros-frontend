@@ -26,6 +26,10 @@
   font-size: 16px;
 }
 
+img.public-profile-card-exploremessage-image {
+  width: 50px !important;
+  height: 50px !important;
+}
 
 
 .public-profile-image {
