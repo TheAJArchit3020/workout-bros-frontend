@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { getnearbyusersapi, getuserprofileapi } from "../common/apis";
+import { getuserprofileapi } from "../common/apis";
 
 const useCheckToken = () => {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ const useCheckToken = () => {
       const tokenData = JSON.parse(token || "null");
 
       if (!tokenData) {
+        console.log("No token found. Redirecting...");
         navigate("/"); // Redirect if token is missing
         return;
       }
@@ -22,12 +23,10 @@ const useCheckToken = () => {
             Authorization: `Bearer ${tokenData}`,
           },
         });
-
-        const { users } = response.data;
-        console.log("Fetched users:", users);
+        console.log("Token is valid, user:", response.data.user);
         // You can store users in state if needed
       } catch (error) {
-        console.error("Token check failed:", error);
+        console.error("Token check failed:");
         navigate("/"); // Redirect if token is invalid
       }
     };
