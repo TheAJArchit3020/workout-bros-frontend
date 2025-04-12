@@ -137,7 +137,9 @@ const Publicprofile = () => {
         <div className="public-profile-connect-container">
           {/* status null */}
           {profile?.connectionStatus === null && (
-            <span className="explore-profile-card-button-text">Connect</span>
+            <span className="explore-profile-card-button-text" onClick={()=>{
+              
+            }}>Connect</span>
           )}
 
           {/* status pending */}

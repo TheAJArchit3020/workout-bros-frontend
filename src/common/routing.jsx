@@ -7,7 +7,7 @@ import Explore from "../pages/explore/Explore";
 import Profile from "../pages/profile/Profile";
 import Filter from "../pages/filter/Filter";
 import Connection from "../pages/connection/Connection";
-import Chatting from "../pages/chatting/chatting";
+import Chatting from "../pages/chatting/Chatting";
 import Publicprofile from "../pages/profile/Publicprofile";
 import Editprofile from "../pages/profile/Editprofile";
 

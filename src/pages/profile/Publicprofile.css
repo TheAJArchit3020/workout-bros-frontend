@@ -110,6 +110,7 @@ img.public-profile-card-exploremessage-image {
   max-width: 400px;
   align-self: center;
   margin-bottom: 40px;
+  background-color: #000;
 }
 
 .public-profile-connect-title {
