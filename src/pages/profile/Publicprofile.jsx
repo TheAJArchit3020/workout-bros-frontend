@@ -6,6 +6,7 @@ import {
   acceptchatrequestsapi,
   getpublicprofileapi,
   getuserprofileapi,
+  sendconnectrequestapi,
 } from "../../common/apis";
 import { interests as allInterests } from "../../data/interests";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
@@ -74,6 +75,27 @@ const Publicprofile = () => {
     }
   };
 
+  const sendConnectRequest = async (receiverId) => {
+    console.log(receiverId, "receiverId");
+    try {
+      const response = await axios.post(
+        sendconnectrequestapi,
+        {
+          receiverId: receiverId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        }
+      );
+      console.log("Connect request sent successfully:", response.data);
+      getNearByUsers();
+    } catch (error) {
+      console.error("Error sending connect request:", error);
+    }
+  };
+
   return (
     <>
       {showProfilePic && (
@@ -137,7 +159,12 @@ const Publicprofile = () => {
         <div className="public-profile-connect-container">
           {/* status null */}
           {profile?.connectionStatus === null && (
-            <span className="explore-profile-card-button-text">Connect</span>
+            <span
+              className="explore-profile-card-button-text"
+              onClick={() => sendConnectRequest(profile?._id)}
+            >
+              Connect
+            </span>
           )}
 
           {/* status pending */}
