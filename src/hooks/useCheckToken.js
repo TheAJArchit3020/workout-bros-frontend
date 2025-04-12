@@ -24,6 +24,9 @@ const useCheckToken = () => {
           },
         });
         console.log("Token is valid, user:", response.data.user);
+        if (!response.data.user.isProfileUpdated) {
+          navigate("/createProfile");
+        }
         // You can store users in state if needed
       } catch (error) {
         console.error("Token check failed:");
