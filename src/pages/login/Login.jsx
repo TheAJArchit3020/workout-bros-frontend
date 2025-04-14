@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import "./Login.css";
 import { getuserprofileapi, loginapi } from "../../common/apis";
 import Loader from "../../components/loader/Loader";
+import ReactGA from "react-ga4";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +17,9 @@ const Login = () => {
       setAccessToken(response.access_token);
     },
   });
-
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
   useEffect(() => {
     if (accessToken) {
       getUserDetails();
