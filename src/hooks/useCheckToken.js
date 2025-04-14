@@ -1,41 +1,43 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { getnearbyusersapi } from "../common/apis";
+import { getuserprofileapi } from "../common/apis";
 
 const useCheckToken = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const checkToken = async () => {
-            const token = localStorage.getItem("token");
-            const tokenData = JSON.parse(token);
+  useEffect(() => {
+    const checkToken = async () => {
+      const token = localStorage.getItem("token");
+      const tokenData = JSON.parse(token || "null");
 
-            console.log("hook token :", tokenData)
+      if (!tokenData) {
+        console.log("No token found. Redirecting...");
+        navigate("/"); // Redirect if token is missing
+        return;
+      }
 
-            if (!tokenData) {
-                navigate("/");
-            }
-            else {
-                try {
-                    const response = await axios.get(getnearbyusersapi, {
-                        headers: {
-                            Authorization: `Bearer ${tokenData}`,
-                        },
-                    });
+      try {
+        const response = await axios.get(getuserprofileapi, {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        });
+        console.log("Token is valid, user:", response.data.user);
+        if (!response.data.user.isProfileUpdated) {
+          navigate("/createProfile");
+        }
+        // You can store users in state if needed
+      } catch (error) {
+        console.error("Token check failed:");
+        console.log("Removing the tokeeeen from local storage!!!");
+        localStorage.removeItem("token");
+        navigate("/"); // Redirect if token is invalid
+      }
+    };
 
-                    const { users } = response.data;
-                    console.log("Fetched users:", users);
-                    return users
-                } catch (error) {
-                    console.error("Invalid token or error fetching users:", error);
-                    navigate("/"); // Redirect to login if error
-                }
-            }
-        };
-
-        checkToken();
-    }, [navigate]);
+    checkToken();
+  }, [navigate]); // Add navigate to dependency array
 };
 
 export default useCheckToken;

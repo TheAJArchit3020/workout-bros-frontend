@@ -22,11 +22,8 @@ const Connection = () => {
   const [chatRequests, setChatRequests] = useState([]);
   const [chats, setChats] = useState([]);
 
-
-
-   // check token...
-   useCheckToken();
-
+  // check token...
+  useCheckToken();
 
   const getPendingRequests = async () => {
     try {
@@ -100,6 +97,8 @@ const Connection = () => {
     }
   };
 
+ 
+
   return (
     <div className="connection-container">
       {/* <div className="edit-profile-navbar-wrapper">
@@ -148,6 +147,12 @@ const Connection = () => {
           <div className="connection-request-container">
             <div className="connection-request-header">
               <span className="connection-request-header-text">Requests</span>
+              <img
+                src="/images/explore/reloadbutton.svg"
+                alt="reload"
+                className="connection-request-header-reloadbutton"
+                onClick={getPendingRequests}
+              />
             </div>
 
             <div className="connection-request-list">
@@ -191,6 +196,12 @@ const Connection = () => {
               <span className="connection-notification-header-text">
                 Notifications
               </span>
+              <img
+                src="/images/explore/reloadbutton.svg"
+                alt="reload"
+                className="connection-request-header-reloadbutton"
+                onClick={getChatRequests}
+              />
             </div>
             {chatRequests && chatRequests?.notifications?.length > 0 ? (
               chatRequests?.notifications?.map((item, index) => (

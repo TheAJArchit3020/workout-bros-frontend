@@ -3,9 +3,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "./Login.css";
-import { loginapi } from "../../common/apis";
-import Loader from "../../components/loader/Loader"
-
+import { getuserprofileapi, loginapi } from "../../common/apis";
+import Loader from "../../components/loader/Loader";
+import ReactGA from "react-ga4";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,18 +17,9 @@ const Login = () => {
       setAccessToken(response.access_token);
     },
   });
-
-  useEffect(()=>{
-    const token = localStorage.getItem("token");
-    console.log(token);
-    if(token){
-      navigate("/explore");
-    }
-    else{
-      setIsUserLoggedIn(false);
-    }
-  },[])
-
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
   useEffect(() => {
     if (accessToken) {
       getUserDetails();
@@ -63,25 +54,47 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const getUserDetails = async () => {
+      try {
+        const response = await axios.get(getuserprofileapi, {
+          headers: {
+            Authorization: `Bearer ${tokenData}`,
+          },
+        });
+        if (response.data.user.isProfileUpdated) {
+          navigate("/explore");
+        } else {
+          navigate("/createProfile");
+        }
+      } catch (error) {
+        setIsUserLoggedIn(false);
+      }
+    };
+    const token = localStorage.getItem("token");
+    const tokenData = JSON.parse(token || "null");
+    console.log(token);
+    if (tokenData) {
+    } else {
+      setIsUserLoggedIn(false);
+    }
+  }, []);
   return (
     <>
-    {
-      isuserLoggedIn && 
-       <Loader/>
-    }
-    <div className="login-container">
-      <div className="overlay" />
-      <div className="content-container">
-        <div className="logo-container"></div>
-        <h1>
-          Meet people nearby who share your interests! Connect, chat, and do
-          activities together. Join now.!
-        </h1>
-        <button onClick={handleGoogleSignIn} className="btn">
-          Continue with Google
-        </button>
+      {isuserLoggedIn && <Loader />}
+      <div className="login-container">
+        <div className="overlay" />
+        <div className="content-container">
+          <div className="logo-container"></div>
+          <h1>
+            Meet people nearby who share your interests! Connect, chat, and do
+            activities together. Join now.!
+          </h1>
+          <button onClick={handleGoogleSignIn} className="btn">
+            Continue with Google
+          </button>
+        </div>
       </div>
-    </div>
     </>
   );
 };

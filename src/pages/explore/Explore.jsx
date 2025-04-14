@@ -28,7 +28,6 @@ const Explore = () => {
   const tokenData = JSON.parse(token);
   const [MyuserId, setMyuserId] = useState();
 
-  // check token...
   useCheckToken();
 
   useEffect(() => {
@@ -156,6 +155,10 @@ const Explore = () => {
     }
   };
 
+  const reloadHandler = () => {
+    getNearByUsers();
+  };
+
   return (
     <>
       {showLoader && <Loader />}
@@ -206,7 +209,19 @@ const Explore = () => {
         )}
 
         <div className="explore-profile-card-section">
-          <span className="explore-profile-card-title">Explore Bro's</span>
+          <div className="explore-profile-card-title-container">
+            <span className="explore-profile-card-title">Explore Bro's</span>
+            <img onClick={reloadHandler}
+              src="/images/explore/reloadbutton.svg"
+              alt="reloadbutton"
+              className="explore-profile-card-title-reloadbutton"
+            />
+          </div>
+          <div className="explore-profile-card-title-button">
+            <button className="explore-profile-card-title-button-text">
+              View All
+            </button>
+          </div>
           {usersArray && usersArray.length > 0 ? (
             usersArray.map((bro) => (
               <div
