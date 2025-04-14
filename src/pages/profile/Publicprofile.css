@@ -14,14 +14,18 @@
   padding-top: 2rem;
 }
 
-.public-profile-card-button-text {
-  text-transform: capitalize;
+.explore-profile-card-button{
   background-color: #000;
+  width: 100%;
   padding: 12px 10px;
   border-radius: 100px;
+ text-align: center;
+}
+
+.public-profile-card-button-text {
+  text-transform: capitalize;
   font-weight: 600;
   color: #DFFD52;
-  width: 100%;
   text-align: center;
   font-size: 16px;
 }

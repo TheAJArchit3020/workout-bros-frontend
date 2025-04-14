@@ -160,6 +160,7 @@ span.explore-profile-card-interest-more {
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 .explore-profile-card {
@@ -176,7 +177,6 @@ span.explore-profile-card-interest-more {
   border: 1px solid #2a2a2a;
   width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 .explore-profile-card:hover {

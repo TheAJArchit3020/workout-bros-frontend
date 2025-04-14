@@ -159,30 +159,34 @@ const Publicprofile = () => {
         <div className="public-profile-connect-container">
           {/* status null */}
           {profile?.connectionStatus === null && (
+            <div className="explore-profile-card-button"   onClick={() => sendConnectRequest(profile?._id)}>
             <span
               className="explore-profile-card-button-text"
-              onClick={() => sendConnectRequest(profile?._id)}
             >
               Connect
             </span>
+            </div>
           )}
 
           {/* status pending */}
           {profile?.connectionStatus === "pending" &&
             profile?.senderRequestId === myuserId && (
+              <div className="explore-profile-card-button" >
               <span className="explore-profile-card-button-text">
                 Requested
               </span>
+              </div>
             )}
 
           {profile?.connectionStatus === "pending" &&
             profile?.senderRequestId !== myuserId && (
+              <div className="explore-profile-card-button"   onClick={() => acceptChatRequest(profile?.connectionRequestId)}>
               <span
                 className="explore-profile-card-button-text"
-                onClick={() => acceptChatRequest(profile?.connectionRequestId)}
               >
                 Accept
               </span>
+              </div>
             )}
 
           {/* status accepted */}

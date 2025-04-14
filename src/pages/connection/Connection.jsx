@@ -246,7 +246,7 @@ const Connection = () => {
                   }
                 >
                   <img
-                    src="./images/profile.png"
+                    src= { item.profilePic  ??  "./images/profile.png"}  
                     alt=""
                     className="connection-chat-item-image"
                   />
