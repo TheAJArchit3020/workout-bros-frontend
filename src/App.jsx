@@ -1,9 +1,10 @@
 import "./App.css";
 import { UsersProvider } from "./common/context";
 import Routing from "./common/routing";
-import usePWAInstall from "./hooks/usePWAInstall";
+import ReactGA from "react-ga4";
 
 function App() {
+  ReactGA.initialize("G-NKL77RRV15");
   // const { deferredPrompt, handleInstallClick } = usePWAInstall();
 
   return (
