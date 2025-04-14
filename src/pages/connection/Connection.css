@@ -64,11 +64,19 @@
   padding-right: 20px;
 }
 
+.connection-request-header,
+.connection-notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .connection-request-header-text,
 .connection-notification-header-text {
   color: #2a2a2a;
   font-size: 1.1rem;
   font-weight: bold;
+
 }
 
 .connection-request-item,
@@ -177,3 +185,21 @@ span.connection-chat-item-text {
     width: 450px;
   }
 }
+
+
+.connection-request-header-reloadbutton {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 100px;
+}
+
+.connection-request-header-reloadbutton:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.connection-request-header-reloadbutton:active {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: scale(0.95);
+}
+
