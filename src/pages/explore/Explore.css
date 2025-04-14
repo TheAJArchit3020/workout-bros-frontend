@@ -330,9 +330,23 @@ img.explore-profile-card-exploremessage-image {
   justify-content: space-between;
 }
 
+
+
 .explore-profile-card-title-reloadbutton {
-  width: 22px;
+
   cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 100px;
+}
+
+.explore-profile-card-title-reloadbutton:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.explore-profile-card-title-reloadbutton:active {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: scale(0.95);
 }
 
 /* Responsive styles for 320px to 425px */
