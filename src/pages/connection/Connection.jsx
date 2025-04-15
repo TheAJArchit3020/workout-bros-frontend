@@ -32,6 +32,7 @@ const Connection = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
+      console.log(response.data);
       setChatPending(response.data);
     } catch (error) {
       console.log("getPendingRequests", error);

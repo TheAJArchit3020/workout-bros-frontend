@@ -98,13 +98,21 @@ const Explore = () => {
         },
       });
       console.log("getnearbyusersapi API Response:", response.data);
-      const { users } = response.data;
-      console.log("Nearby Users Data", users);
-      setUsersArray(users);
-      setShowLoader(false);
+      if(response.status === 429){
+        console.error("Error fetching users:", error);
+        //setUsersArray([]);
+        setShowLoader(false);
+      }
+      else if(response.status === 200){
+        const { users } = response.data;
+        console.log("Nearby Users Data", users);
+        setUsersArray(users);
+        setShowLoader(false);
+      }   
+
     } catch (error) {
       console.error("Error fetching users:", error);
-      setUsersArray([]);
+      //setUsersArray([]);
       setShowLoader(false);
     }
   };
