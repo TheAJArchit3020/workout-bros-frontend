@@ -20,6 +20,7 @@ const Login = () => {
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
   }, []);
+
   useEffect(() => {
     if (accessToken) {
       getUserDetails();
@@ -55,7 +56,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    const getUserDetails = async () => {
+    const loginCheck = async () => {
       try {
         const response = await axios.get(getuserprofileapi, {
           headers: {
@@ -75,9 +76,11 @@ const Login = () => {
     const tokenData = JSON.parse(token || "null");
     console.log(token);
     if (tokenData) {
+      loginCheck();
     } else {
       setIsUserLoggedIn(false);
     }
+    
   }, []);
   return (
     <>
