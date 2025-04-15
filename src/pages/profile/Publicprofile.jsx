@@ -43,6 +43,7 @@ const Publicprofile = () => {
   }, [userId]);
 
   useEffect(() => {
+    console.log("connection request ID",senderRequestId);
     const getUserData = async () => {
       const response = await axios.get(getuserprofileapi, {
         headers: {
