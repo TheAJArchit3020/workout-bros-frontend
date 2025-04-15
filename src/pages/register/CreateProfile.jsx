@@ -59,8 +59,6 @@ const CreateProfile = () => {
     }
   };
 
- 
-
   const toggleInterest = (interestName) => {
     setFormData((prev) => ({
       ...prev,
@@ -202,9 +200,15 @@ const CreateProfile = () => {
                       }}
                     />
                   ) : (
-                    <img src="/images/profile.svg" alt="user" />
+                    <img
+                      src="/images/profile.svg"
+                      alt="user"
+                      className="p_c_profileImage"
+                    />
                   )}
-                  <button className="p_c_profilePlusButton" />
+                  <div className="p_c_profilePlusButton">
+                    <img src="/images/plusicon.svg" alt="" />
+                  </div>
                 </div>
               </div>
 
