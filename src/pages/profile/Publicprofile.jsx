@@ -16,7 +16,6 @@ const Publicprofile = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const userId = state?.userId;
-  const senderRequestId = state?.senderRequestId;
   const [profile, setProfile] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -43,7 +42,7 @@ const Publicprofile = () => {
   }, [userId]);
 
   useEffect(() => {
-    console.log("connection request ID",senderRequestId);
+    console.log("connection request ID",profile?.senderRequestId);
     const getUserData = async () => {
       const response = await axios.get(getuserprofileapi, {
         headers: {
@@ -171,16 +170,16 @@ const Publicprofile = () => {
 
           {/* status pending */}
           {profile?.connectionStatus === "pending" &&
-            senderRequestId === myuserId && (
-              <div className="explore-profile-card-button" >
-              <span className="explore-profile-card-button-text">
+            profile?.senderRequestId === myuserId && (
+              <div className="explore-profile-card-button requestedButton" >
+              <span className="explore-profile-card-button-text-requested">
                 Requested
               </span>
               </div>
             )}
 
           {profile?.connectionStatus === "pending" &&
-            senderRequestId!== myuserId && (
+            profile.senderRequestId!== myuserId && (
               <div className="explore-profile-card-button"   onClick={() => acceptChatRequest(profile?.connectionRequestId)}>
               <span
                 className="explore-profile-card-button-text"

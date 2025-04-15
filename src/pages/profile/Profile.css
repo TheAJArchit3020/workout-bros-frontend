@@ -308,7 +308,7 @@ span.reviews-title {
   }
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 450px) {
   .profile-container {
     width: 450px;
     padding: 0 1rem 1rem;

@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 30px;
   width: 100%;
+  height: 100%;
   box-sizing: content-box;
   overflow-y: auto;
   min-width: 320px;
@@ -69,11 +70,18 @@
   margin-top: 5%;
 }
 
-img.edit-profile-placeholder-image-plus {
+.edit-profile-placeholder-image{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.edit-profile-placeholder-image-plus{
   position: absolute;
-  bottom: 20px;
-  right: 10rem;
-  margin-bottom: 5%;
+  height: 24px;
+  width: 24px;
 }
 
 .edit-profile-form-wrapper {
@@ -181,7 +189,85 @@ img.profile-pic {
   transform: scale(0.95);
 }
 
+.uploadprofile-modal-header{
+  max-width: 300px;
+}
+
 /* Mobile Responsive Styles */
+
+
+/* Small Mobile Devices */
+
+
+.edit-profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.edit-profile-modal-content {
+  background-color: #dffd52;
+  padding: 8px 20px;
+  border-radius: 10rem;
+  margin-bottom: 5rem;
+  text-align: center;
+  width: 70%;
+  max-width: 360px;
+}
+
+.edit-profile-modal-content-text {
+  font-size: 18px;
+  color: #333;
+  /* Text color */
+  font-weight: bold;
+}
+
+.filter-back-button:active {
+  background-color: #88af01;
+  opacity: 0.5;
+}
+
+
+/* fade-in animation */
+.fade-in {
+  opacity: 1;
+  animation: fadeIn 0.6s ease forwards;
+  pointer-events: all;
+}
+
+/* fade-out animation */
+.fade-out {
+  opacity: 0;
+  animation: fadeOut 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 
 @media screen and (max-width: 480px) {
   .edit-profile-navbar-brand-name {
@@ -219,17 +305,10 @@ img.profile-pic {
   }
 }
 
-/* Small Mobile Devices */
 @media screen and (max-width: 320px) {
   .edit-profile-container {
     padding: 8px;
     gap: 2rem;
-  }
-
-  img.edit-profile-placeholder-image-plus {
-    position: absolute;
-    bottom: 10px;
-    right: 7rem !important;
   }
 
   .edit-profile-navbar-brand-name-text {
@@ -263,90 +342,3 @@ img.profile-pic {
   }
 }
 
-@media screen and (max-width: 380px) {
-  img.edit-profile-placeholder-image-plus {
-    position: absolute;
-    bottom: 28px;
-    right: 8.3rem;
-  }
-}
-
-.edit-profile-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 1000;
-}
-
-.edit-profile-modal-content {
-  background-color: #dffd52;
-  padding: 8px 20px;
-  border-radius: 10rem;
-  margin-bottom: 5rem;
-  text-align: center;
-  width: 70%;
-  max-width: 360px;
-}
-
-.edit-profile-modal-content-text {
-  font-size: 18px;
-  color: #333;
-  /* Text color */
-  font-weight: bold;
-}
-
-.filter-back-button:active {
-  background-color: #88af01;
-  opacity: 0.5;
-}
-
-@media (min-width: 450px) {
-  .edit-profile-container {
-    width: 425px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .edit-profile-container {
-    width: 425px;
-  }
-}
-
-/* fade-in animation */
-.fade-in {
-  opacity: 1;
-  animation: fadeIn 0.6s ease forwards;
-  pointer-events: all;
-}
-
-/* fade-out animation */
-.fade-out {
-  opacity: 0;
-  animation: fadeOut 0.6s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}

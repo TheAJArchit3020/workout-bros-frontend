@@ -145,10 +145,11 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+ gap:1rem;
 }
+
 
 .createprofile-uploadprofile-modal-header {
   display: flex;
@@ -324,6 +325,12 @@ div.interest-button.selected .interest-name {
   justify-content: center;
 }
 
+@media screen and (min-width: 450px) {
+  .profile_container {
+    width: 450px;
+  }
+}
+
 @media (min-width: 768px) {
   .interests_grid {
     gap: 5px;
@@ -343,13 +350,11 @@ div.interest-button.selected .interest-name {
     color: #000;
   }
 }
-@media screen and (min-width: 450px) {
-  .profile_container {
-    width: 450px;
-  }
-}
 
 @media (min-width: 1020px) {
+  .interests_grid {
+    gap: 10px;
+  }
   .createprofile-uploadprofile-modal {
     position: absolute;
     width: 100%;

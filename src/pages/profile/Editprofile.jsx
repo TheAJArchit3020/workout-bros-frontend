@@ -212,22 +212,14 @@ const Editprofile = () => {
             ) : (
               <img src="./images/editprofileusericon.svg" alt="edit-profile" />
             )}
-          </div>
-          <div className="edit-profile-placeholder-image" onClick={openModal}>
-            {/* <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-              id="profile-image-input"
-            /> */}
-            <label htmlFor="profile-image-input">
+         
+           <div className="edit-profile-placeholder-image-plus" onClick={openModal}>
               <img
                 src="./images/editprofileuserplusicon.svg"
                 alt="edit-profile-plus"
                 className="edit-profile-placeholder-image-plus"
               />
-            </label>
+           </div>
           </div>
           <span className="edit-profile-placeholder-text">
             Edit your profile
@@ -328,7 +320,7 @@ const Editprofile = () => {
             animateModal ? "fade-in" : "fade-out"
           }`}
         >
-          <div className="createprofile-uploadprofile-modal-content">
+          <div className="createprofile-uploadprofile-modal-content  uploadprofile-modal-header">
             <div className="createprofile-uploadprofile-modal-header">
               <span className="createprofile-uploadprofile-modal-title">
                 Upload Profile Photo

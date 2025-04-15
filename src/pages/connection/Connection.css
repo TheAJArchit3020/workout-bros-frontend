@@ -180,11 +180,6 @@ span.connection-chat-item-text {
   font-weight: 600;
 }
 
-@media (min-width: 1020px) {
-  .connection-container {
-    width: 450px;
-  }
-}
 
 
 .connection-request-header-reloadbutton {
@@ -203,3 +198,9 @@ span.connection-chat-item-text {
   transform: scale(0.95);
 }
 
+
+@media (min-width: 450px) {
+  .connection-container {
+    width: 450px;
+  }
+}

@@ -138,8 +138,8 @@ const Explore = () => {
     }
   };
 
-  const navigateToPublicProfile = (userId, senderRequestId) => {
-    navigate("/publicprofile", { state: { userId,senderRequestId } });
+  const navigateToPublicProfile = (userId) => {
+    navigate("/publicprofile", { state: { userId } });
   };
 
   console.log({ MyuserId });
@@ -230,7 +230,7 @@ const Explore = () => {
               <div
                 className="explore-profile-card"
                 key={bro._id}
-                onClick={() => navigateToPublicProfile(bro?._id, bro?.senderRequestId)}
+                onClick={() => navigateToPublicProfile(bro?._id)}
               >
                 <div className="explore-profile-card-image">
                   <img
@@ -314,7 +314,7 @@ const Explore = () => {
                   {/* status pending */}
                   {bro.connectionStatus === "pending" &&
                     bro?.senderRequestId === MyuserId && (
-                      <span className="explore-profile-card-button-text">
+                      <span className="explore-profile-card-button-text requested-button">
                         Requested
                       </span>
                     )}

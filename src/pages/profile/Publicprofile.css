@@ -153,7 +153,12 @@ img.public-profile-card-exploremessage-image {
   height: 50px;
 }
 
-@media (min-width: 1024px) {
+.requestedButton{
+  background-color: #DFFD52;
+  color: #2a2a2a;
+}
+
+@media (min-width: 450px) {
   .public-profile-container {
     width: 450px;
   }

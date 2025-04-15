@@ -317,9 +317,8 @@ const CreateProfile = () => {
                   <img
                     src={profileImage}
                     alt="Profile"
-                    className="p_c_profileImage"
                     style={{
-                      width: "100px",
+                     width: "100px",
                       height: "100px",
                       borderRadius: "50%",
                       objectFit: "cover",
@@ -345,6 +344,7 @@ const CreateProfile = () => {
                   onClick={() => fileInputRef.current.click()}
                 />
               )}
+             
               <input
                 type="file"
                 ref={fileInputRef}
@@ -352,8 +352,8 @@ const CreateProfile = () => {
                 accept="image/*"
                 style={{ display: "none" }}
               />
+              </div>
             </div>
-          </div>
         )}
       </div>
     </>
