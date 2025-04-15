@@ -217,11 +217,6 @@ const Explore = () => {
               className="explore-profile-card-title-reloadbutton"
             />
           </div>
-          <div className="explore-profile-card-title-button">
-            <button className="explore-profile-card-title-button-text">
-              View All
-            </button>
-          </div>
           {usersArray && usersArray.length > 0 ? (
             usersArray.map((bro) => (
               <div
