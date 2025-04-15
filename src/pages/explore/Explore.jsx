@@ -138,8 +138,8 @@ const Explore = () => {
     }
   };
 
-  const navigateToPublicProfile = (userId) => {
-    navigate("/publicprofile", { state: { userId } });
+  const navigateToPublicProfile = (userId, senderRequestId) => {
+    navigate("/publicprofile", { state: { userId,senderRequestId } });
   };
 
   console.log({ MyuserId });
@@ -230,7 +230,7 @@ const Explore = () => {
               <div
                 className="explore-profile-card"
                 key={bro._id}
-                onClick={() => navigateToPublicProfile(bro._id)}
+                onClick={() => navigateToPublicProfile(bro?._id, bro?.senderRequestId)}
               >
                 <div className="explore-profile-card-image">
                   <img

@@ -16,6 +16,7 @@ const Publicprofile = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const userId = state?.userId;
+  const senderRequestId = state?.senderRequestId;
   const [profile, setProfile] = useState(null);
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
@@ -34,7 +35,7 @@ const Publicprofile = () => {
           Authorization: `Bearer ${tokenData}`,
         },
       });
-      console.log("response", response.data.user);
+      console.log("public profile api", response.data.user);
       setProfile(response.data.user);
       console.log(profile?.profilePic);
     };
@@ -158,7 +159,7 @@ const Publicprofile = () => {
         <div className="public-profile-connect-container">
           {/* status null */}
           {profile?.connectionStatus === null && (
-            <div className="explore-profile-card-button"   onClick={() => sendConnectRequest(profile?._id)}>
+            <div className="explore-profile-card-button"   onClick={() => sendConnectRequest(profile?.id)}>
             <span
               className="explore-profile-card-button-text"
             >
@@ -169,7 +170,7 @@ const Publicprofile = () => {
 
           {/* status pending */}
           {profile?.connectionStatus === "pending" &&
-            profile?.senderRequestId === myuserId && (
+            senderRequestId === myuserId && (
               <div className="explore-profile-card-button" >
               <span className="explore-profile-card-button-text">
                 Requested
@@ -178,7 +179,7 @@ const Publicprofile = () => {
             )}
 
           {profile?.connectionStatus === "pending" &&
-            profile?.senderRequestId !== myuserId && (
+            senderRequestId!== myuserId && (
               <div className="explore-profile-card-button"   onClick={() => acceptChatRequest(profile?.connectionRequestId)}>
               <span
                 className="explore-profile-card-button-text"
