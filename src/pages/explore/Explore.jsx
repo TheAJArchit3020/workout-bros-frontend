@@ -16,7 +16,7 @@ import Loader from "../../components/loader/Loader";
 import ViewPhoto from "../../components/ViewPhoto/viewPhoto";
 import { useUsers } from "../../common/context";
 import useCheckToken from "../../hooks/useCheckToken";
-
+import PaymentPopUp from "../../components/Payment/PaymentPopUp";
 const Explore = () => {
   const navigate = useNavigate();
   const { usersArray, setUsersArray, selectType, setSelectType } = useUsers();
@@ -27,7 +27,7 @@ const Explore = () => {
   const token = localStorage.getItem("token");
   const tokenData = JSON.parse(token);
   const [MyuserId, setMyuserId] = useState();
-
+  const [showPaymentPopUp,setShowPaymentPopUp] = useState(false);
   useCheckToken();
 
   useEffect(() => {
@@ -131,7 +131,10 @@ const Explore = () => {
           },
         }
       );
-      console.log("Connect request sent successfully:", response.data);
+      console.log("Connect request sent successfully:", response);
+      if(response.status === 200){
+        setShowPaymentPopUp(true);
+      }      
       getNearByUsers();
     } catch (error) {
       console.error("Error sending connect request:", error);
@@ -357,7 +360,11 @@ const Explore = () => {
             <p className="no-users-found">No users found in your area</p>
           )}
         </div>
-
+        {showPaymentPopUp &&
+           <div className="payment-popup-container" onClick={() => setShowPaymentPopUp(false)}>
+          <PaymentPopUp />
+          </div>
+         }
         <div className="explore-footer-section">
           <Footer />
         </div>

@@ -40,6 +40,15 @@ const Footer = () => {
         >
           <img src="./images/usericon.svg" alt="user-icon" />
         </Link>
+        <Link
+          onClick={() => handleTabClick("payment")}
+          to="/payment"
+          className={`${
+            isSelected === "payment" ? "selected-tab" : "footer-section"
+          } nav-btn`}
+        >
+          <img src="./images/payment/crown1.svg" alt="user-icon" />
+        </Link>
       </div>
     </div>
   );

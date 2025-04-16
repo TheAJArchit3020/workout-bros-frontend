@@ -21,9 +21,7 @@ const getchatrequestsapi = `${baseurl}/notifications`;
 const acceptchatrequestsapi = `${baseurl}/chat/accept`;
 const getchatsapi = `${baseurl}/chat`;
 
-
-
-
+const getPaymentPlans = `${baseurl}/plans/all`;
 
 export {
   loginapi,
@@ -38,4 +36,5 @@ export {
   getchatrequestsapi,
   acceptchatrequestsapi,
   getchatsapi,
+  getPaymentPlans
 };

@@ -10,7 +10,7 @@ import Connection from "../pages/connection/Connection";
 import Chatting from "../pages/chatting/chatting";
 import Publicprofile from "../pages/profile/Publicprofile";
 import Editprofile from "../pages/profile/Editprofile";
-
+import Payment from "../pages/Payment/Payement";
 
 const Routing = () => {
   return (
@@ -25,6 +25,7 @@ const Routing = () => {
         <Route path="/filter" element={<Filter />} />  //finish
         <Route path="/connection" element={<Connection />} /> //
         <Route path="/Chatting" element={<Chatting />} /> //finish
+        <Route path="/payment" element={<Payment />} /> 
       </Routes>
     </BrowserRouter>
   );
