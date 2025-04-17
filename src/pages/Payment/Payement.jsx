@@ -27,11 +27,7 @@ const Payment = () => {
 
   const getPlans = async () => {
     try {
-      const getPlansResponse = await axios.get(getPaymentPlans, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const getPlansResponse = await axios.get(getPaymentPlans);
       setSelectedPlan(
         ...getPlansResponse.data.plans.filter(
           (plan) => plan.name === "Yearly Plan"
