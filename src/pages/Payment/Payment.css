@@ -146,6 +146,7 @@
 .p-c-body-plan-exipiryText{
     text-align: center;
     font-weight: bold;
+    font-size: small;
 }
 
 @media (min-width: 450px) {

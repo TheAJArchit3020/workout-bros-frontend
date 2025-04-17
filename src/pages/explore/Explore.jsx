@@ -132,12 +132,13 @@ const Explore = () => {
         }
       );
       console.log("Connect request sent successfully:", response);
-      if(response.status === 200){
-        setShowPaymentPopUp(true);
-      }      
+     
       getNearByUsers();
     } catch (error) {
-      console.error("Error sending connect request:", error);
+      console.error("Error sending connect request:", error.status);
+      if(error.status === 403){
+        setShowPaymentPopUp(true);
+      }      
     }
   };
 

@@ -4,37 +4,200 @@ import { ArrowLeftIcon } from "@heroicons/react/16/solid";
 import { useNavigate } from "react-router";
 import { use } from "react";
 import axios from "axios";
-import { getPaymentPlans } from "../../common/apis";
+import {
+  getPaymentPlans,
+  verifyPaymentapi,
+  sendconnectrequestapi,
+  getCurrentPlanapi,
+} from "../../common/apis";
+
 const Payment = () => {
   const navigate = useNavigate();
   const [plansArray, setPlansArray] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState("Monthly");
-  const [currentPlan, setCurrentPlan] = useState("Free");
+  const [selectedPlan, setSelectedPlan] = useState("");
+  const [currentPlan, setCurrentPlan] = useState({ name: "Free" });
+  const [token, setToken] = useState();
   const handleBackButton = () => {
-    navigate(-1);
+    navigate("/explore");
   };
+
+  useEffect(()=>{
+    console.log("token",token);
+   },[token])
 
   const getPlans = async () => {
-    const token = localStorage.getItem("token");
-    const tokenData = JSON.parse(token || "null");
-    const getPlansResponse = await axios.get(getPaymentPlans, {
-      headers: {
-        Authorization: `Bearer ${tokenData}`,
-      },
-    });
-    return getPlansResponse.data;
+    try {
+      const getPlansResponse = await axios.get(getPaymentPlans, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setSelectedPlan(
+        ...getPlansResponse.data.plans.filter(
+          (plan) => plan.name === "Yearly Plan"
+        )
+      );
+      return getPlansResponse.data;
+    } catch (error) {
+      console.log("getPlans", error);
+      return {
+        plans: [],
+      };
+    }
   };
 
-  useEffect(() => {
-    const getResponseData = async () => {
+  const loadRazorpay = () => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    console.log("razorPay Loaded");
+  };
+
+  const getCurrentPlan = async () => {
+    const token = localStorage.getItem("token");
+    const tokenData = JSON.parse(token || "null");
+    setToken(tokenData);
+
+    try {
+      const isPlanPurchase = await axios.get(getCurrentPlanapi, {
+        headers: {
+          Authorization: `Bearer ${tokenData}`,
+        },
+      });
+      console.log("isPlanPurchased", isPlanPurchase);
+      if(!isPlanPurchase.data.isPurchased){
+        return false;
+      }
+      else{
+        const currentPlan = {
+          name: isPlanPurchase.data.plan.name,
+          price: isPlanPurchase.data.plan.price,
+          id: isPlanPurchase.data.plan.id,
+          endDate : isPlanPurchase.data.subscription.endDate.split("T")[0],
+          description:"ijfdsij",
+        }
+        setCurrentPlan(currentPlan);
+        return true;
+      }
+    } catch (error) {
+      console.log("isPlanPurchased", error);
+    }
+  };
+
+  const fetchCurrentPlan = async () => {
+    const isUserPurchasedPlan = await getCurrentPlan();
+
+    if (!isUserPurchasedPlan) {
+      loadRazorpay();
       const data = await getPlans();
       setPlansArray(data.plans);
       console.log("getResponseData", data);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentPlan();
+    return () => {
+      const script = document.querySelector(
+        "script[src='https://checkout.razorpay.com/v1/checkout.js']"
+      );
+      if (script) {
+        document.body.removeChild(script);
+      }
     };
-    getResponseData();
   }, []);
 
-  const handlePaymentButton = () => {};
+  const getRazorPayObject = async () => {
+    try {
+      const response = await axios.post(
+        sendconnectrequestapi,
+        {
+          planId: selectedPlan._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log("Payment Error", error);
+    }
+  };
+
+  const handleResponse = async (response) => {
+    console.log("payment response", {
+      razorpay_payment_id: response.razorpay_payment_id,
+      razorpay_order_id: response.razorpay_order_id,
+      razorpay_signature: response.razorpay_signature,
+      planId: selectedPlan._id,
+    });
+
+    try {
+      const verifyPayment = await axios.post(
+        verifyPaymentapi,
+        {
+          razorpay_order_id: response.razorpay_order_id,
+          razorpay_payment_id: response.razorpay_payment_id,
+          razorpay_signature: response.razorpay_signature,
+          planId: selectedPlan._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("verify Payment", verifyPayment);
+      if (verifyPayment.status === 200) {
+        const currentPlan = {
+          name: selectedPlan.name,
+          price: selectedPlan.price,
+          id: selectedPlan._id,
+          endDate : verifyPayment.data.subscription.endDate.split("T")[0],
+          description:selectedPlan.description
+        }
+        setCurrentPlan(currentPlan);
+      }
+    } catch (error) {
+      console.log("verify Payment Error", error);
+    }
+  };
+  const handlePaymentButton = async () => {
+    if (selectedPlan === "") {
+      return;
+    }
+    console.log("selectedPlan", selectedPlan, " ", token);
+    const paymentResponse = await getRazorPayObject();
+    var options = {
+      key: paymentResponse.razorpayOrder.key,
+      amount: paymentResponse.razorpayOrder.amount,
+      currency: "INR",
+      name: "Kineticscape Studios",
+      description: "Test Transaction",
+      image: "images/logo/logo.svg",
+      order_id: paymentResponse.razorpayOrder.id,
+      handler: async function (response) {
+        await handleResponse(response);
+      },
+      // "prefill": {
+      //     "name": selectedPlan.userName,
+      //     "email": selectedPlan.userEmail,
+      //     "contact": selectedPlan.userContact
+      // },
+      notes: {
+        address: "archit@kineticscapestudios.com",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const razorpayCheckOut = new window.Razorpay(options);
+    razorpayCheckOut.open();
+    console.log("razorpayCheckOut", razorpayCheckOut);
+  };
 
   return (
     <div className="payment-container">
@@ -45,7 +208,7 @@ const Payment = () => {
       </div>
 
       <div className="p-c-body">
-        {currentPlan === "Free" ? (
+        {currentPlan.name === "Free" ? (
           <span className="p-c-body-title">
             choose your <span className="p-c-body-title-highlight">plan</span>
           </span>
@@ -55,43 +218,42 @@ const Payment = () => {
           </span>
         )}
 
-        {currentPlan === "Free" ? (
+        {currentPlan.name === "Free" ? (
           <>
             <div className="p-c-body-plans-container">
               {plansArray.map((item, index) => {
                 return (
                   <div
                     className={`p-c-body-plan-button ${
-                      selectedPlan === item.name
+                      selectedPlan.name === item.name
                         ? "p-c-body-plan-button-selected"
-                        : currentPlan === item.name
+                        : currentPlan.name === item.name
                         ? "p-c-body-plan-button-current"
                         : " "
                     }`}
                     key={index}
                     onClick={() => {
-                      if (currentPlan === item.name) {
+                      if (currentPlan.name === item.name) {
                         return;
                       }
-
-                      setSelectedPlan(item.name);
+                      setSelectedPlan(item);
                     }}
                   >
                     <div className="p-c-body-plan-button-text-container">
                       <span
                         className={`p-c-body-plan-button-text ${
-                          currentPlan === item.name &&
+                          currentPlan.name === item.name &&
                           "p-c-body-plan-button-current-text"
                         }`}
                         style={{ fontWeight: "bold" }}
                       >
-                        {currentPlan === item.name
+                        {currentPlan.name === item.name
                           ? "Current Plan"
                           : item.name}
                       </span>
                       <span
                         className={`p-c-body-plan-button-text ${
-                          currentPlan === item.name &&
+                          currentPlan.name === item.name &&
                           "p-c-body-plan-button-current-text"
                         }`}
                         style={{ fontStyle: "italic" }}
@@ -102,7 +264,7 @@ const Payment = () => {
                     <div className="p-c-body-plan-button-price-container">
                       <span
                         className={`p-c-body-plan-button-text ${
-                          currentPlan === item.name &&
+                          currentPlan.name === item.name &&
                           "p-c-body-plan-button-current-text"
                         }`}
                         style={{ fontWeight: "bold" }}
@@ -116,7 +278,10 @@ const Payment = () => {
               })}
             </div>
             <div className="p-c-body-subscription-conatiner">
-              <div className="p-c-body-subscription-button">
+              <div
+                className="p-c-body-subscription-button"
+                onClick={handlePaymentButton}
+              >
                 <span>Subscribe</span>
               </div>
               <div className="p-c-body-subscription-policies">
@@ -142,7 +307,7 @@ const Payment = () => {
                   }
                   style={{ fontWeight: "bold" }}
                 >
-                  One year Plan
+                  {currentPlan.name}
                 </span>
                 <span
                   className={
@@ -150,7 +315,7 @@ const Payment = () => {
                   }
                   style={{ fontStyle: "italic" }}
                 >
-                  description
+                  {currentPlan.description}
                 </span>
               </div>
               <div className="p-c-body-plan-button-price-container">
@@ -160,12 +325,12 @@ const Payment = () => {
                   }
                   style={{ fontWeight: "bold" }}
                 >
-                  Rs.500/-
+                  Rs.{currentPlan.price}
                 </span>
               </div>
             </div>
             <span className="p-c-body-plan-exipiryText">
-              Your current plan expires on 16/04/25
+              Your current plan expires on {currentPlan?.endDate}
             </span>
           </div>
         )}

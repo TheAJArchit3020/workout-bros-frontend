@@ -285,6 +285,10 @@ img.explore-profile-card-exploremessage-image {
   color: #dffd52;
 }
 
+.explore-profile-card-button-text:hover {
+cursor: pointer;
+}
+
 .explore-profile-card-button-text-pending {
   text-transform: capitalize;
   padding: 5px 10px;
