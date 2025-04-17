@@ -15,19 +15,22 @@ const Payment = () => {
   const navigate = useNavigate();
   const [plansArray, setPlansArray] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState("");
-  const [currentPlan, setCurrentPlan] = useState({ name: "Free" });
-  const [token, setToken] = useState();
+  const [currentPlan, setCurrentPlan] = useState({ name: "Free Plan" });
+  const [tocken,setTocken] = useState("");
+  const [isPlanPurchased,setIsPlanPurchased] = useState(false);
   const handleBackButton = () => {
     navigate("/explore");
   };
 
-  useEffect(()=>{
-    console.log("token",token);
-   },[token])
-
-  const getPlans = async () => {
+  const getPlans = async (token) => {
+    console.log("Token", token);
     try {
-      const getPlansResponse = await axios.get(getPaymentPlans);
+      const getPlansResponse = await axios.get(getPaymentPlans,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
       setSelectedPlan(
         ...getPlansResponse.data.plans.filter(
           (plan) => plan.name === "Yearly Plan"
@@ -50,18 +53,16 @@ const Payment = () => {
     console.log("razorPay Loaded");
   };
 
-  const getCurrentPlan = async () => {
-    const token = localStorage.getItem("token");
-    const tokenData = JSON.parse(token || "null");
-    setToken(tokenData);
+  const getCurrentPlan = async (token) => {
 
     try {
       const isPlanPurchase = await axios.get(getCurrentPlanapi, {
         headers: {
-          Authorization: `Bearer ${tokenData}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       console.log("isPlanPurchased", isPlanPurchase);
+      setIsPlanPurchased(isPlanPurchase.data.isPurchased);
       if(!isPlanPurchase.data.isPurchased){
         return false;
       }
@@ -81,19 +82,23 @@ const Payment = () => {
     }
   };
 
-  const fetchCurrentPlan = async () => {
-    const isUserPurchasedPlan = await getCurrentPlan();
+  const fetchCurrentPlan = async (token) => {
+    const isUserPurchasedPlan = await getCurrentPlan(token);
 
     if (!isUserPurchasedPlan) {
       loadRazorpay();
-      const data = await getPlans();
+      const data = await getPlans(token);
       setPlansArray(data.plans);
       console.log("getResponseData", data);
     }
   };
 
   useEffect(() => {
-    fetchCurrentPlan();
+    const token = localStorage.getItem("token");
+    const tokenData = JSON.parse(token || "null");
+    setTocken(tokenData);
+
+    fetchCurrentPlan(tokenData);
     return () => {
       const script = document.querySelector(
         "script[src='https://checkout.razorpay.com/v1/checkout.js']"
@@ -113,7 +118,7 @@ const Payment = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${tocken}`,
           },
         }
       );
@@ -142,12 +147,13 @@ const Payment = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${tocken}`,
           },
         }
       );
       console.log("verify Payment", verifyPayment);
       if (verifyPayment.status === 200) {
+        setIsPlanPurchased(true);
         const currentPlan = {
           name: selectedPlan.name,
           price: selectedPlan.price,
@@ -165,7 +171,6 @@ const Payment = () => {
     if (selectedPlan === "") {
       return;
     }
-    console.log("selectedPlan", selectedPlan, " ", token);
     const paymentResponse = await getRazorPayObject();
     var options = {
       key: paymentResponse.razorpayOrder.key,
@@ -204,7 +209,7 @@ const Payment = () => {
       </div>
 
       <div className="p-c-body">
-        {currentPlan.name === "Free" ? (
+        {!isPlanPurchased ? (
           <span className="p-c-body-title">
             choose your <span className="p-c-body-title-highlight">plan</span>
           </span>
@@ -214,7 +219,7 @@ const Payment = () => {
           </span>
         )}
 
-        {currentPlan.name === "Free" ? (
+        {!isPlanPurchased ? (
           <>
             <div className="p-c-body-plans-container">
               {plansArray.map((item, index) => {
