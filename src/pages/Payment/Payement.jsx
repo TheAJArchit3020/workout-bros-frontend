@@ -286,7 +286,7 @@ const Payment = () => {
               >
                 <span>Subscribe</span>
               </div>
-              <div className="p-c-body-subscription-policies">
+              {/* <div className="p-c-body-subscription-policies">
                 <span className="p-c-body-subscription-policy">
                   Terms and conditions
                 </span>
@@ -294,7 +294,7 @@ const Payment = () => {
                 <span className="p-c-body-subscription-policy">
                   Privacy policy{" "}
                 </span>
-              </div>
+              </div> */}
             </div>
           </>
         ) : (
