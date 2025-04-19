@@ -15,7 +15,7 @@ const Payment = () => {
   const navigate = useNavigate();
   const [plansArray, setPlansArray] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState("");
-  const [currentPlan, setCurrentPlan] = useState({ name: "Free Plan" });
+  const [currentPlan, setCurrentPlan] = useState({});
   const [tocken,setTocken] = useState("");
   const [isPlanPurchased,setIsPlanPurchased] = useState(false);
   const handleBackButton = () => {
@@ -64,6 +64,7 @@ const Payment = () => {
       console.log("isPlanPurchased", isPlanPurchase);
       setIsPlanPurchased(isPlanPurchase.data.isPurchased);
       if(!isPlanPurchase.data.isPurchased){
+        setCurrentPlan({name:"Free Plan"});
         return false;
       }
       else{
@@ -72,7 +73,7 @@ const Payment = () => {
           price: isPlanPurchase.data.plan.price,
           id: isPlanPurchase.data.plan.id,
           endDate : isPlanPurchase.data.subscription.endDate.split("T")[0],
-          description:"ijfdsij",
+          description:isPlanPurchase.data.plan.description,
         }
         setCurrentPlan(currentPlan);
         return true;
